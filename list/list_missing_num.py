@@ -1,5 +1,5 @@
-print("A list contains numbers from 1 to 10, but some num are missing.")
-print("Find the missing number efficiently")
+print("A list contains numbers from 1 to 10, but some nums are missing.")
+
 
 '''numbers = [1, 2, 3,  10]
 max_num = numbers[0]
@@ -25,9 +25,3 @@ for num in range(1, 10):
         missing_num.append(num)
 print(f"Missing num are: {missing_num}")    '''
 print("------------------------------------------------------------")    
-numbers = [1, 2, 3,  10]
-missing_num = []
-for num in range(1, 10):
-    if num not in numbers:
-        missing_num.append(num)
-print(f"Missing num are: {missing_num}") 
