@@ -63,7 +63,7 @@ def find_missing(numbers):
     min = numbers[0]     
     for i in numbers:
         if i < min:
-            max = i   
+            min = i   
     missing = []
     for num in range(min + 1, max):
         if num not in numbers:
