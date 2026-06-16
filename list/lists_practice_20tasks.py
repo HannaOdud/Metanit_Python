@@ -74,10 +74,65 @@ print(ls)
 ls.pop(-1)
 print(ls)'''
 
-shop_ls = ["eggs", "milk", "butter", "bread", "tea"]
+'''shop_ls = ["eggs", "milk", "butter", "bread", "tea"]
 shop_ls.append("sugar")
 shop_ls.remove("tea")
 print(f" Len: {len(shop_ls)}")
 ind = shop_ls.index("sugar")
 print(f"Index of sugar: {ind}")
-print(shop_ls)
+print(shop_ls)'''
+
+'''names = ["Tom", "Anna", "Tom", "Kate", "Tom"]
+for i in range(len(names)):
+    if names[i] == "Tom":
+        names.pop(i)
+        break
+print(names)'''
+
+
+'''names = ["Tom", "Anna", "Tom", "Kate", "Tom"]
+t = names.index("Tom")
+print(t)
+r = names.pop(0)
+print(names)
+t2 = names.remove("Tom")
+print(names)
+i = names.index("Tom")
+print(i)
+del names[2]
+print(names)'''
+
+'''numbers = [15, 7, 22, 7, 9]
+numbers.append(30)
+print(numbers)
+numbers.insert(2, 100)
+print(numbers)
+numbers.remove(7)
+print(numbers)
+c = numbers.count(7)
+print(c)
+numbers.sort()
+print(numbers)
+numbers.reverse()
+print(numbers)
+print(max(numbers))
+print(len(numbers))'''
+
+
+data = [5, 12, 7]
+data.append(20)
+print(data)
+data.insert(0, 1)
+print(data)
+data.extend([30, 40])
+print(data)
+data.remove(12)
+print(data)
+r_s = data.pop(len(data)-1)
+print(r_s)
+print(data)
+s_data = sorted(data)
+print(s_data)
+print(data)
+print(len(data))
+print(f"Max: {max(data)} Min: {min(data)}")
