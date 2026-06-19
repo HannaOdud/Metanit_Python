@@ -156,3 +156,11 @@ c1 = sorted(employees) #alfabet
 print(c1)
 c2 = sorted(employees, key=lambda employee: employee[2])
 print(c2)
+
+print("Print only employees whose salary is greater than 4000 (using filter())")
+high_s = filter(lambda em: em[2]>4000, employees)
+for em in high_s:
+    print(em)
+print("Create a list containing only employee names (using map())")
+name = list(map(lambda em: em[0],employees))
+print(name)
