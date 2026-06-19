@@ -1,5 +1,5 @@
-print("1. Create a copy of the list using copy().  Add 20 to the copied list only. Print both lists")
-'''numbers = [5, 10, 15]
+'''print("1. Create a copy of the list using copy().  Add 20 to the copied list only. Print both lists")
+numbers = [5, 10, 15]
 new_l = numbers.copy()
 new_l.append(20) 
 print(f"New: {new_l}")
@@ -131,9 +131,28 @@ print(c2)
 c3 = sorted(cities, reverse=True)
 print(c3)'''
 
-print("20. Combined Challenge")
+'''print("20. Combined Challenge")
 numbers = [14, 7, 25, 7, 18, 7]
 c = numbers.copy()
 numbers.remove(7)
 
-print(numbers)
+print(numbers)'''
+
+print("Bonus challenge.")
+employees = [
+    ["Alice", "HR", 3200],
+    ["Bob", "IT", 4100],
+    ["Mharlie", "Sales", 3700],
+    ["Diana", "IT", 4500]
+]
+for em in employees:  
+    print(em[0])
+
+s_D =employees[3][2]
+print(s_D)
+employees.append(["Lana", "Nurse", 3500])
+print(employees)
+c1 = sorted(employees) #alfabet
+print(c1)
+c2 = sorted(employees, key=lambda employee: employee[2])
+print(c2)
