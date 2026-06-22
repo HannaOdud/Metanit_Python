@@ -81,4 +81,33 @@ low = min(temperatures)
 print(high)
 print(low)'''
 
-print("14. Keep the Original List. Create a new sorted list using sorted(). ")
+'''print("14. Keep the Original List. Create a new sorted list using sorted(). Print both.")
+scores = [75, 92, 68, 88]
+new_scores = sorted(scores)
+print(scores)
+print(new_scores)'''
+
+'''print("15. Team scores. Add 30. Insert 10 at the beginning. Sort the list. Print the result. ")
+scores = [15, 22, 18]
+scores.append(30)
+scores.insert(0, 10)
+scores.sort()
+print(scores)'''
+
+'''print("16. Start with an empty list. Add 'Apple',Add 'Banana', Add 'Orange', Remove 'Banana'. Print the cart. ")
+shopping_card = []
+shopping_card.append("Apple")
+shopping_card.append("Orange")
+shopping_card.append("Banana")
+print(shopping_card)
+shopping_card.remove("Banana")
+print(shopping_card)'''
+
+'''print("17. Create a list containing four movie titles. ")
+movies = ["Film1", "Film2", "Film3"]
+ind = movies.index("Film2")
+print(ind)
+movies.sort(reverse=True)
+print(movies)'''
+
+print("18. ")
