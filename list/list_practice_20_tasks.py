@@ -110,4 +110,11 @@ print(ind)
 movies.sort(reverse=True)
 print(movies)'''
 
-print("18. ")
+'''print("18. Duplicate Numbers") #here is problem
+numbers = [4, 8, 4, 6, 4, 9]
+c = numbers.count(4)
+print(c)
+numbers.remove(4)
+print(c)
+print(numbers)'''
+
