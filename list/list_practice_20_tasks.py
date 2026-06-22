@@ -110,11 +110,34 @@ print(ind)
 movies.sort(reverse=True)
 print(movies)'''
 
-'''print("18. Duplicate Numbers") #here is problem
+'''print("18. Duplicate Numbers") 
 numbers = [4, 8, 4, 6, 4, 9]
 c = numbers.count(4)
 print(c)
 numbers.remove(4)
+c = numbers.count(4)
 print(c)
 print(numbers)'''
 
+'''print("19. Class Register")
+students = ["Emma", "Olivia", "Liam"]
+students.append("Noah")
+students.insert(0, "Sophia")
+students.remove("Emma")
+print(students)
+print(len(students))'''
+
+'''print("20. Ultimate List Challenge ")
+numbers = [12, 5, 18, 5, 9]
+numbers.append(20)
+numbers.insert(2, 100)
+numbers.remove(5)
+c_five = numbers.count(5)
+numbers.sort()
+print(numbers)
+numbers.sort(reverse=True)
+m = max(numbers)
+s = min(numbers)
+l = len(numbers)
+copy_num = numbers.copy()
+print(copy_num)'''
