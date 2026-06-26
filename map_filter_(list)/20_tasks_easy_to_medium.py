@@ -67,6 +67,55 @@ print(res)'''
 res = list(map(lambda w: w.title(), names))
 print(res)'''
 
-print("13. ")
+'''print("13. Use map() to add 20% tax to each price.")
+prices = [100, 250, 80, 150]
+def addTax(p):
+    return (20 / 100) * p + p
+res = list(map(addTax, prices))
+print(res)'''
 
+'''prices = [100, 250, 80, 150]
+res = list(map(lambda p: p + p * (20/100), prices))
+print(res)'''
 
+'''print("14. Use filter() to keep only words with more than 5 letters.")
+words = ["apple", "computer", "pen", "notebook", "car"]
+res = list(filter(lambda w: len(w)>5, words))
+print(res)'''
+
+'''print("15. Use map() to convert each temperature to Fahrenheit.")
+temperatures = [0, 10, 20, 30]
+res = list(map(lambda t: t * 1.8 + 32, temperatures))
+print(res)'''
+
+'''print("16. Use filter() to keep only numbers divisible by 3.")
+numbers = [6, 8, 9, 12, 14, 18, 20]
+res = list(filter(lambda n: n%3 == 0, numbers ))
+print(res)'''
+
+'''print("17. Use filter() to remove all empty strings.")
+words = ["apple", "", "banana", "", "orange"]
+res = list(filter(lambda w: len(w)!=0, words))
+print(res)'''
+
+'''print("18. Use map() to create a list containing only the first letter of each word.")
+words = ["Python", "Java", "C++", "JavaScript"]
+res = list(map(lambda w: w[0], words))
+print(res)'''
+
+'''print("19. Use filter() to keep only even numbers. Use map() to multiply each remaining number by 10.")
+numbers = [3, 8, 15, 20, 7, 12]
+res1 = list(filter(lambda n: n%2==0, numbers))
+print(res1)
+res2 = list(map(lambda n: n*10, res1))
+print(res2)'''
+
+'''print("20. Use filter() to keep only names with more than 4 letters. Use map() to capitalize each remaining name.")
+print("Sort the final list alphabetically. Print the result.")
+names = ["wlice", "Bob", "charlie", "Eve", "daniel"]
+res1 = list(filter(lambda n: len(n)>4, names))
+print(f"Names with more then 3 letters: {res1}")
+res2 = list(map(lambda n: n.title(), res1))
+print(res2)
+res2.sort()
+print(res2)'''
