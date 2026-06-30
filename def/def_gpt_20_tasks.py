@@ -28,11 +28,11 @@ print(minimum(1,3))
 
 #5
 def greeting(name):
-    return name
-print(greeting("Привіт, Олено!"))'''
+    return f"Привіт, {name}!"
+print(greeting("Олена"))'''
 
 #6
-def rectangle_area(width, height):
+'''def rectangle_area(width, height):
     return width * height
 print(rectangle_area(4, 5))
 
@@ -104,20 +104,20 @@ def factorial(n):
     for num in range(1, n+1):
         tot = tot * num
     return tot
-print(factorial(5))
+print(factorial(5))'''
 
 #15
 def count_even(numbers):
     tot = 0
     for n in numbers:
         if n % 2== 0:
-            tot = tot + n
+            tot = tot + 1
     return tot
 print(count_even([1,2,3,4]))    
 
 #16
 def largest(numbers):
-    max_num = 0
+    max_num = numbers[0]
     for n in numbers:
         if n > max_num:
             max_num = n
@@ -126,7 +126,7 @@ print(largest([1, 2, 3]))
 
 #17
 def smallest(numbers):
-    min_num = 1
+    min_num = numbers[0]
     for n in numbers:
         if n < min_num:
             min_num = n
@@ -145,10 +145,10 @@ print(average([1,2,3,4,5]))
 
 #19
 def count_vowels(text):
-    tot_vow = ""
+    tot_vow = 0
     for v in text:
         if v == "a" or v == "e" or v == "o" or v == "i":
-            tot_vow = tot_vow + v
+            tot_vow = tot_vow + 1
     return tot_vow
 print(count_vowels("word"))
 
