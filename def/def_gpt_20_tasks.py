@@ -107,3 +107,62 @@ def factorial(n):
 print(factorial(5))
 
 #15
+def count_even(numbers):
+    tot = 0
+    for n in numbers:
+        if n % 2== 0:
+            tot = tot + n
+    return tot
+print(count_even([1,2,3,4]))    
+
+#16
+def largest(numbers):
+    max_num = 0
+    for n in numbers:
+        if n > max_num:
+            max_num = n
+    return max_num
+print(largest([1, 2, 3]))       
+
+#17
+def smallest(numbers):
+    min_num = 1
+    for n in numbers:
+        if n < min_num:
+            min_num = n
+    return min_num
+print(smallest([1, 2, 3]))
+
+#18
+def average(numbers):
+    tot = 0
+    avg = 0
+    for n in numbers:
+        tot = tot + n
+        avg = tot / len(numbers)
+    return avg
+print(average([1,2,3,4,5]))    
+
+#19
+def count_vowels(text):
+    tot_vow = ""
+    for v in text:
+        if v == "a" or v == "e" or v == "o" or v == "i":
+            tot_vow = tot_vow + v
+    return tot_vow
+print(count_vowels("word"))
+
+#20
+def is_palindrome(text):
+    if all(text[i] == text[- i- 1] for i in range(len(text) // 2)):
+        return True
+    else:
+        return False
+print(is_palindrome("level"))    
+#OR
+def is_palindrome2(text):
+    if text == text[::-1]:
+        return True
+    else: 
+        return False
+print(is_palindrome2("madam"))    
