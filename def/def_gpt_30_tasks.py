@@ -103,4 +103,18 @@ print(count_digits("Hel1l2o wo7ld8"))
 
 #18 Повертає кількість великих літер. 
 def count_uppercase(text):
-    
+    count = 0
+    for char in text:
+        if char.isalpha() and char == char.upper():
+            count = count + 1
+    return count        
+print(count_uppercase("HelLO world"))
+
+#OR 
+def count_uppercase(text):
+    count = 0
+    for char in text:
+        if char.isupper():
+            count += 1
+    return count        
+print(count_uppercase("HelLO world"))
