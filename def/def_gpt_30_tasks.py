@@ -11,7 +11,17 @@ print(power(4))
 def is_negative(number):
     if number < 0:
         return True
+    else: 
+        return False
 print(is_negative(-2))
+
+#OR
+
+def is_negative(number):
+    return number < 0
+print(is_negative(-2))
+
+
 #4
 def maximum(a, b):
     if a > b:
@@ -101,6 +111,15 @@ def count_digits(text):
     return count
 print(count_digits("Hel1l2o wo7ld8"))
 
+#OR
+def count_digits(text):
+    count = 0
+    for n in text:
+    if n.isdigit():
+        count = count +1
+    return count
+print(count_digits("Hel1l2o wo7ld8"))
+
 #18 Повертає кількість великих літер. 
 def count_uppercase(text):
     count = 0
@@ -125,7 +144,7 @@ def reverse_sentence(text):
     for letter in text:
         new_text = letter + new_text 
     return new_text
-print(reverse_sentence("Hello"))
+print(reverse_sentence("Hello"))'''
 
 #20 Повертає True, якщо рядок починається з букви "A" або "a".
 def starts_with_a(text):
@@ -133,7 +152,16 @@ def starts_with_a(text):
         return True
     return False
 print(starts_with_a("Hello"))
-print(starts_with_a("again"))'''
+print(starts_with_a("again"))
+
+#OR
+def starts_with_a(text):
+    if text and text[0] in "Aa":
+        return True
+    return False
+print(starts_with_a("Hello"))
+print(starts_with_a("again"))
+
 
 # 21 Повертає суму всіх чисел.Без sum().
 def sum_numbers(numbers):
