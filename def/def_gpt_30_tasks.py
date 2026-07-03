@@ -50,7 +50,7 @@ def greeting(name):
     return f"Доброго дня, {name}"
 print(greeting("Олена!"))'''
 
-#11 Повертає кількість пробілів
+'''#11 Повертає кількість пробілів
 def count_spaces(text):
     count = 0
     for t in text:
@@ -117,4 +117,20 @@ def count_uppercase(text):
         if char.isupper():
             count += 1
     return count        
-print(count_uppercase("HelLO world"))
+print(count_uppercase("HelLO world"))'''
+
+#19 Повертає рядок навпаки. Без [::-1].
+def reverse_sentence(text):
+    new_text = ""
+    for letter in text:
+        new_text = letter + new_text 
+    return new_text
+print(reverse_sentence("Hello"))
+
+#20 Повертає True, якщо рядок починається з букви "A" або "a".
+def starts_with_a(text):
+    if text[0] == "A" or text[0] == "a":
+        return True
+    return False
+print(starts_with_a("Hello"))
+print(starts_with_a("again"))
