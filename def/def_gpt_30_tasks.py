@@ -117,7 +117,7 @@ def count_uppercase(text):
         if char.isupper():
             count += 1
     return count        
-print(count_uppercase("HelLO world"))'''
+print(count_uppercase("HelLO world"))
 
 #19 Повертає рядок навпаки. Без [::-1].
 def reverse_sentence(text):
@@ -133,4 +133,100 @@ def starts_with_a(text):
         return True
     return False
 print(starts_with_a("Hello"))
-print(starts_with_a("again"))
+print(starts_with_a("again"))'''
+
+# 21 Повертає суму всіх чисел.Без sum().
+def sum_numbers(numbers):
+    total = 0
+    for n in numbers:
+        total = total + n
+    return total
+print(sum_numbers([1,2,3,4,5]))   
+
+#22 Повертає добуток усіх чисел.
+def multiply_numbers(numbers):
+    tot = 1
+    for n in numbers:
+        tot = tot * n
+    return tot
+print(multiply_numbers([1,2,3,4,5]))   
+
+#23 Повертає кількість додатних чисел.
+def count_positive(numbers):
+    tot = 0
+    for n in numbers:
+        if n > 0:
+            tot = tot + 1
+    return tot
+print(count_positive([0,1,2,3,4,5,-1,-2,-3]))
+
+#24 
+def count_negative (numbers):
+    tot = 0
+    for n in numbers:
+        if n < 0:
+            tot = tot + 1
+    return tot
+print(count_negative([0,1,2,3,4,5,-1,-2,-3]))
+
+#25 Повертає перше парне число.
+def first_even(numbers):
+    for n in numbers:
+        if n %2 == 0:
+            return n
+print(first_even([1,3,5,7,8])) 
+
+#26  Повертає останнє парне число.    
+def last_even(numbers):
+    new_lst = []
+    for n in numbers:
+        if n % 2 == 0:
+            new_lst.append(n)
+    return new_lst [-1]
+print(last_even([1,2,3,4,5]))
+ #OR
+def last_even(numbers):
+    lst = 0
+    for n in numbers:
+        if n%2 == 0:
+            lst = n
+    return lst        
+print(last_even([1,2,3,4,5,6]))
+
+#27 Повертає новий список, де кожне число піднесене до квадрата.
+def square_list(numbers):
+    new_lst = []
+    for n in numbers:
+        new_lst.append(n * n)
+    return new_lst
+print(square_list([1,2,3,4,5]))
+
+#28 Повертає список у зворотному порядку. Без reverse() і [::-1].
+def reverse_list(numbers):
+    new_lst = []
+    for n in range(len(numbers)-1, -1, -1):
+        new_lst.append(numbers[n])
+    return new_lst
+print(reverse_list([1,2,3,4,5]))
+
+#29 Рахує, скільки разів зустрічається число.
+def count_occurrences(numbers, value):
+    count = 0
+    for n in numbers:
+        if n == value:
+            count = count + 1
+    return count
+print(count_occurrences([1,2,2,3,2], 2))
+
+#30 Повертає друге найбільше число.
+def second_largest(numbers):
+    largest = float("-inf")
+    second_largest = float("-inf")
+    for n in numbers:
+        if n > largest:
+            second_largest = largest
+            largest = n
+    return second_largest
+print(second_largest([7, 3, 9, 2, 5]))
+    
+
