@@ -25,8 +25,11 @@ print(person.get("phone", "No phone"))'''
     "model": "X5",
     "year": 2025
 }
-print(cars.keys())
-
+for key in cars:
+    print(key)
+    #OR
+for key in cars.keys():
+    print(key)
 #7
 print(cars.values())
 
@@ -76,7 +79,7 @@ for key, value in student.items():
 #15 Виведи тільки рядкові значення.
 for key,value in student.items():
     if type(value) == str:
-        print(key) '''
+        print(value) '''
 
 #16 Створи словник телефонної книги.
 phone_book = {
@@ -104,7 +107,7 @@ prices = {
     "orange": 40,
     "kiwi": 80
 }
-max_val = 0
+max_val = float("-inf")
 max_key = None
 for key, value in prices.items():
     if value > max_val:
