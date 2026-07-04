@@ -254,6 +254,8 @@ def second_largest(numbers):
         if n > largest:
             second_largest = largest
             largest = n
+        elif n < largest and n > second_largest:
+            second_largest = n
     return second_largest
 print(second_largest([7, 3, 9, 2, 5]))
     
