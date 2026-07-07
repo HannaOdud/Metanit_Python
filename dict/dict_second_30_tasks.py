@@ -83,7 +83,7 @@ for key,value in scores.items():
 print(max_score)
 print(best_student)'''
 
-#15 Виведи всіх студентів, у кого оцінка 90 і більше.
+'''#15 Виведи всіх студентів, у кого оцінка 90 і більше.
 scores = {
     "Anna": 95,
     "Ivan": 81,
@@ -114,4 +114,133 @@ del scores["Oleh"]
 print(scores)
 
 #20 Перевір, чи є студент "Petro".
-print("Petro" in scores)
+print("Petro" in scores)'''
+
+#21 
+def print_dictionary(dictionary):
+    return dictionary
+print(print_dictionary({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"}))
+
+#22
+def count_string_values(dictionary):
+    count = 0
+    for value in dictionary.values():
+        if type(value) == int or type(value) == float:
+            count = count + 1
+    return count
+print(count_string_values({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76
+}))
+
+#23 Напиши функцію. Повертає кількість рядків.
+def count_string_values(dictionary):
+    count = 0
+    for value in dictionary.values():
+        if type(value) == str:
+            count += 1
+    return count
+print(count_string_values({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
+#24 Напиши функцію. Повертає суму всіх числових значень.
+def total_numeric_values(dictionary):
+    total = 0
+    for value in dictionary.values():
+        if type(value) == int or type(value) == float:
+            total = total + value #total += value
+    return total
+print(total_numeric_values({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76
+}))        
+
+#25 Напиши функцію. Повертає найдовший ключ. Без max().
+def longest_key(dictionary):
+    max_key = ""
+    for key in dictionary.keys():
+        if len(key) > len(max_key):
+            max_key = key
+    return max_key
+print(longest_key({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76
+}))
+
+#26 Напиши функцію. Повертає найдовше рядкове значення.
+def longest_value(dictionary):
+    max_value = ""
+    for value in dictionary.values():
+        if type(value) == str:
+            if len(value) > len(max_value):
+                max_value = value
+    return max_value
+print(longest_value({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
+#27 Напиши функцію. Повертає True або False.
+def key_exists(dictionary, key):
+    if key in dictionary:
+        return True
+    else: 
+        return False
+print(key_exists({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}, "name" ))
+
+#28 Напиши функцію. Повертає True, якщо таке значення існує.
+def value_exists(dictionary, value):
+    if value in dictionary.values():
+        return True
+    else:
+        return False
+print(value_exists({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}, "Kyiv" ))    
+
+#29 Напиши функцію. Повертає кількість парних чисел серед значень.
+def count_even_values(dictionary):
+    count = 0
+    for value in dictionary.values():
+        if type(value) == int:
+            if value % 2 == 0:
+                count = count + 1
+    return count        
+print(count_even_values({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
+#30 Напиши функцію. яка міняє місцями ключі та значення.
+def invert_dictionary(dictionary):
+    new_dict = dict()
+    for key, value in dictionary.items():
+        new_dict[value] = key
+    return new_dict
+print(invert_dictionary({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
+
