@@ -48,11 +48,36 @@ print(first_value({
     "Petro": 95
 }))
 
-#5 Напиши функцію. Повертає останнє значення.
+#5 Напиши функцію. Повертає останній ключ.
+def last_key(dictionary):
+    return list(dictionary.keys())[-1]
+print(last_key({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 65
+}))
+
+#6 Напиши функцію. Повертає останнє значення.
 def last_value(dictionary): 
     return list(dictionary.values())[-1]
 print(last_value({
     "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 65
+}))
+
+#7 Повертає новий список, у якому всі ключі записані великими літерами.
+def all_keys_upper(dictionary):
+    new_dict = dict()
+    for key,value in dictionary.items():
+        new_dict[key.upper()] = value
+    return new_dict
+print(all_keys_upper({
+     "Anna": 95,
     "Ivan": 81,
     "Olena": 90,
     "Oleh": 76,
