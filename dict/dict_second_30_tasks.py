@@ -124,11 +124,21 @@ print(print_dictionary({
     "age" : 20,
     "city" : "Kyiv"}))
 
+#better version
+def print_dictionary2(dictionary2):
+    for key,value in dictionary2.items():
+        print(f"{key}: {value}")
+print(print_dictionary2({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
 #22
 def count_string_values(dictionary):
     count = 0
     for value in dictionary.values():
-        if type(value) == int or type(value) == float:
+        if type(value) == int or type(value) == float:  #if isinstance(value,(int, float)):
             count = count + 1
     return count
 print(count_string_values({
@@ -195,7 +205,7 @@ print(longest_value({
 
 #27 Напиши функцію. Повертає True або False.
 def key_exists(dictionary, key):
-    if key in dictionary:
+    if key in dictionary:       #return key in dictionary   -->(True/False)
         return True
     else: 
         return False
@@ -207,7 +217,7 @@ print(key_exists({
 
 #28 Напиши функцію. Повертає True, якщо таке значення існує.
 def value_exists(dictionary, value):
-    if value in dictionary.values():
+    if value in dictionary.values():  #return value in dictionary
         return True
     else:
         return False
