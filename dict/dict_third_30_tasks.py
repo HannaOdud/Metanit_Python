@@ -83,3 +83,58 @@ print(all_keys_upper({
     "Oleh": 76,
     "Petro": 65
 }))
+
+#8 Усі рядкові значення перевести у верхній регістр.
+def all_string_values_upper(dictionary):
+    for key, value in dictionary.items():
+        if type(value) == str:
+            dictionary[key] = value.upper()
+    return dictionary
+print(all_string_values_upper({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
+#9 Повертає словник без числових значень.
+def remove_numeric_values(dictionary):
+    new_dict = {}
+    for key,value in dictionary.items():
+        if not isinstance(value, (int, float)):
+            new_dict[key] = value
+    return new_dict
+print(remove_numeric_values({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+
+#10 Повертає словник лише з числовими значеннями.
+def only_numeric_values(dictionary):
+    new_dict = dict()
+    for key, value in dictionary.items():
+        if isinstance(value,(int, float)):
+            new_dict[key] = value
+    return new_dict
+print(only_numeric_values({
+    "name" : "Anna",
+    "age" : 20,
+    "city" : "Kyiv"
+}))
+    
+#11 Знайди всіх студентів із максимальною оцінкою. (Не одного.)
+def students_with_max_marks(dictionary):
+    max_value = max(dictionary.values())
+    res_list = []
+    for key, value in dictionary.items():
+        if value == max_value:
+            res_list.append(key)
+    return res_list
+print(students_with_max_marks({
+
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
