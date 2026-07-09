@@ -329,3 +329,25 @@ def print_rised_new_dict(dictionary):
 print(print_rised_new_dict(products)) 
 
 #26 Створи словник, де всі ціни менше 40 грн.
+def print_new_dict_with_price_less_40(dictionary):
+    new_dict = {}
+    for key, value in dictionary.items():
+        if value < 40:
+            new_dict[key] = value
+    return new_dict
+print(print_new_dict_with_price_less_40(products))
+
+#27 Порахуй кількість товарів дорожчих за середню ціну.
+def count_products_expensive_ave_price(dictionnary):
+    count = 0
+    avg = sum(dictionnary.values())/len(dictionnary)
+    for value in dictionnary.values():
+        if value > avg:
+            count += 1
+    return count
+print(count_products_expensive_ave_price(products))
+
+#28 Напиши функцію. Повертає True або False.
+#def product_exists(products, name):
+
+
