@@ -131,10 +131,201 @@ def students_with_max_marks(dictionary):
             res_list.append(key)
     return res_list
 print(students_with_max_marks({
-
     "Anna": 95,
     "Ivan": 81,
     "Olena": 90,
     "Oleh": 76,
     "Petro": 95
 }))
+
+#12 Знайди всіх студентів із мінімальною оцінкою.
+def students_with_min_marks(dictionary):
+    min_marks_students = min(dictionary.values())
+    res_list = []
+    for key, value in dictionary.items():
+        if value == min_marks_students:
+            res_list.append(key)
+    return res_list
+print(students_with_min_marks({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#13 Порахуй, скільки студентів мають оцінку вище середньої.
+def count_student_with_higher_avg_marks(dictionary):
+    count = 0
+    avg_marks = sum(dictionary.values())/len(dictionary.keys())
+    for key, value in dictionary.items():
+        if value > avg_marks:
+            count = count + 1
+    return count
+print(count_student_with_higher_avg_marks({
+      "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#14 Порахуй, скільки студентів мають оцінку нижче середньої.
+def count_student_with_lower_avg_marks(dictionary):
+    count = 0
+    avg_marks = sum(dictionary.values())/len(dictionary.keys())
+    for key, value in dictionary.items():
+        if value < avg_marks:
+            count = count + 1
+    return count
+print(count_student_with_lower_avg_marks({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#15 Виведи студентів у алфавітному порядку.
+def print_student_in_ordered_form(dictionary):
+    new_list = []
+    for key in dictionary.keys():
+        new_list.append(key)
+    return sorted(new_list)
+print(print_student_in_ordered_form({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#16 Виведи оцінки у порядку зростання.
+def print_students_marks_in_asc_order(dictionary):
+    new_list = []
+    for value in dictionary.values():
+        new_list.append(value)
+    return sorted(new_list, reverse=True)
+print(print_students_marks_in_asc_order({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#17 Знайди другу найбільшу оцінку.
+def second_largest_mark(dictionary):
+    largest = float("-inf")
+    second_largest = float("-inf")
+    for value in dictionary.values():
+        if value > largest:
+            second_largest = largest
+            largest = value
+        elif value > second_largest and value < largest:
+            second_largest = value
+    return second_largest
+print(second_largest_mark({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#18 Знайди другу найменшу оцінку.
+def second_lowest_mark(dictionary):
+    lowest = float("inf") 
+    second_lowest = float("inf")
+    for value in dictionary.values():
+        if value < lowest:
+            second_lowest = lowest
+            lowest = value
+        elif value < second_lowest and value > lowest:
+            second_lowest = value
+    return second_lowest
+print(second_lowest_mark({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#19 Порахуй кількість різних оцінок.
+def count_different_marks(dictionary):
+    new_list = []
+    for value in dictionary.values():
+        if value not in new_list:
+            new_list.append(value)
+    return len(new_list)
+print(count_different_marks({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#20 Створи новий словник, у якому залишаться лише студенти, які мають оцінку 90 і більше.
+def students_with_90_scores(dictionary):
+    new_dict = {}
+    for key,value in dictionary.items():
+        if value >= 90:
+            new_dict[key] = value
+    return new_dict        
+print(students_with_90_scores({
+    "Anna": 95,
+    "Ivan": 81,
+    "Olena": 90,
+    "Oleh": 76,
+    "Petro": 95
+}))
+
+#21 Є словник. Порахуй загальну вартість усіх товарів.
+products = {
+    "apple": 30,
+    "banana": 25,
+    "orange": 40,
+    "kiwi": 80
+}
+def total_price_of_product(dictionary):
+    return sum(dictionary.values())
+print(total_price_of_product(products))
+
+#22 Знайди найдешевший товар.Повернути назву.
+def print_name_of_cheapest_product(dictionary):
+    min_value = float("inf") 
+    min_key = ""
+    for key, value in dictionary.items(): 
+        if value < min_value:
+            min_value = value
+            min_key = key 
+    return min_key
+print(print_name_of_cheapest_product(products))
+
+#23 
+def print_name_of_the_most_expensive_product(dictionary):
+    max_value = float("-inf")
+    max_key = ""
+    for key, value in dictionary.items():
+        if value > max_value:
+            max_value = value
+            max_key = key
+    return max_key
+print(print_name_of_the_most_expensive_product(products))
+
+#24 Порахуй середню ціну.
+def count_avg_price(dictionary):
+    return sum(dictionary.values())/len(dictionary.values())
+print(count_avg_price(products))
+
+#25 Створи словник, де ціна збільшена на 10%.
+def print_rised_new_dict(dictionary):
+    new_dict = dict()
+    for key, value in dictionary.items():
+        new_dict[key] = value * 1.1
+    return new_dict
+print(print_rised_new_dict(products)) 
+
+#26 Створи словник, де всі ціни менше 40 грн.
