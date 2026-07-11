@@ -17,3 +17,22 @@ def count_words(words):
 print(count_words("cat dog cat bird dog dog"))
 
 
+#Створи словник, який порахує, скільки разів зустрічається кожне ім'я.
+
+students = [
+    "Anna",
+    "Ivan",
+    "Anna",
+    "Olena",
+    "Ivan",
+    "Anna"
+]
+def count_dict_name(students):
+    count_name = {}
+    for name in students:
+        if name in count_name:
+            count_name[name] = count_name[name] + 1
+        else:
+            count_name[name] = 1
+    return count_name
+print(count_dict_name(students))
