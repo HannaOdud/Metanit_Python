@@ -97,3 +97,73 @@ def even_num(list):
 print(even_num([1,2,3,4,5,6]))    
 
 #10 Поверни всі слова довші за 5 символів.
+products = {
+    "apple": 30,
+    "banana": 25,
+    "orange": 40,
+    "kiwi": 80,
+    "pear": 40
+}
+def longer_then_5_symbol(products):
+    res_dict = {}
+    for key,value in products.items():
+        if len(key) > 5:
+            res_dict[key] = value
+    return res_dict
+print(longer_then_5_symbol(products))
+
+#OR
+
+def longer_then_5_symbol(products):
+    res_list = []
+    for key in products:
+        if len(key) > 5:
+            res_list.append(key)
+    return res_list
+print(longer_then_5_symbol(products))
+
+#11 Поверни список усіх товарів, які коштують 40 грн.
+def list_of_products(products):
+    res_list = []
+    for key,value in products.items():
+        if value == 40:
+            res_list.append(key)
+    return res_list
+print(list_of_products(products))
+
+#12 Порахуй, скільки товарів коштують дорожче 50 грн
+def count_products(products):
+    count = 0
+    for value in products.values():
+        if value > 50:
+            count += 1
+    return count
+print(count_products(products))
+
+#13 Поверни словник, де залишилися лише товари дорожчі за 30 грн.
+def dict_of_product_more_30(products):
+    prod_dict = {}
+    for key,value in products.items():
+        if value > 30:
+            prod_dict[key] = value
+    return prod_dict
+print(dict_of_product_more_30(products))
+
+#14 Створи словник, у якому ціна кожного товару зменшена на 20%.
+def price_down_20(products):
+    price_down_dict = {}
+    for key, value in products.items():
+        price_down_dict[key] = value * 0.8
+    return price_down_dict
+print(price_down_20(products))
+
+#15 Поверни назву найдешевшого товару без min().
+def cheapest_product(products):
+    cheapest = float("inf")
+    cheapest_name = ""
+    for key, value in products.items():
+        if value < cheapest:
+            cheapest = value
+            cheapest_name = key 
+    return cheapest_name
+print(cheapest_product(products))
