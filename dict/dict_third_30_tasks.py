@@ -84,6 +84,15 @@ print(all_keys_upper({
     "Petro": 65
 }))
 
+#OR 
+def all_keys_upper(dictionary):
+    result = []
+    for key in dictionary:
+        result.append(key.upper())
+    return result
+
+
+
 #8 Усі рядкові значення перевести у верхній регістр.
 def all_string_values_upper(dictionary):
     for key, value in dictionary.items():
@@ -205,7 +214,7 @@ def print_students_marks_in_asc_order(dictionary):
     new_list = []
     for value in dictionary.values():
         new_list.append(value)
-    return sorted(new_list, reverse=True)
+    return sorted(new_list, reverse=False)
 print(print_students_marks_in_asc_order({
     "Anna": 95,
     "Ivan": 81,
@@ -348,6 +357,40 @@ def count_products_expensive_ave_price(dictionnary):
 print(count_products_expensive_ave_price(products))
 
 #28 Напиши функцію. Повертає True або False.
-#def product_exists(products, name):
+def product_exists(products, name):
+    if name in products:
+        return True
+    else:
+        return False
+print(product_exists( products,"orange"))
 
+#OR 
+def product_exists(products, name):
+    return name in products
+print(product_exists( products,"orange"))
 
+#29
+def price_exists(products, price):
+    return price in products.values()
+print(price_exists(products, 40))
+
+#30 Напиши функцію, яка повертає назву товару і його ціну.
+def most_expensive_product(products):
+    max_val =  max(products.values()) 
+    new_dict = dict()
+    for key, value in products.items():
+        if value >= max_val:
+            new_dict[key] = value
+    return new_dict
+    
+print(most_expensive_product(products))
+def most_expensive_product(products):
+    max_val =  max(products.values()) 
+    max_key = ""
+    res = []
+    for key, value in products.items():
+        if value == max_val:
+            res.append(key)
+            res.append(value)
+    return tuple(res)
+print(most_expensive_product(products))
