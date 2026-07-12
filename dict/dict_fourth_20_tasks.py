@@ -167,3 +167,30 @@ def cheapest_product(products):
             cheapest_name = key 
     return cheapest_name
 print(cheapest_product(products))
+
+#16 Перевір анаграму. 
+def is_anagram(word1, word2):
+    if sorted(word1) == sorted(word2):
+        return True
+    else:
+        False
+print(is_anagram("listen","silent"))
+print(is_anagram("listen","sllent"))
+
+#OR
+
+'''def is_anagram(word1, word2):
+   letter_left = list(word1)
+   for char in word2:
+       if char in letter_left:
+           letter_left.remove(char)  
+        else:return False
+    return len(letter_left)  == 0
+print(is_anagram("listen","silent"))
+print(is_anagram("listen","sllent"))'''
+
+#17 Знайди перший символ, що повторюється
+def find_first_repeated(word):
+    word_list = []
+    
+
