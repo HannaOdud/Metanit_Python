@@ -192,5 +192,30 @@ print(is_anagram("listen","sllent"))'''
 #17 Знайди перший символ, що повторюється
 def find_first_repeated(word):
     word_list = []
-    
+    for char in word:
+        if char in word_list:
+            return char
+        else:
+            word_list.append(char)
+print(find_first_repeated("programming"))
+
+#18 Знайди всі унікальні символи. (символи, що зустрічаються рівно один раз)
+def unique_symbol(word):
+    res_dict = {}
+    count = 0
+    for char in word:
+        if char in res_dict:
+            res_dict[char] += 1
+        else:
+            res_dict[char] = 1
+    unique_chars = []
+    for char, count in res_dict.items():
+        if count == 1:
+            unique_chars.append(char)
+    return unique_chars
+        
+print(unique_symbol("banana"))            
+
+ 
+   
 
