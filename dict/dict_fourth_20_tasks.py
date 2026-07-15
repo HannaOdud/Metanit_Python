@@ -173,7 +173,7 @@ def is_anagram(word1, word2):
     if sorted(word1) == sorted(word2):
         return True
     else:
-        False
+        return False
 print(is_anagram("listen","silent"))
 print(is_anagram("listen","sllent"))
 
@@ -222,9 +222,9 @@ def count_vow_con(word):
     vow = 0
     for char in word:
         if char in "aeiou":
-            con += 1
-        else:
             vow += 1
+        else:
+            con += 1
     res_dict = {"vowels": vow,
                 "consonants": con}
     return res_dict
