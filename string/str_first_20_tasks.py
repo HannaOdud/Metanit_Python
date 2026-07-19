@@ -54,3 +54,30 @@ print(check_if_startswith("hello here, dont look like a stingy scrooge"))
 def check_if_endswith(text):
     return text.endswith(".txt")
 print(check_if_endswith("hello here, dont look like a stingy scrooge"))
+
+#12 Розбити речення на слова.
+def split_text(text):
+    return text.split()
+print(split_text("Python is awesome"))
+
+#13 Є список. Повернути:red-green-blue
+def join_list_text(text):
+    return "-".join(text)
+print(join_list_text(["red", "green", "blue"]))
+
+#14 Порахувати кількість слів у реченні. split()
+def count_words(text):
+    text = text.split()
+    return len(text)
+print(count_words("hello here, dont look like a stingy scrooge"))
+
+#15 Повернути найдовше слово у реченні. Без max().
+def longest_word(text):
+    longest = ""
+    for word in text.split():
+        if len(word) > len(longest):
+            longest = word
+    return longest
+print(longest_word("hello here, dont look like a stingy scrooge"))
+
+#16 Порахувати кількість пробілів у рядку без циклу.
