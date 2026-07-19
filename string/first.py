@@ -22,3 +22,6 @@ sp_text = text.split()
 print(sp_text)
 back_to_text = " ".join(sp_text)
 print(back_to_text)
+
+words = " I lEARN python language"
+words = words.strip().lower().capitalize()
