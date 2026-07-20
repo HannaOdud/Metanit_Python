@@ -81,3 +81,42 @@ def longest_word(text):
 print(longest_word("hello here, dont look like a stingy scrooge"))
 
 #16 Порахувати кількість пробілів у рядку без циклу.
+def count_space(text):
+    return text.count(" ")
+print(count_space("hello here, dont look like a stingy scrooge"))
+
+#17 Замінити всі цифри символом "*".
+def replace_digit(text):
+    new_text = ""
+    for char in text:
+        if  char.isdigit():
+            char = '*'
+            new_text = new_text + char
+        else:
+            new_text = new_text + char
+    return new_text
+print(replace_digit("My phone is 12345"))
+
+#18 Повернути всі слова, що починаються з великої літери.
+def title_text(text):
+    res = ""
+    for char in text:
+        if char.title():
+            res = res + char
+    res = res.split()
+    return res
+print(title_text("I Love Python And Kyiv"))
+
+#19 Написати функцію
+def normalize_name(name):
+    return name.strip().lower().capitalize()
+print(normalize_name("  oLENA   "))
+
+#20 
+def word_lengths(sentence):
+    res = {}
+    sent_split = sentence.split()
+    for word in sent_split:
+        res[word] = len(word)
+    return res
+print(word_lengths("Python is awesome"))
