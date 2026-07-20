@@ -22,7 +22,8 @@ print(title_text("hello here, dont look like a stingy scrooge"))
 
 #5 Прибирає пробіли на початку і в кінці рядка.
 def remove_spaces(text):
-    text.strip()
+    text = text.split
+    return text
 print(remove_spaces(" hello here, dont look like a stingy scrooge "))
 
 #6 Замінити всі пробіли символом _.
@@ -99,11 +100,10 @@ print(replace_digit("My phone is 12345"))
 
 #18 Повернути всі слова, що починаються з великої літери.
 def title_text(text):
-    res = ""
-    for char in text:
-        if char.title():
-            res = res + char
-    res = res.split()
+    res = []
+    for word in text.split():
+        if word[0].istitle() and len(word) > 1:
+            res.append(word ) 
     return res
 print(title_text("I Love Python And Kyiv"))
 
