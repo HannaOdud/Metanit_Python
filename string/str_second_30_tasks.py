@@ -1,4 +1,4 @@
-#1 Повертає кількість літер у рядку (ігноруючи цифри, пробіли та розділові знаки).
+'''#1 Повертає кількість літер у рядку (ігноруючи цифри, пробіли та розділові знаки).
 def count_letters(text):
     count = 0
     for char in text:
@@ -124,29 +124,6 @@ def longest_word(text):
     return longest 
 print(longest_word("I love Python"))  
 
-
-
-
-
-
-
-
-
-
-
-'''#*8* Повертає останнє слово без split().
-
-def last_word(text):
-    text = text.strip()
-    to_list = list(text)
-    res = []
-    for item in to_list:
-        if item == item[-1]:
-            res.append(item)
-        res = " ".join(res)
-    return res
-print(last_word(" My phone 12345")) '''
-
 #10 Повертає найдовше слово.
 def longest_word(text):
     res = {}
@@ -156,7 +133,28 @@ def longest_word(text):
         res[item] = len(item)
     m = max(res, key=res.get)
     return m
+print(longest_word("I love Cabbage"))  '''
+
+#11 Повернути найкоротше слово.
+def shortest_word(text):
+    text = text.split()
+    shortest = text[0]
+    for item in text:
+        if len(item) < len(shortest):
+            shortest = item
+    return shortest
+print(shortest_word(" hello here, dont look like a stingy scrooge"))
+#OR
+def shortest_word_2(text):
+    res = {}
+    shortest = ""
+    list_text = text.split()
+    for item in list_text:
+        res[item] = len(item)
+    shortest = min(res, key = res.get)
+    return shortest
+print(shortest_word(" hello here, dont look like stingy scrooge"))
+
+#12 Порахувати середню довжину слова.
+def average_len_word(text):
     
-print(longest_word("I love Cabbage"))  
-
-
