@@ -157,4 +157,98 @@ print(shortest_word(" hello here, dont look like stingy scrooge"))
 
 #12 Порахувати середню довжину слова.
 def average_len_word(text):
-    
+    total = 0
+    list_text = text.split()
+    for word in list_text:
+        total += len(word)
+    average_word = total / len(list_text)
+    return average_word
+print(average_len_word(" hello here, dont look like stingy scrooge"))
+
+#13 Повернути список усіх слів довших за 5 символів.
+def words_longest_then_five(text):
+    res = []
+    list_text = text.split()
+    for word in list_text:
+        if len(word) > 5:
+            res.append(word)
+    return res
+print(words_longest_then_five(" hello here, dont look like stingy scrooge"))
+
+#14 Повернути список слів, що починаються з малої літери.
+def lower_case_words(text):
+    res = []
+    list_text = text.split()
+    for word in list_text:
+        if word[0].islower():
+            res.append(word)
+    return res
+print(lower_case_words(" hello here, Dont Look Like stingy scrooge"))
+
+#15 Повернути список слів, які складаються тільки з літер.
+def alphas(text):
+    res = []
+    l_text = text.split()
+    for word in l_text:
+        if word.isalpha():
+            res.append(word)
+    return res
+print(alphas("cat dog123 hello!"))
+
+#16 Повернути всі слова без повторень.
+def list_with_no_repetition(text):
+    res = []
+    list_words = text.split()
+    for word in list_words:
+        if word not in res:
+            res.append(word)
+    return res
+print(list_with_no_repetition("cat dog cat bird dog"))
+
+#17 Порахувати кількість голосних. (англійські: aeiou)
+def count_vowels(text):
+    v = ["a","e","i","o","u"]
+    count = 0
+    list_words = list(text)
+    for char in list_words:
+        if char in v:
+            count = count +1
+    return count
+print(count_vowels("cat dog cat bird dog"))
+
+#18 Порахувати кількість приголосних
+def count_conson(text):
+    v = ["a", "e","i","o","u"]
+    count = 0
+    list_words = list(text)
+    for char in list_words:
+        if char.isalpha() and char not in v:
+            count = count +1
+    return count
+print(count_conson("cat dog cat bird dog"))
+
+#19 Замінити кожну голосну на "*".
+def replace_vowels(text):
+    v = "aeiou"
+    res = ""
+    for char in text:
+        if char in v:
+            char = "*"
+            res = res + char
+        else:
+            res = res + char
+    return res
+print(replace_vowels("Programming"))
+
+#OR
+def replace_vowels(text):
+    v = "aeiou"
+    res = ""
+    for char in text:
+        if char in v:
+            char = "*"
+        res += char
+    return res
+print(replace_vowels("Programming"))
+
+#20 Перевірити, чи всі літери у рядку маленькі. Повернути True або False. Не використовуй islower().
