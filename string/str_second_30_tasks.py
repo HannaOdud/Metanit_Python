@@ -135,7 +135,7 @@ def longest_word(text):
     return m
 print(longest_word("I love Cabbage"))  '''
 
-#11 Повернути найкоротше слово.
+'''#11 Повернути найкоротше слово.
 def shortest_word(text):
     text = text.split()
     shortest = text[0]
@@ -259,4 +259,106 @@ def lower_string(text):
             return False
         else:
             return True
-print(lower_string("dkfjrjifjoifj"))
+print(lower_string("dkfjrjifjoifj"))'''
+
+#21 Повернути словник, де:
+def count_symbols(text):
+    res = {}
+    count_letters = 0
+    count_digits = 0
+    count_spaces = 0
+    for item in text:
+        if item.isalpha():
+            count_letters += 1
+        if item.isdigit():
+            count_digits += 1
+        if item == " ":
+            count_spaces += 1
+
+    res = {
+        "letters":count_letters,
+        "digits": count_digits,
+        "spaces": count_spaces
+    }
+    return res
+print(count_symbols("dod 2 d 8d7 "))
+
+#OR
+def count_symbols1(text):
+    res = {
+       "letters": 0,
+        "digits": 0,
+        "spaces": 0 
+    }
+    for item in text:
+        if item.isalpha():
+            res["letters"] += 1
+        elif item.isdigit():
+            res["digits"] += 1
+        elif item == " ":
+            res["spaces"] += 1
+    return res
+print(count_symbols1("dod 2 d 8d7 "))
+
+
+
+#22 Порахувати, скільки разів зустрічається кожне слово.
+def count_words(text):
+    res = {}
+    text = text.split()
+    for word in text:
+        if word in res:
+            #res[word] = text.count(word)
+            res[word] += 1
+        else:
+            res[word] = 1
+    return res
+print(count_words("I love Python I love coding"))    
+
+#23 Перевірити, чи є два однакові слова. Повернути True або False.
+def duplicates(text):
+    res = list()
+    text = text.split()
+    for word in text:
+        if word in res:
+            return True
+        else:
+            res.append(word)
+    return False
+print(duplicates("I love Python coding"))
+
+#24 Повернути найдовше слово і його довжину.
+def longest_word_length(text):
+    text = text.split()
+    longest = text[0]
+    for char in text:
+        if len(char) > len(longest):
+            longest = char
+    return (longest, len(longest))
+print(longest_word_length("I love Python I love Programming"))
+
+#25 Створити словник. Ключ — слово. Значення — кількість літер.
+def word_length(text):
+    text = text.split()
+    res = {}
+    for word in text:
+        res[word] = len(word)
+    return res
+print(word_length("I love Python I love Programming"))
+
+#26 Повернути всі слова у зворотному порядку і кожне слово теж перевернути.
+def reversed_words(text):
+    text = text.split()
+    res = ""
+    for word in text:
+        res = word[::-1] +" "+ res
+    return res
+print(reversed_words("I love Python I love Programming"))
+
+#OR 
+def reversed_words1(text):
+
+    return text[::-1]
+print(reversed_words1("I love Python I love Programming"))
+
+#27 Повернути найдовше слово, яке починається з великої літери.
