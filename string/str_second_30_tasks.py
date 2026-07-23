@@ -252,3 +252,11 @@ def replace_vowels(text):
 print(replace_vowels("Programming"))
 
 #20 Перевірити, чи всі літери у рядку маленькі. Повернути True або False. Не використовуй islower().
+
+def lower_string(text):
+    for char in text:
+        if char.isalpha() and char != char.lower():
+            return False
+        else:
+            return True
+print(lower_string("dkfjrjifjoifj"))
