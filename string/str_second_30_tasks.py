@@ -362,3 +362,22 @@ def reversed_words1(text):
 print(reversed_words1("I love Python I love Programming"))
 
 #27 Повернути найдовше слово, яке починається з великої літери.
+def longest_upper_word(text):
+    longest = ""
+    text = text.split()
+    for word in text:
+        if len(word) > len(longest) and word[0].isupper():
+            longest = word
+    return longest
+print(longest_upper_word("I love Pythoning I love Programming"))
+
+#28 Порахувати кількість слів, що закінчуються на "ing".
+def count_word_with_ending(text):
+    count = 0
+    text = text.split()
+    for word in text:
+        if len(word) >= 3 and word[-3:] == "ing":
+            count += 1
+    return count
+print(count_word_with_ending("I love Pythoning I love Programming"))
+
