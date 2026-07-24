@@ -381,3 +381,48 @@ def count_word_with_ending(text):
     return count
 print(count_word_with_ending("I love Pythoning I love Programming"))
 
+#29 Перевірити, чи всі слова унікальні. Повернути True або False.
+def check_unique_words(text):
+    new_text = []
+    text = text.split()
+    for word in text:
+        if word not in new_text:
+            new_text.append(word)
+    print(text)
+    print(new_text)
+    if len(text) == len(new_text):
+        return True
+    return False
+print(check_unique_words("I love Pythoning I love Programming")) 
+
+#30 Повернути словник такого вигляду:
+def text_statistics(text):
+    
+    res = {
+        "letters": 0,
+        "digits": 0,
+        "spaces": 0,
+        "words": 0,
+        "longest_word": "",
+        "shortest_word": ""
+    }
+    for item in text:
+        if item.isalpha():
+            res["letters"] += 1
+        if item.isdigit():
+            res["digits"] += 1
+        if item == " ":
+            res["spaces"] += 1
+    new_text = text.split()
+    longest = new_text[0]
+    shortest = new_text[0]
+    for word in new_text:
+        if len(word) > len(longest):
+            longest = word
+        if len(word) < len(shortest):
+            shortest = word
+    res["longest_word"] = longest
+    res["shortest_word"] = shortest
+    res["words"] = len(new_text)
+    return res
+print(text_statistics("I love Pythoning I love Programming"))
