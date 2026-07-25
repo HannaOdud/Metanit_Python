@@ -36,3 +36,74 @@ def longest_with_num1(text):
                 break
     return longest
 print(longest_with_num1("I am abcdefg123 test1"))
+
+#3 Напиши функцію. Повертає список слів, довжина яких більша за середню довжину всіх слів.
+def longer_words(text):
+    res = []
+    total = 0
+    words = text.split()
+
+    for word in words:
+        total = total + len(word)
+    average = total / len(words)
+    for word in words:
+        if len(word) > average:
+            res.append(word)
+    return res
+print(longer_words("hello here, dont look like a stingy scrooge"))
+
+#4  
+def len_and_sum_words(text):
+    res = {}
+    words = text.split()
+
+    for word in words:
+        if len(word) in res:  
+            res[len(word)] = res[len(word)] + 1
+        else:
+            res[len(word)] = 1
+    return res
+print(len_and_sum_words("hello here dont look like a stingy scrooge"))
+
+#OR
+def len_and_sum_words1(text):
+    res = {}
+    words = text.split()
+    for word in words:
+        clean_word = ""
+        for char in word:
+            if char.isalpha():
+                clean_word +=char
+        if len(clean_word) in res:
+            res[len(clean_word)] = res[len(clean_word)] + 1
+        else:
+            res[len(clean_word)] = 1
+    return res
+print(len_and_sum_words1("hello here, dont !look #like a stingy scrooge"))
+
+#OR 
+def len_and_sum_words2(text):
+    clean_text = ""
+    for char in text:
+        if char.isalpha() or char ==" ":
+            clean_text += char
+    clean_text = clean_text.split()
+    #print(clean_text)
+    res = {}
+    for word in clean_text:
+        if len(word) in res:
+            res[len(word)] =  res[len(word)] + 1
+        else:
+            res[len(word)] = 1
+    return res
+print(len_and_sum_words2("hello here, dont !look #like a stingy scrooge"))
+
+    
+
+            
+
+
+
+
+
+            
