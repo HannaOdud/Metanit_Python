@@ -207,6 +207,30 @@ def word_with_max_vowels(text):
     return max_vow
 print(word_with_max_vowels("level of levl "))
 
+#10 Напиши функцію. Повертає список слів, які містять лише великі літери.
+def word_with_upper_only(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word == word.upper() and len(word) > 1:
+            res.append(word)
+    return res
+print(word_with_upper_only("I LOVE Python USA Kyiv"))
+
+#11 Напиши функцію. Повертає словник
+def return_dict_with_vowels(text):
+    words = text.split()
+    result = {}
+    v = ["a","e","i","o","u"]
+    for word in words:
+        count = 0
+        for char in word:
+            if char in  v :
+                count += 1
+        result[word] = count
+    return result
+print(return_dict_with_vowels("hello here dont look here like a stingy scrooge"))
+
 
 
 
