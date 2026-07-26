@@ -231,6 +231,64 @@ def return_dict_with_vowels(text):
     return result
 print(return_dict_with_vowels("hello here dont look here like a stingy scrooge"))
 
+#12 Напиши функцію.Видаляє всі слова, довші за 7 символів.
+def longer_words(text):
+    words = text.split()
+    result = []
+    for word in words:
+        if len(word) > 7:
+            result.append(word)
+    return result
+print(longer_words("hello here dont look here like a stingy scroooge"))
+
+#13 Напиши функцію.Повертає всі слова, у яких однакова перша й остання літера.
+def same_letter(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word[0] == word[-1]:
+            res.append(word)
+    return res
+print(same_letter("Anna level test dad"))
+print("-----------------------------------------------------")
+#14 Напиши функцію. Повертає найдовше слово без жодної цифри.
+def longest_word_no_num(text):
+    words = text.split()
+    longest = ""
+    for word in words:
+        if len(word) > len(longest) and word.isalpha():
+            longest = word       
+    return longest
+print(longest_word_no_num("hell8o here dont lo2ok here like a stingy sc1roooge"))
+
+#15 Напиши функцію. Повертає кількість різних слів (без повторень).
+def unique_words(text):
+    words = text.split()
+
+    unique = []
+    for word in words:
+        if word not in unique:
+            unique.append(word)
+    return unique
+print(unique_words("hello here dont look here like a stingy scroooge"))
+
+#16 Напиши функцію.(Слово: остання літера) Повертає словник
+def word_with_last_letter(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word] = word[-1]
+    return res
+print(word_with_last_letter("hello here dont look here like a stingy scroooge"))
+
+#17 еревіряє, чи всі слова мають різну довжину.Повертає True або False.
+def check_the_length(text):
+    words = text.split()
+    
+
+
+
+
 
 
 
