@@ -1,4 +1,4 @@
-#1 Напиши функцію. Повертає словник, де:
+'''#1 Напиши функцію. Повертає словник, де:
 # #ключ — перша літера слова; 
 # #значення — кількість слів, що починаються на цю літеру.
 
@@ -98,9 +98,116 @@ def len_and_sum_words2(text):
     return res
 print(len_and_sum_words2("hello here, dont !look #like a stingy scrooge"))
 
-    
+#5 Напиши функцію. Повертає слово, яке зустрічається найчастіше. Без max().
+def most_frequent_word(text):
+    words = text.split()
+    most_frequent = {}
+    for word in words:
+        if word in most_frequent:
+            most_frequent[word] += 1
+        else:
+            most_frequent[word] = 1 
+    max_appear = 0
+    max_appear_word = ""
+    for key, value in most_frequent.items():
+        if value > max_appear:
+            max_appear_word = key
+            max_appear = value
+    return max_appear_word   
+print(most_frequent_word("hello here dont look here like a stingy scrooge"))
 
-            
+#OR
+
+def most_frequent_word2(text):
+    words = text.split()
+    res = {}
+    max_frequent_word = ""
+    max_frequent_count = 0
+
+    for word in words:
+        count = words.count(word)
+        if count > max_frequent_count:
+            max_frequent_count = count
+            max_frequent_word = word
+    return max_frequent_word
+print(most_frequent_word2("hello here dont look here like a stingy scrooge"))
+
+#6 Напиши функцію.Перевіряє, чи є слово паліндромом.
+def check_palindrome(text):
+    pal_text = text[::-1]
+    if text == pal_text:
+        return True
+    else:
+        return False
+print(check_palindrome("level"))
+print(check_palindrome("levell"))'''
+
+#OR
+def check_palindrome2(text):
+
+    rev_list = reversed(text)
+    back = "".join(rev_list)
+    #back = "".join(reversed(text))
+    if text == back:
+        return True
+    else:
+        return False
+     
+print(check_palindrome2("level"))
+print(check_palindrome2("leveel"))
+
+#7 Напиши функцію. Повертає список усіх паліндромів у реченні.
+def list_of_palindrome(text):
+    text = text.split()
+    all_palindromes = []
+
+    for word in text:
+        if word == word[::-1]:
+            all_palindromes.append(word)
+    return all_palindromes
+print(list_of_palindrome("level of level is levell"))
+print("**************************************************")
+
+#8 Напиши функцію. Замінює кожне слово його довжиною.
+def replace_word_by_length(text):
+    res = []
+    words = text.split()
+    for word in words:
+        word_len = str(len(word))
+        res.append(word_len)
+    result = " ".join(res)
+    return result
+print(replace_word_by_length("level of level is levell"))
+#OR   
+def rep_len(text):
+    words = text.split()
+    res = []
+    for word in words:
+        len_word = str(len(word))
+        res.append(len_word)
+    return " ".join(res)
+print(rep_len("level of level is levell"))
+print("--------------------------------------------------")
+
+#9 Напиши функцію. Повертає слово, у якому найбільше голосних. 
+def word_with_max_vowels(text):
+  
+    v = ["a","e","i","o","u"]
+    max_vow = ""
+    max_count = 0
+    words = text.split()
+    for word in words:
+        count = 0
+        for char in word:
+            if char in v:
+                count += 1
+        if count > max_count:
+            max_count = count
+            max_vow = word
+    return max_vow
+print(word_with_max_vowels("level of levl "))
+
+
 
 
 
