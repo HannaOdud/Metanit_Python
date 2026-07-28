@@ -331,11 +331,30 @@ def check_the_length4(text):
     return True
 print(check_the_length4("hello here grer a stingy scroooge"))
 
+#18 Напиши функцію.Повертає список слів, відсортований за довжиною (від коротких до довгих)
+# .Можна використовувати sorted().
+def sorted_list_by_len(text):
+    words = text.split()
+    list_of_len = []
+    for word in words:
+        list_of_len.append(word)
+    print(list_of_len)
+    return sorted(list_of_len, key=len)
+print(sorted_list_by_len("hello here grer a stingy scroooge"))
 
+#OR
 
+def sorted_list_by_len2(text):
+    words = text.split()
+    return sorted(words, key = len)
+print(sorted_list_by_len2("Повертає слово, яке має найбільшу кількість різних літер."))
 
-
-
+#19 Напиши функцію. Повертає слово, яке має найбільшу кількість різних літер.
+def different_letter(text):
+    words = text.split()
+    unique_word = ""
+    max_unique = 0
+    for word = set(word) in words:
 
 
 
