@@ -280,11 +280,56 @@ def word_with_last_letter(text):
         res[word] = word[-1]
     return res
 print(word_with_last_letter("hello here dont look here like a stingy scroooge"))
-
-#17 еревіряє, чи всі слова мають різну довжину.Повертає True або False.
+print("-------------------------------------------------------")
+#17 Перевіряє, чи всі слова мають різну довжину.Повертає True або False.
 def check_the_length(text):
     words = text.split()
-    
+    res = {}
+    for word in words:
+        if len(word) in res:
+            res[len(word)] += 1
+        else:
+            res[len(word)] = 1 
+    print(res)
+    for value in res.values():
+        if value > 1:
+            return False
+    return True
+print(check_the_length("hello here dont look here like a stingy scroooge"))
+print("**********************************************************")
+#OR
+def check_the_length2(text):
+    words = text.split()
+    len_of_words = []
+    for word in words:
+        if len(word) in len_of_words:
+            return False
+        len_of_words.append(len(word)) 
+    return True
+print(check_the_length2("hello here a stingy scroooge"))
+
+#OR
+def check_the_length3(text):
+    words = text.split()
+    list_of_len_words = []
+    for word in words:
+        list_of_len_words.append(len(word))
+    set_of_len_words = set(list_of_len_words)
+    if len(list_of_len_words) == len(set_of_len_words):
+        return True
+    return False
+print(check_the_length3("hello here here  here a stingy scroooge"))
+
+# OR
+def check_the_length4(text):
+    words = text.split()
+    res_dic = {}
+    for word in words:
+        if len(word) in res_dic:
+            return False
+        res_dic[len(word)] = 1
+    return True
+print(check_the_length4("hello here grer a stingy scroooge"))
 
 
 
