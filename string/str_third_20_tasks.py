@@ -349,14 +349,41 @@ def sorted_list_by_len2(text):
     return sorted(words, key = len)
 print(sorted_list_by_len2("Повертає слово, яке має найбільшу кількість різних літер."))
 
+print("***19*****************************************************************")
 #19 Напиши функцію. Повертає слово, яке має найбільшу кількість різних літер.
 def different_letter(text):
     words = text.split()
     unique_word = ""
     max_unique = 0
-    for word = set(word) in words:
+    for word in words:
+        if len(set(word)) > max_unique:
+            max_unique = len(set(word))
+            unique_word = word
+    return unique_word
+print(different_letter("hello scrooogeopopo here grer a stingy scroooge"))
+#OR         
+def word_with_different_letters(text):
+    words = text.split()
+    rich_word = ""
+    len_of_rich_word = 0
+    for word in words:
+        if len(set(word.lower())) > len_of_rich_word:
+            len_of_rich_word = len(set(word))
+            rich_word = word
+    return rich_word
+print(word_with_different_letters("Повертає слово, яке має найбільшу кількість різних літер"))
 
+#OR 
+def word_with_different_letters2(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        count = []
+        for char in word:
+            if char not in count:
+                count.append(char)
+        res[word] = len(count)
+    max_unique_word = max(res, key=res.get)
+    return max_unique_word
+print(word_with_different_letters2("hello scrooogeopopo here grer a stingy scroooge")) 
 
-
-
-            
