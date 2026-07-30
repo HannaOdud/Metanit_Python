@@ -160,7 +160,6 @@ print(check_palindrome2("leveel"))
 def list_of_palindrome(text):
     text = text.split()
     all_palindromes = []
-
     for word in text:
         if word == word[::-1]:
             all_palindromes.append(word)
@@ -386,4 +385,51 @@ def word_with_different_letters2(text):
     max_unique_word = max(res, key=res.get)
     return max_unique_word
 print(word_with_different_letters2("hello scrooogeopopo here grer a stingy scroooge")) 
+print("****20******************************************************")
+#20 Напиши функцію яка повертає словник
+def analyze_text(text):
+    res = {
+    "words": ...,
+    "unique_words": ...,
+    "letters": ...,
+    "digits": ...,
+    "spaces": ...,
+    "longest_word": ...,
+    "shortest_word": ...,
+    "most_common_word": ...,
+    "average_word_length": ...
+}
+    words = text.split()
+    count_letters = 0
+    count_digit = 0
+    longest_word = words[0]
+    shortest_word = words[0]
+    
+    res["words"] = len(words)
+    res["unique_words"] = len(set(words))
+    for word in words:
+        if len(word)> len(longest_word) :
+            longest_word = word
+        if len(word) < len(shortest_word):
+            shortest_word = word
+        for char in word:
+            count_letters +=1
+            if char.isdigit():
+                count_digit += 1
+    dict_words = {}
+    for word in words:
+        if word in dict_words:
+            dict_words[word] += 1
+        else:
+            dict_words[word] = 1
+    res["letters"] = count_letters
+    res["digits"] = count_digit
+    res["spaces"] = len(words)-1
+    res["longest_word"] = longest_word
+    res["shortest_word"] = shortest_word
+    res["most_common_word"] = max(dict_words, key=dict_words.get)
+    res["average_word_length"] = count_letters / len(words)     
+    
+    return res
+print(analyze_text("hello1 scrooogeopopo here here gre1r a stingy scroooge"))
 
