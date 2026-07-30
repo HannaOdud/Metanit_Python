@@ -413,7 +413,8 @@ def analyze_text(text):
         if len(word) < len(shortest_word):
             shortest_word = word
         for char in word:
-            count_letters +=1
+            if char.isalpha():
+                count_letters +=1
             if char.isdigit():
                 count_digit += 1
     dict_words = {}
