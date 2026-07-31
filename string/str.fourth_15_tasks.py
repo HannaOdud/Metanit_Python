@@ -97,6 +97,70 @@ def first_word_and_longest(text):
                 res[word[0]] = word
         else:
             res[word[0]] = word
-    return res    
-               
+    return res                 
 print(first_word_and_longest("Apple Amazing Ant  Book  Banana Ball"))
+print("5---------------------------------------------------------")
+#5 Напиши функцію. Повертає слово, у якому найбільше приголосних.
+def most_cons_word(text):
+    words = text.split()
+    cons = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'q', 'x', 'z', 'l', 'm', 'p', 's', 'r', 'n', 't', 'k']
+    res = {}
+    for word in words:
+        count_cons = 0
+        for char in word:
+            if char.lower() in cons:
+                count_cons += 1
+        res[word] = count_cons
+    max_word = max(res, key=res.get)
+    return max_word
+print(most_cons_word("Apple Amazing Ant  Book  Banana Ball"))
+
+#OR
+def most_cons_word2(text):
+    words = text.split()
+    cons = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'q', 'x', 'z', 'l', 'm', 'p', 's', 'r', 'n', 't', 'k']
+    max_cons = 0
+    max_cons_word = ""
+    for word in words:
+        count_cons = 0
+        for char in word:
+            if char in cons:
+                count_cons += 1
+        if count_cons > max_cons:
+            max_cons = count_cons
+            max_cons = word
+    return max_cons_word
+
+print(most_cons_word("Apple Amazing Ant  Book  Banana Ball"))    
+print("6-------------------------------------------------------------------------")
+#6 Напиши функцію. Перевіряє, чи всі слова починаються з різних літер. Повертає True або False.
+def first_letter_all_different(text):
+    words = text.split()
+    first_letter = []
+    for word in words:
+        first_letter.append(word[0].lower())
+    return len(first_letter) == len(set(first_letter))
+          
+print(first_letter_all_different("Apple Amazing Ant  Book  Banana Ball"))
+print(first_letter_all_different("Apple Cat Ball"))
+print("7------------------------------------------------------------------------")
+#7 Напиши функцію. Повертає словник  {слово : кількість_різних_букв}
+def dict_word_diff_letter(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        letter_dict = {}
+        for char in word:
+            letter_dict[char.lower()] = True
+        res[word] = len(letter_dict)    
+    return res
+print(dict_word_diff_letter("Apple Amazing Ant  Book  Banana Ball"))
+
+def dict_word_diff_letter(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word] = len(set(word))
+    return res
+print(dict_word_diff_letter("Apple Amazing Ant  Book  Banana Ball"))
+    
