@@ -204,4 +204,27 @@ def single_appear_of_longest_word(text):
         
 print(single_appear_of_longest_word("Apple Amazing Amazing Ant  Book  Banana Ball"))   
 
+#OR
+def single_appear_of_longest_word2(text):
+    words = text.split()
+    res = {}
+ 
+    for word in words:
+        if word in res:
+            res[word] += 1
+        else:
+            res[word] = 1
+    longest_word = ""
+    max_length = 0
+    for key,value in res.items():
+        if value == 1:
+            if len(key) > max_length:
+                max_length = len(key)
+                longest_word = key
+    
+    return longest_word
+print(single_appear_of_longest_word2("Apple Amazing Amazing Ant  Book  Banana Ball")) 
+
+print("10--------------------------------------------------------------------------")
+#10 Напиши функцію. Повертає список слів, відсортований: спочатку за довжиною;якщо довжина однакова — за алфавітом.
 
