@@ -163,4 +163,45 @@ def dict_word_diff_letter(text):
         res[word] = len(set(word))
     return res
 print(dict_word_diff_letter("Apple Amazing Ant  Book  Banana Ball"))
-    
+    #OR
+def word_and_diff_letters(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word] = len(set(word.lower()))
+    return res
+print(word_and_diff_letters("Apple Amazing Ant  Book  Baana Ball"))
+
+print("8----------------------------------------------------------")
+#8 Напиши функцію. Повертає список слів, які містять більше голосних, ніж приголосних.
+def words_with_more_vowels(text):
+    words = text.split()
+    res = []
+    cons = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'q', 'x', 'z', 'l', 'm', 'p', 's', 'r', 'n', 't', 'k','v', 'w', 'y']
+    vow  = ["a","e","i","o","u"]
+    for word in words:
+        count_cons = 0
+        count_vow = 0
+        for char in word:
+            if char.lower() in cons:
+                count_cons += 1   
+            if char.lower() in vow:
+                count_vow +=1
+        if count_vow > count_cons:
+            res.append(word)
+    return res
+print(words_with_more_vowels("Apple Amazing Ant  Book  Baana Ball"))
+
+print("9----------------------------------------------------------")
+#9 Напиши функцію. Повертає найдовше слово, яке зустрічається лише один раз. Без max().
+def single_appear_of_longest_word(text):
+    words = text.split()
+    longest = words[0]
+    for word in words:
+        if len(word) > len(longest) and words.count(word) == 1:
+            longest = word
+    return longest
+        
+print(single_appear_of_longest_word("Apple Amazing Amazing Ant  Book  Banana Ball"))   
+
+
