@@ -225,6 +225,72 @@ def single_appear_of_longest_word2(text):
     return longest_word
 print(single_appear_of_longest_word2("Apple Amazing Amazing Ant  Book  Banana Ball")) 
 
+
 print("10--------------------------------------------------------------------------")
 #10 Напиши функцію. Повертає список слів, відсортований: спочатку за довжиною;якщо довжина однакова — за алфавітом.
+def sorted_list(text):
+    words = text.split()
+    sort_words = sorted(words, key=lambda word:(len(word),word))
+    return sort_words
+print(sorted_list("Apple Amazing Amazing Ant  Book  Banana Ball"))
 
+print("11--------------------------------------------------------------------------")
+def return_dict(text):
+    words = text.split()
+    main_dict = {}
+    count = 0
+    for word in words:
+
+
+        if len(word) in main_dict:
+            inner_dict = main_dict[len(word)]
+            if word in inner_dict:
+                word +=1
+                pass
+
+print("12--------------------------------------------------------------------------")
+#12 Повертає слово, яке має найбільшу кількість однакових букв.
+def most_same_letters(text):
+    words = text.split()
+
+    best_word = ""
+    max_repeat = 0
+    for word in words:
+        char_dict = {}
+        for char in word:
+            if char in char_dict:
+                char_dict[char] += 1
+            else: 
+                char_dict[char] = 1
+        max_count_letter = max(char_dict.values())    
+        if max_count_letter >  max_repeat:
+            max_repeat = max_count_letter
+            best_word = word
+    return best_word
+print(most_same_letters("Apple Amazing Amazing Ant  Book  Banana Ball"))
+
+
+print("13--------------------------------------------------------------------------")
+#13 літера : кількість_слів,
+def count_of_words(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[0] in res:
+            res[word[0]] += 1
+        else:
+             res[word[0]] = 1
+    return res
+print(count_of_words("Apple Amazing Amazing Ant  Book  Banana Ball"))
+
+
+print("14--------------------------------------------------------------------------")
+#14 овертає список слів, які можна записати у зворотному порядку і вони також існують у цьому ж реченні
+def return_back_words(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word[::-1] in words:
+            res.append(word[::-1])
+    return res
+print(return_back_words("live evil dog god cat"))
