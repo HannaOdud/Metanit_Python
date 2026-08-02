@@ -294,3 +294,17 @@ def return_back_words(text):
             res.append(word[::-1])
     return res
 print(return_back_words("live evil dog god cat"))
+
+print("15--------------------------------------------------------------------------")
+#15 Велика комбінована задача
+def analyze_words(text):
+    words = text.split()
+    res_dict = {
+        "total_words": len(words),
+        "unique_words": len(set(words)),
+        "longest_word": max(words, key=len),
+        "shortest_word": min(words, key=len),
+        
+    }
+    return res_dict
+print(analyze_words("Apple Amazing Amazing Ant  Book  Banana Ball"))
