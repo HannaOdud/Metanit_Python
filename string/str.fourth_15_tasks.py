@@ -299,12 +299,36 @@ print("15-----------------------------------------------------------------------
 #15 Велика комбінована задача
 def analyze_words(text):
     words = text.split()
+    palindrome_list =[]
+    word_with_digit = 0
+    word_capitalized = 0
+    unique_letters_word = 0
+
+    for word in words:
+        for char in word:
+            if char.isdigit():
+               word_with_digit += 1
+               break
+            
+        if word.lower() == word.lower()[::-1]:
+            palindrome_list.append(word)
+        if word[0].isupper():
+            word_capitalized += 1
+        if len(word.lower()) == len(set(word.lower())):
+            unique_letters_word += 1
+    
     res_dict = {
         "total_words": len(words),
         "unique_words": len(set(words)),
         "longest_word": max(words, key=len),
         "shortest_word": min(words, key=len),
-        
+        "most_common_word": max(words, key=words.count),
+        "words_with_digits": word_with_digit,
+        "palindromes": len(palindrome_list),
+        "average_length": sum(len(word) for word in words)/len(words),
+        "longest_capitalized": word_capitalized,
+        "all_unique_letters_word": unique_letters_word
+ 
     }
-    return res_dict
-print(analyze_words("Apple Amazing Amazing Ant  Book  Banana Ball"))
+    return res_dict 
+print(analyze_words("Apple Amazing Amazing Ant1 Fox Book  Banana Ball"))
