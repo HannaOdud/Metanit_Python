@@ -326,7 +326,7 @@ def analyze_words(text):
         "words_with_digits": word_with_digit,
         "palindromes": len(palindrome_list),
         "average_length": sum(len(word) for word in words)/len(words),
-        "longest_capitalized": word_capitalized,
+        "longest_capitalized": word_capitalized, #here is unfinished
         "all_unique_letters_word": unique_letters_word
  
     }
