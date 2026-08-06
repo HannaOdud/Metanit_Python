@@ -185,13 +185,83 @@ print("9--------------------------------------------------------------")
 def longest_word(text):
     words = text.split()
     longest_word = ""
-    longest_len = words[0]
-    res = []
+    longest_len = words[0] 
     for word in words:
-        if len(word.lower()) > len(longest_len):
+        if len(word.lower()) > len(longest_len) and words.count(word) == 1:
             longest_len = word
             longest_word = word
-    #res.append(set(longest_word))
+    
     return longest_word
    
 print(longest_word("Apple Ant Amazing Amazing Book Ball Banana ana"))
+
+
+def single_appear_of_longest_word(text):
+    words = text.split()
+    longest = words[0]
+    for word in words:
+        if len(word) > len(longest) and words.count(word.lower()) == 1:
+            longest = word
+    return longest
+        
+print(single_appear_of_longest_word("Apple Amazing Amazing Ant  Book  Banana Ball"))  
+
+print("10---------------------------------------------------------------")
+def sorted_text(text):
+    words = text.split()
+    n = len(words)
+
+    for i in range(n - 1):
+        for j in range(0, n - 1 -i):
+            if len(words[j]) > len(words[j + 1]):
+                temp = words[j]
+                words[j] = words[j + 1] 
+                words[j + 1] = temp
+
+    return words
+print(sorted_text("pear dog banana cat apple"))
+
+def sorted_list(text):
+    words = text.split()
+    sort_words = sorted(words, key=lambda word:(len(word),word))
+    return sort_words
+print(sorted_list("Apple Amazing Amazing Ant  Book  Banana Ball"))
+
+print("11---------------------------------------------------------------")
+
+def comp_dict(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if len(word) not in res:
+            res[len(word)] = {word: 1}
+        else:
+            inner_dict = res[len(word)]
+            if word in inner_dict:
+                inner_dict[word] += 1
+            else:
+                inner_dict[word] = 1
+    return res
+print(comp_dict("Apple Amazing Amazing Ant  Book  Banana Ball"))
+
+print("12---------------------------------------------------------------")
+def word_max_char(text):
+    words = text.split()
+    max_same_char = ""
+    max_same_value = 0
+    for word in words:
+        char_dict = {}
+        for char in word:
+            if char in char_dict:
+                char_dict[char] += 1
+            else: 
+                char_dict[char] = 1
+        max_val = max(char_dict.values())
+        if max_val > max_same_value:
+            max_same_value = max_val
+            max_same_char = word
+    return max_same_char
+print(word_max_char("Apple Amazing Amazing Ant  Book  Banana Ball"))
+
+
+
