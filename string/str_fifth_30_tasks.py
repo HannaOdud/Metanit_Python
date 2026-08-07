@@ -106,5 +106,132 @@ def words_alpha(text):
         return res
 print(words_alpha("level2 apple top Anna3 3 radaaar test"))
 
+print("11.----------------------------------------------------")
+#Порахувати, скільки слів починаються з голосної.
+def count_vow(text):
+    words = text.split()
+    v = ["a","e","i","o","u"]
+    count = 0
+    for word in words:
+        if word[0].lower() in v:
+            count += 1
+    return count
+print(count_vow("level2 apple top Anna3 3 radaaar test"))
 
+print("12.----------------------------------------------------")
+def count_vow2(text):
+    words = text.split()
+    v = ["a","e","i","o","u"]
+    count = 0
+    for word in words:
+        if word[-1].lower() in v:
+            count += 1
+    return count
+print(count_vow2("level2 apple top Anna3 3 radaaar test"))
 
+#Повернути список слів, які починаються і закінчуються голосною.
+print("13.----------------------------------------------------")
+def count_vow3(text):
+    words = text.split()
+    v = ["a","e","i","o","u"]
+    count_start = 0
+    count_end = 0
+    res = []
+    for word in words:
+       if word[0].lower() in v and word[-1].lower() in v:
+           res.append(word)
+           
+    return res
+print(count_vow3("level2 apple top Anna 3 radaaar test"))
+
+#Повернути словник
+print("14.----------------------------------------------------")
+def vow_in_word(text):
+    words = text.split()
+    v = ["a","e","i","o","u"]
+    res = {}
+    
+    for word in words:
+        count = 0
+        for char in word.lower():
+            if char in v:
+                count += 1
+        res[word] = count
+    return res
+print(vow_in_word("level2 apple top Anna 3 radaaar test"))
+
+#Повернути словник слово: кількість_приголосних
+print("15.-------------------------------------------------------")
+def cons_in_word(text):
+    words = text.split()
+    cons = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'q', 'x', 'z', 'l', 'm', 'p', 's', 'r', 'n', 't', 'k','v', 'w', 'y']
+    res = {}
+    for word in words:
+        count = 0
+        for char in word.lower():
+            if char in cons:
+                count += 1
+        res[word] = count
+    return res
+print(cons_in_word("level2 apple top Anna 3 radaaar test"))
+
+#Повернути слово, у якому найбільше голосних. Без max().
+print("16.------------------------------------------------------")
+def max_vow(text):
+    words = text.split()
+    v = ["a","e","i","o","u"]
+    max_count_vow = 0
+    max_word_vow = ""
+    for word in words:
+        inner_count = 0
+        for char in word.lower():
+            if char in v:
+                inner_count +=1
+        if inner_count > max_count_vow:
+            max_count_vow = inner_count
+            max_word_vow = word
+    return max_word_vow        
+print(max_vow("level2 apple top Anna 3 radaaar test"))
+
+#Повернути слово, у якому найменше голосних.Без min().
+print("17.-------------------------------------------------------")
+def min_vow(text):
+    words = text.split()
+    v = ["a","e","i","o","u"]
+    min_word = ""
+    min_word_count = float('inf')
+    for word in words:
+        inner_count = 0
+        for char in word.lower():
+            if char in v:
+                inner_count += 1
+        if inner_count < min_word_count:
+            min_word_count = inner_count
+            min_word = word
+    return min_word
+print(min_vow("level2 apple top Anna 3tam radaaar test"))
+
+#Повернути список паліндромів.
+print("18.-------------------------------------------------------")
+def palindrome(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word.lower() == word[::-1].lower():
+            res.append(word)
+    return res
+print(palindrome("level cat radar Anna civic"))
+
+#Повернути словник - довжина_слова: кількість_слів
+print("19.------------------------------------------------------")
+def len_count(text):
+    words = text.split()
+    res = {}
+
+    for word in words:
+        if len(word) in res:
+            res[len(word)] += 1
+        else:
+            res[len(word)] = 1
+    return res
+print(len_count("I love Python code"))
