@@ -41,7 +41,7 @@ def end_start_w(text):
     words = text.split()
     res = []
     for word in words:
-        if word[0] == word[-1]:
+        if word[0].lower() == word[-1].lower():
             res.append(word)
     return res
 print(end_start_w("level apple Anna radar test"))
@@ -75,11 +75,12 @@ print("8.--------------------------------------------------")
 def shortest_word_with_e(text):
     words = text.split()
     sh_len = words[0]
-    sh_word = ''
+    sh_word = None
     for word in words:
-        if "e" in word and len(word) < len(sh_len) :
-            sh_len = len(word)
-            sh_word = word
+        if "e" in word.lower():
+            if len(word) < len(sh_len) :
+                sh_len = len(word)
+                sh_word = word
     return sh_word
 print(shortest_word_with_e("level apple top Anna radaaar test"))
 
