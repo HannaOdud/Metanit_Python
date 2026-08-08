@@ -235,3 +235,15 @@ def len_count(text):
             res[len(word)] = 1
     return res
 print(len_count("I love Python code"))
+
+#Повернути список слів, довжина яких зустрічається лише один раз.
+print("20.------------------------------------------------------")
+def list_of_single_words(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word not in res:
+            res.append(word)
+    return res
+print(list_of_single_words("level 2top apple top top Anna 3tam radaaar test"))
+
