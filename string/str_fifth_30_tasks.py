@@ -247,3 +247,31 @@ def list_of_single_words(text):
     return res
 print(list_of_single_words("level 2top apple top top Anna 3tam radaaar test"))
 
+#OR
+
+def list_of_single_words2(text):
+    words = text.split()
+    all_len = [] 
+  
+    res = []
+    for word in words:
+        all_len.append(len(word))
+        
+    for word in words:
+        if all_len.count(len(word)) == 1:
+            res.append(word)
+   
+    return res
+print(list_of_single_words2("level 2top apple top top Anna 3tam radaaar test"))
+
+def list_of_single_words2(text):
+    words = text.split()
+    len_res = {}
+    for word in words:
+        length = len(word)
+    len_res[length] = len_res.get(len_res, 0) +1
+    res = []
+    for word in words:
+        if length[len(word)] == 1:
+            len_res.append(word)
+print(list_of_single_words2("level 2top apple top top Anna 3tam radaaar test"))
