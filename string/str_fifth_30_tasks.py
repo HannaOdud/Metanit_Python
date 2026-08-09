@@ -238,21 +238,20 @@ print(len_count("I love Python code"))
 
 #Повернути список слів, довжина яких зустрічається лише один раз.
 print("20.------------------------------------------------------")
-def list_of_single_words(text):
+'''def list_of_single_words(text):
     words = text.split()
     res = []
     for word in words:
-        if word not in res:
+        if len(word) not in res:
             res.append(word)
     return res
-print(list_of_single_words("level 2top apple top top Anna 3tam radaaar test"))
+print(list_of_single_words("level 2top apple top top Anna 3tam radaaar test"))'''
 
 #OR
 
 def list_of_single_words2(text):
     words = text.split()
     all_len = [] 
-  
     res = []
     for word in words:
         all_len.append(len(word))
@@ -269,9 +268,79 @@ def list_of_single_words2(text):
     len_res = {}
     for word in words:
         length = len(word)
-    len_res[length] = len_res.get(len_res, 0) +1
+        len_res[length] = len_res.get(length, 0) +1
     res = []
     for word in words:
-        if length[len(word)] == 1:
-            len_res.append(word)
+        if len_res [len(word)] == 1:
+            res.append(word)
+    return res
 print(list_of_single_words2("level 2top apple top top Anna 3tam radaaar test"))
+
+##Повернути список слів, довжина яких зустрічається лише один раз
+def list_of_single_words3(text):
+    words = text.split()
+    words_len = {}
+    res = []
+    for word in words:
+        if len(word) in words_len:
+            words_len[len(word)] += 1
+        else:
+             words_len[len(word)] = 1
+    for word in words:
+        if words_len[len(word)] == 1:
+            res.append(word)
+    return res
+print(list_of_single_words3("level 2top apppppppple top top Anna 3tam radaaar test"))
+
+
+print("21.------------------------------------------------------------------")
+#Повернути найдовше слово без повторюваних букв.
+
+def longest_no_repet(text):
+    words = text.split()
+    no_repeat = []
+    for word in words:
+        if len(word) == len(set(word.lower())):
+            no_repeat.append(word)
+    longest_word = ""
+    longest_len = 0
+    print(no_repeat)
+    for word in no_repeat:
+        if len(word) > longest_len:
+            longest_len = len(word)
+            longest_word = word
+    return longest_word
+print(longest_no_repet("level 2top apppppppple top top Anna 3tam radaaar test"))    
+
+print("22.--------------------------------------------------------------------")
+#Повернути список слів, у яких усі літери однакові.
+#aaa bbbb cat xxxx hello
+def all_letters_same(text):
+    words = text.split()
+    res = []
+    for word in words:
+        x = len(set(word))
+        if (x == 1):
+            res.append(word)
+    return res
+print(all_letters_same("aaa bbbb cat xxxx hello"))
+
+#OR
+def all_letters_same2(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word == len(word) * word[0]:
+            res.append(word)
+    return res
+print(all_letters_same2("aaa  hello"))
+
+#OR
+def all_letters_same3(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word.count(word[0]) == len(word):
+            res.append(word)
+    return res
+print(all_letters_same3("aaa  hello"))
