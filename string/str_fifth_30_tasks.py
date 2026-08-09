@@ -344,3 +344,28 @@ def all_letters_same3(text):
             res.append(word)
     return res
 print(all_letters_same3("aaa  hello"))
+
+
+print("23.--------------------------------------------------------------")
+#Повернути список слів, у яких хоча б одна літера повторюється.
+def repeated_word(text):
+    words =text.split()
+    res = []
+    for word in words:
+        if len(word) > len(set(word.lower())):
+            res.append(word)
+    return res
+print(repeated_word("aaa bbbb cat xxxx hello"))
+
+print("24.------------------------------------------------------------")
+#Повернути словник - перша_літера: кількість_слів
+def first_letter_count(text):
+    words =text.split()
+    res = {}
+    for word in words:
+        if word[0].lower() in res:
+            res[word[0].lower() ] += 1
+        else:
+            res[word[0].lower() ] = 1
+    return res
+print(first_letter_count("level 2top apppppppple top top Anna 3tam radaaar test"))
