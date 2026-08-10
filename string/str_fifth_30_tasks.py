@@ -369,3 +369,19 @@ def first_letter_count(text):
             res[word[0].lower() ] = 1
     return res
 print(first_letter_count("level 2top apppppppple top top Anna 3tam radaaar test"))
+
+print("25.------------------------------------------------------------")
+#Повернути слово, яке має найбільшу кількість різних літер. Без max().
+def max_different_letter2(text):
+    words = text.split()
+    max_word = ""
+    max_count = 0
+    for word in words:
+        unique_word = len(set(word.lower()))
+        if unique_word > max_count:
+            max_count = unique_word
+            max_word = word
+    return max_word
+print(max_different_letter2("level 2top apppppppple top top Anna 3tam radaaar test"))
+
+print("26.---------------------------------------------------------------")
