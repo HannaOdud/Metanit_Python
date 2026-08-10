@@ -385,3 +385,22 @@ def max_different_letter2(text):
 print(max_different_letter2("level 2top apppppppple top top Anna 3tam radaaar test"))
 
 print("26.---------------------------------------------------------------")
+#Повернути список слів, у яких кількість голосних дорівнює кількості приголосних.
+def con_equal_vow(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    cons = cons = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'q', 'x', 'z', 'l', 'm', 'p', 's', 'r', 'n', 't', 'k','v', 'w', 'y']
+      
+    for word in words:
+        res = []
+        count_cons = 0
+        count_vow = 0
+        for char.lower() in word:
+            if char in vows:
+                count_vow += 1
+            if char in cons:
+                count_cons += 1
+            if count_cons == count_vow:
+                res.append(word)
+    return res
+print(con_equal_vow("level 2top apple top top Anna 3tam radaaar test"))
