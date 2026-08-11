@@ -368,9 +368,23 @@ def first_letter_count(text):
         else:
             res[word[0].lower() ] = 1
     return res
-print(first_letter_count("level 2top apppppppple top top Anna 3tam radaaar test"))
+print(first_letter_count("level 2top appple top top Anna 3tam radar test"))
 
 print("25.------------------------------------------------------------")
+#Повернути словник-  остання_літера: кількість_слів
+def last_word_count(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[-1].lower() in res:
+            res[word[-1].lower()] += 1
+        else:
+            res[word[-1].lower()] = 1
+    return res
+print(last_word_count("level 2top appple top top Anna 3tam radar test"))
+
+
+print("26.------------------------------------------------------------")
 #Повернути слово, яке має найбільшу кількість різних літер. Без max().
 def max_different_letter2(text):
     words = text.split()
@@ -384,7 +398,7 @@ def max_different_letter2(text):
     return max_word
 print(max_different_letter2("level 2top apppppppple top top Anna 3tam radaaar test"))
 
-print("26.---------------------------------------------------------------")
+print("27.---------------------------------------------------------------")
 #Повернути список слів, у яких кількість голосних дорівнює кількості приголосних.
 def con_equal_vow(text):
     words = text.split()
@@ -395,7 +409,7 @@ def con_equal_vow(text):
         res = []
         count_cons = 0
         count_vow = 0
-        for char.lower() in word:
+        for char in word:
             if char in vows:
                 count_vow += 1
             if char in cons:
@@ -404,3 +418,44 @@ def con_equal_vow(text):
                 res.append(word)
     return res
 print(con_equal_vow("level 2top apple top top Anna 3tam radaaar test"))
+
+print("28.-------------------------------------------------------------")
+#Повернути всі слова, відсортовані за кількістю голосних.
+def count_vow(word):
+    vows = ["a","e","i","o","u"]
+    count = 0
+    for char in word.lower():
+        if char in vows:
+            count += 1
+    return count
+def sorted_by_amount_of_vow(text):
+    words = text.split()            
+    sorted_words = sorted(words, key=count_vow)
+    return sorted_words
+print(sorted_by_amount_of_vow("level 2top apple top top Anna 3tam radaaar test"))
+
+print("29.-------------------------------------------------------")
+#Повернути словник - слово: слово[::-1]
+def word_reversed(text):
+    words = text.split()
+    res = {}
+
+    for word in words:
+        res[word] = word[::-1]
+    return res
+print(word_reversed("level 2top apple top top Anna 3tam radaaar test"))
+
+print("30.---------------------------------------------------------")
+#Міні-комбінована задача
+
+def analyze_text(text):
+  {
+    "words": ...,
+    "letters": ...,
+    "digits": ...,
+    "spaces": ...,
+    "longest_word": ...,
+    "shortest_word": ...,
+    "palindromes": [...],
+    "words_with_digits": [...]
+}  
