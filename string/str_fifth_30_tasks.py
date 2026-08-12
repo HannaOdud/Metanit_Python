@@ -443,19 +443,50 @@ def word_reversed(text):
     for word in words:
         res[word] = word[::-1]
     return res
-print(word_reversed("level 2top apple top top Anna 3tam radaaar test"))
+print(word_reversed("c"))
 
 print("30.---------------------------------------------------------")
 #Міні-комбінована задача
 
 def analyze_text(text):
-  {
-    "words": ...,
-    "letters": ...,
-    "digits": ...,
-    "spaces": ...,
-    "longest_word": ...,
-    "shortest_word": ...,
-    "palindromes": [...],
-    "words_with_digits": [...]
-}  
+    words = text.split()
+    len_longest = 0
+    shortest_w = ""
+    len_shortest = float("inf")
+    longest_w = ""
+    pallindrome = []
+    words_with_digit1 = []
+    words_with_digit2 = []
+    count_digit = 0
+    count_letters = 0
+
+    for word in words:
+        
+        for char in word:
+            if char.isdigit():
+                count_digit += 1
+            if char.isalpha():
+                count_letters += 1
+        if len(word) > len_longest:
+            len_longest = len(word)
+            longest_w = word      
+        if len(word) < len_shortest:
+            len_shortest = len(word)
+            shortest_w = word
+        if word == word[::-1].lower():
+            pallindrome.append(word)
+        if count_digit > 0:
+            words_with_digit1.append(word)
+
+    res = {
+    "words": len(words),
+    "letters": count_letters,
+    "digits": count_digit,
+    "spaces": text.count(" "),
+    "longest_word": longest_w,
+    "shortest_word": shortest_w,
+    "palindromes": pallindrome,
+    "words_with_digits": words_with_digit1
+    } 
+    return res
+print(analyze_text("level 2top apple top top Anna 3tam radaaar test")) 
