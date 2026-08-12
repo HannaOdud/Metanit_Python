@@ -1,0 +1,100 @@
+#mini-вправа для закріплення прапорця.
+
+
+def contains_vowel(word):
+    char = word.split()
+    vows = ["a","e","i","o","u"]
+
+    has_vowel = False
+    for char in word:
+        if char in vows:
+            has_vowel = True
+    return has_vowel
+print(contains_vowel("cat"))
+
+print(" 1.----------------------------------------------------------")
+# Повернути список слів, довжина яких парна.
+def list_even_word(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if len(word) % 2 == 0:
+            res.append(word)
+    return res
+print(list_even_word("Apple Amazing Ant Book Banana Ball"))
+
+print("2.------------------------------------------------------------")
+#Повернути список слів, довжина яких непарна.
+def list_odd_word(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if len(word) % 2 == 1:
+            res.append(word)
+    return res
+print(list_odd_word("Apple Amazing Ant Book Banana Ball"))
+
+print("3.-----------------------------------------------------------")
+# слово → перша літера
+def dict_word_first(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word] = word[0]
+    return res
+print(dict_word_first("Apple Amazing Ant Book Banana Ball"))
+
+print("4.-----------------------------------------------------------")
+# слово → остання літера
+def dict_word_last(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word] = word[-1]
+    return res
+print(dict_word_last("Apple Amazing Ant Book Banana Ball"))
+
+print("5.-----------------------------------------------------------")
+# Повернути список слів, у яких перша і остання літера однакові.
+def word_first_equal_last(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word[0] == word[-1]:
+            res.append(word)
+    return res
+print(dict_word_last("level apple Anna radar test"))
+
+print("6.-----------------------------------------------------------")
+# Повернути список слів, довжина яких від 5 до 8 символів включно.
+def len_char(text):
+    words = text.split()
+    res = []
+    for word in words:
+         if len(word) >= 5 and len(word) <= 8: 
+            res.append(word)
+    return res
+print(len_char("cat elephant programming apple"))
+
+print("7.---------------------------------------------------------")
+# Повернути слово, у якому найбільше голосних. Без max().
+def max_vow_word(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    max_vow_len = 0
+    max_vow_word = ""
+
+    for word in words:
+        inner_total_vow = 0
+        for char in word:
+            if char in vows:
+                inner_total_vow += 1
+        if inner_total_vow > max_vow_len:
+            max_vow_len = inner_total_vow
+            max_vow_word = word
+    return max_vow_word
+print(max_vow_word("cat elephant programming apple"))
+
+
+
+ 
