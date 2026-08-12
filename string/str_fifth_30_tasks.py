@@ -404,9 +404,8 @@ def con_equal_vow(text):
     words = text.split()
     vows = ["a","e","i","o","u"]
     cons = cons = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'q', 'x', 'z', 'l', 'm', 'p', 's', 'r', 'n', 't', 'k','v', 'w', 'y']
-      
+    res = []  
     for word in words:
-        res = []
         count_cons = 0
         count_vow = 0
         for char in word:
@@ -414,8 +413,8 @@ def con_equal_vow(text):
                 count_vow += 1
             if char in cons:
                 count_cons += 1
-            if count_cons == count_vow:
-                res.append(word)
+        if count_cons == count_vow:
+            res.append(word)
     return res
 print(con_equal_vow("level 2top apple top top Anna 3tam radaaar test"))
 
@@ -461,10 +460,11 @@ def analyze_text(text):
     count_letters = 0
 
     for word in words:
-        
+        has_digit = False
         for char in word:
             if char.isdigit():
                 count_digit += 1
+                has_digit = True
             if char.isalpha():
                 count_letters += 1
         if len(word) > len_longest:
@@ -473,9 +473,9 @@ def analyze_text(text):
         if len(word) < len_shortest:
             len_shortest = len(word)
             shortest_w = word
-        if word == word[::-1].lower():
+        if word.lower() == word[::-1].lower():
             pallindrome.append(word)
-        if count_digit > 0:
+        if has_digit:
             words_with_digit1.append(word)
 
     res = {
