@@ -10,7 +10,7 @@ def contains_vowel(word):
         if char in vows:
             has_vowel = True
     return has_vowel
-print(contains_vowel("cat"))
+print(contains_vowel("ca2t"))
 
 print(" 1.----------------------------------------------------------")
 # Повернути список слів, довжина яких парна.
@@ -95,6 +95,46 @@ def max_vow_word(text):
     return max_vow_word
 print(max_vow_word("cat elephant programming apple"))
 
+print("8.---------------------------------------------------------") 
+# Повернути слово, у якому найменше голосних. Без min().
+def min_vow_word(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+
+    min_vow_len = float("inf")
+    min_vow_word = ""
+
+    for word in words:
+        inner_vow_count = 0
+        for char in word:
+            if char in vows:
+                inner_vow_count += 1
+
+        if inner_vow_count < min_vow_len:
+            min_vow_len = inner_vow_count
+            min_vow_word = word
+    return min_vow_word
+print(min_vow_word("cat elephant programming apple"))
+
+print("9.-------------------------------------------------------")
+# Повернути список слів, які містять хоча б одну цифру.
+def has_digit(text):
+    words = text.split()
+    res =[]
+    
+    for word in words:
+        has_digit = False
+        for char in word:
+            if char.isdigit():
+                has_digit = True
+                break
+        if has_digit:
+            res.append(word)
+    return res
+print(has_digit("level2 apple top Anna 3 radaaar test"))
+
+print("10.-----------------------------------------------------")
+#
 
 
  
