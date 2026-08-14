@@ -312,6 +312,182 @@ def check_if_small(text):
      
     return False
 print(check_if_small("cat apple elephant Anna"))
+ 
+# Or
+def check_if_small2(text):
+       return text.islower()
+print(check_if_small2("cat apple elephant Anna"))
+
+print("20.-------------------------------------------------------------")
+# Повернути список слів, які написані з великої літери. 
+def capital_letter(text):
+    words = text.split()
+    res =[]
+    for word in words:
+        if word[0].isupper():
+            res.append(word)
+    return res
+print(capital_letter("I love Python And Kyiv"))
+
+print("21.------------------------------------------------------------")
+# Повернути найдовше слово, яке містить не менше двох голосних. Без max().
+def max_vow_word(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"] 
+    max_len_word = 0
+    max_word = ""
+    for word in words:
+        count_vows = 0
+        for char in word:
+            if char in vows:
+                count_vows += 1
+        if len(word) > max_len_word and count_vows > 2:
+            max_len_word = len(word)
+            max_word = word
+    return max_word
+print(max_vow_word("cat apple elephant Anna"))
+
+#Or
+
+def max_vow_word(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"] 
+    max_word = ""
+    for word in words:
+        count_vows = 0
+        for char in word:
+            if char in vows:
+                count_vows += 1
+        if len(word) > len(max_word) and count_vows > 2:
+            max_word = word
+    return max_word
+print(max_vow_word("cat apple elephant Anna"))
+
+print("22.--------------------------------------------------")
+# Повернути найкоротше слово, яке містить цифру. Без min().
+def min_vow_word(text):
+    words = text.split()
+    min_word = words[0]
+    for word in words:
+        if any(char.isdigit() for char in word):
+            if len(word) < len(min_word):
+                min_word = word
+    return min_word
+print(min_vow_word("c2at apple eleph2ant Anna"))
+
+print("23.---------------------------------------------------")
+# Порахувати кількість різних слів у реченні.
+def count_diff_words(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word not in res:
+            res.append(word)
+    return len(res)
+print(count_diff_words("cat dog cat bird dog"))
+
+#oR
+def count_diff_words2(text):
+    words = text.split()
+    return len(set(words))
+print(count_diff_words2("cat dog cat bird dog"))
+
+print("24.--------------------------------------------------")
+# Повернути список слів без повторень, але зберегти їхній початковий порядок.
+def list_no_repetition(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word not in res:
+            res.append(word)
+    return len(res)
+print(list_no_repetition("cat dog cat bird dog"))
+
+print("25.--------------------------------------------------")
+# довжина слова → кількість таких слів
+def dict_len_count(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if len(word) in res:
+            res[len(word)] += 1
+        else:
+            res[len(word)] = 1
+    return res
+print(dict_len_count("cat dog cat bird dog"))
+
+print("26.---------------------------------------------------")
+# Повернути слово, яке має найбільшу кількість різних літер. Без max().
+def max_diff_letter(text):
+    words = text.split()
+    max_word_len = 0
+    max_word = ""
+    for word in words:
+        unique_letter = len(set(word))
+        if unique_letter > max_word_len:
+            max_word_len = unique_letter
+            max_word = word
+    return max_word
+print(max_diff_letter("c2at apple eleph2ant Anna"))
+
+print("27.------------------------------------------------------")
+# Повернути список слів, у яких жодна літера не повторюється.
+def no_repeat(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if len(word) == len(set(word.lower())):
+            res.append()
+    return res
+print(no_repeat("cat dog apple lamp"))
+
+print("28.------------------------------ -----------------------")
+# Повернути список слів, у яких є хоча б одна повторювана літера.
+def one_repeat(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if len(word) > len(set(word.lower())):
+            res.append()
+    return res
+print(one_repeat("cat dog apple lamp"))
+
+print("29.------------------------------------------------------")
+# Повернути словник: перша літера → кількість слів
+def first_letter_dict(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[0].lower() in res:
+            res[word[0].lower()] += 1
+        else:
+            res[word[0].lower()] = 1
+    return res
+print(first_letter_dict("cat dog apple lamp"))
+
+#Or
+
+def first_letter_dict2(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word[0].lower()] = res.get(word[0].lower(), 0) +1
+    return res
+print(first_letter_dict2("cat dog apple lamp"))
+
+print("30.---------------------------------------------------------")
+# Міні-комбінована задача
+# 
+def analyze_words(text):
+    pass
 
 
-
+{
+    "words": ...,
+    "unique_words": ...,
+    "longest_word": ...,
+    "shortest_word": ...,
+    "words_with_digits": ...,
+    "palindromes": ...
+}
+print(analyze_words("level cat Apple2 radar dog"))
