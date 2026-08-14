@@ -63,7 +63,7 @@ def word_first_equal_last(text):
         if word[0] == word[-1]:
             res.append(word)
     return res
-print(dict_word_last("level apple Anna radar test"))
+print(word_first_equal_last("level apple Anna radar test"))
 
 print("6.-----------------------------------------------------------")
 # Повернути список слів, довжина яких від 5 до 8 символів включно.
@@ -133,8 +133,28 @@ def has_digit(text):
     return res
 print(has_digit("level2 apple top Anna 3 radaaar test"))
 
+#OR
+def has_digit2(text):
+    words = text.split()
+    res =[]
+    
+    for word in words:
+      if any(char.isdigit() for char in word):
+          res.append(word)
+    return res
+print(has_digit2("apple cat2 hello Python3 dog"))
+
 print("10.-----------------------------------------------------")
-#
+# Повернути список слів, які не містять цифр.
+def has_alpha(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if not any(char.isdigit() for char in word):
+            res.append(word)
+    return res
+print(has_alpha("apple cat2 hello Python3 dog"))
+
 
 
  
