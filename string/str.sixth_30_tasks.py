@@ -155,6 +155,163 @@ def has_alpha(text):
     return res
 print(has_alpha("apple cat2 hello Python3 dog"))
 
+print("11.---------------------------------------------------")
+# Порахувати, скільки слів починаються з голосної.
+def count_first_char(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    words_fist_char_vow = 0
+    for word in words:
+        if word[0].lower() in vows:
+                words_fist_char_vow += 1
+    return words_fist_char_vow
+
+print(count_first_char("apple apple apple cat2 hello Python3 apple dog"))
+
+#OR
+def count_first_char2(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+          
+    return sum(word[0].lower() in vows for word in words)
+
+print(count_first_char2(" Eva Apple cat2 hello Python3 apple dog"))
+
+print("12.----------------------------------------------------")
+# Порахувати, скільки слів закінчуються голосною.
+def last_char_vows(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    return sum(word[-1].lower() in vows for word in words)
+print(last_char_vows(" Eva Apple cat2 hello Python3 apple dog"))
+#Or
+def last_char_vows2(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    count = 0
+    for word in words:
+        if word[-1].lower() in vows:
+            count += 1
+    return count
+print(last_char_vows2(" Eva Apple cat2 hello Python3  dog"))
+
+print("13.-----------------------------------------------------")
+# Повернути список слів, які починаються і закінчуються голосною.
+def first_and_last(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res = []
+    for word in words:
+        if word[0].lower() in vows and word[-1].lower() in vows:
+            res.append(word)
+    return res
+print(first_and_last("Eva Apple cat2 hello Python3  dog"))
+
+print("14.-----------------------------------------------------")
+# Повернути словник: слово → кількість голосних
+def dict_with_vows(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res = {}
+    for word in words:
+        res[word] = sum(1 for char in word.lower() if char in vows )
+    return res
+print(dict_with_vows("cat apple elephant"))
+
+print("15.---------------------------------------------------")
+# Повернути словник: слово → кількість приголосних. Цифри та пробіли не рахувати як приголосні.
+def dict_with_cons(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res = {}
+    for word in words:
+        res[word] = sum(1 for char in word.lower() if char not in vows)
+    return res
+print(dict_with_cons("cat apple elephant"))
+
+print("16.--------------------------------------------------")
+# Замінити кожну голосну на "*".
+def replace_vow1(text):
+    vows = ["a","e","i","o","u"]
+    new_char = []
+    for char in text:
+        if char in vows:
+            new_char.append("*")
+        else:
+            new_char.append(char)
+    return "".join(new_char)   
+print(replace_vow1("cat apple elephant"))
+
+#OR
+def replace_vow2(text):
+    vows = "aeiouAEIOU"
+    for v in vows:
+        text = text.replace(v, "*")
+    return text
+print(replace_vow2("cat apple elephant"))
+
+print("17.-----------------------------------------------------")
+# Порахувати кількість слів, у яких більше голосних, ніж приголосних.
+def vows_or_cons(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res =[]
+    for word in words:
+        count_vow = 0
+        count_con = 0
+        for char in word:
+            if char in vows:
+                count_vow += 1
+            if char not in vows:
+                count_con += 1
+        if count_vow > count_con:
+            res.append(word)
+    return len(res)
+print(vows_or_cons("cat apple elephant asasasa"))     
+
+print("18.-------------------------------------------------------")
+# Порахувати кількість слів, у яких однакова кількість голосних і приголосних.
+def vows_equal_cons(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"] 
+    res = []
+    for word in words:
+        total_vows = 0
+        total_cons = 0
+        for char in word.lower():
+            if char in vows:
+                total_vows += 1
+            if char not in vows:
+                total_cons += 1
+        if total_vows == total_cons:
+            res.append(word)
+    return len(res)
+print(vows_equal_cons("cat apple elephant asasas Anna"))
+
+# OR
+def vows_equal_con2(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"] 
+    res = []
+    for word in words:
+        total_vows = sum(1 for char in word.lower() if char in vows )
+        total_cons = sum(1 for char in word.lower() if char not in vows)
+        if total_vows == total_cons:
+            res.append(word)
+    return len(res)
+print(vows_equal_con2("cat apple elephant Anna"))
+
+print("19.--------------------------------------------------------------")
+# Повернути True або False залежно від того, чи всі літери в рядку маленькі.
+# перевіряй символи через .isalpha() та .isupper().
+def check_if_small(text):
+
+    for char in text:
+        if char.isalpha() and not char.isupper():
+            return True
+     
+    return False
+print(check_if_small("cat apple elephant Anna"))
 
 
- 
+
