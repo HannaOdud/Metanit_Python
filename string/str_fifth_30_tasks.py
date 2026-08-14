@@ -238,17 +238,6 @@ print(len_count("I love Python code"))
 
 #Повернути список слів, довжина яких зустрічається лише один раз.
 print("20.------------------------------------------------------")
-'''def list_of_single_words(text):
-    words = text.split()
-    res = []
-    for word in words:
-        if len(word) not in res:
-            res.append(word)
-    return res
-print(list_of_single_words("level 2top apple top top Anna 3tam radaaar test"))'''
-
-#OR
-
 def list_of_single_words2(text):
     words = text.split()
     all_len = [] 
@@ -304,7 +293,6 @@ def longest_no_repet(text):
             no_repeat.append(word)
     longest_word = ""
     longest_len = 0
-    print(no_repeat)
     for word in no_repeat:
         if len(word) > longest_len:
             longest_len = len(word)
