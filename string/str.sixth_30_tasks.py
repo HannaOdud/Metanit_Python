@@ -437,7 +437,7 @@ def no_repeat(text):
     res = []
     for word in words:
         if len(word) == len(set(word.lower())):
-            res.append()
+            res.append(word)
     return res
 print(no_repeat("cat dog apple lamp"))
 
@@ -448,7 +448,7 @@ def one_repeat(text):
     res = []
     for word in words:
         if len(word) > len(set(word.lower())):
-            res.append()
+            res.append(word)
     return res
 print(one_repeat("cat dog apple lamp"))
 
@@ -477,17 +477,40 @@ print(first_letter_dict2("cat dog apple lamp"))
 
 print("30.---------------------------------------------------------")
 # Міні-комбінована задача
-# 
+
 def analyze_words(text):
-    pass
+    words = text.split()
+    longest_len = 0
+    longest_w = ""
+    shortest_len = float("inf")
+    shortest_w = ""
+    with_digit = []
+    palindromes = []
+    for word in words:
+        # getting longest word
+        if len(word) > longest_len:
+            longest_len = len(word)
+            longest_w = word
+        #getting shortest word
+        if len(word) < shortest_len:
+            shortest_len = len(word)
+            shortest_w = word
+        #getting unique word
+        unique_word = len(set(words))
+        #words wuth digit
+        if any(char.isdigit() for char in word):
+            with_digit.append(word)
+        #palindromes
+        if word.lower() == word.lower()[::-1]:
+            palindromes.append(word)
 
-
-{
-    "words": ...,
-    "unique_words": ...,
-    "longest_word": ...,
-    "shortest_word": ...,
-    "words_with_digits": ...,
-    "palindromes": ...
-}
+    res = {
+    "words": len(words),
+    "unique_words": unique_word,
+    "longest_word": longest_w ,
+    "shortest_word": shortest_w,
+    "words_with_digits": with_digit ,
+    "palindromes": palindromes
+    }
+    return res
 print(analyze_words("level cat Apple2 radar dog"))
