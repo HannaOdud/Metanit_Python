@@ -225,7 +225,7 @@ def dict_with_cons(text):
     vows = ["a","e","i","o","u"]
     res = {}
     for word in words:
-        res[word] = sum(1 for char in word.lower() if char not in vows)
+        res[word] = sum(1 for char in word.lower() if char.isalpha() and char not in vows)
     return res
 print(dict_with_cons("cat apple elephant"))
 
@@ -260,9 +260,9 @@ def vows_or_cons(text):
         count_vow = 0
         count_con = 0
         for char in word:
-            if char in vows:
+            if char.lower() in vows:
                 count_vow += 1
-            if char not in vows:
+            elif char.isalpha():
                 count_con += 1
         if count_vow > count_con:
             res.append(word)
