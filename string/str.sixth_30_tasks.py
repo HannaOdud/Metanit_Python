@@ -312,7 +312,13 @@ def check_if_small(text):
      
     return False
 print(check_if_small("cat apple elephant Anna"))
- 
+
+#
+def check_if_small11(text):
+    if any((char.isalpha()and char.isupper())  for char in text):
+        return False
+    return True
+print(check_if_small11("cat apple elephant Anna"))
 # Or
 def check_if_small2(text):
        return text.islower()
@@ -341,7 +347,7 @@ def max_vow_word(text):
         for char in word:
             if char in vows:
                 count_vows += 1
-        if len(word) > max_len_word and count_vows > 2:
+        if len(word) > max_len_word and count_vows >= 2:
             max_len_word = len(word)
             max_word = word
     return max_word
@@ -358,7 +364,7 @@ def max_vow_word(text):
         for char in word:
             if char in vows:
                 count_vows += 1
-        if len(word) > len(max_word) and count_vows > 2:
+        if len(word) > len(max_word) and count_vows >= 2:
             max_word = word
     return max_word
 print(max_vow_word("cat apple elephant Anna"))
@@ -367,10 +373,10 @@ print("22.--------------------------------------------------")
 # Повернути найкоротше слово, яке містить цифру. Без min().
 def min_vow_word(text):
     words = text.split()
-    min_word = words[0]
+    min_word = ""
     for word in words:
         if any(char.isdigit() for char in word):
-            if len(word) < len(min_word):
+            if min_word == "" or len(word) < len(min_word):
                 min_word = word
     return min_word
 print(min_vow_word("c2at apple eleph2ant Anna"))
@@ -400,7 +406,7 @@ def list_no_repetition(text):
     for word in words:
         if word not in res:
             res.append(word)
-    return len(res)
+    return res
 print(list_no_repetition("cat dog cat bird dog"))
 
 print("25.--------------------------------------------------")
