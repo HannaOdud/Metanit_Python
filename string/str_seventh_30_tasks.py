@@ -328,4 +328,130 @@ def dict_len_tot_words2(text):
     return res
 print(dict_len_tot_words2("level Anna apple ele2phant aaan radar Test"))
 
+print("21.--------------------------------------------------------------------")
+# Повернути найкоротше слово, яке містить цифру. Без min().
+def has_digit(text):
+    words = text.split()
+    min_word = ""
+    min_word_len = float("inf")
+    for word in words:
+        count = 0
+        for char in word:
+            if char.isdigit():
+                count += 1
+        if len(word) < min_word_len  and count >= 1:
+            min_word_len = len(word)
+            min_word = word
+    return min_word
+print(has_digit("level Anna apple ele2phant aaa2n radar Test"))
+    
+print("22.--------------------------------------------------------------------")
+# Повернути список слів, у яких усі літери різні.
+def differ_letters(text):
+    words = text.split()
+    res = []
+    for word  in words:
+        if len(word) == len(set(word)):
+            res.append(word)
+    return res
+print(differ_letters("cat dog apple lamp"))
 
+
+print("23.-----------------------------------------------------------------")
+# Повернути список слів, у яких хоча б одна літера повторюється.
+def letter_repetition(text):
+    words = text.split()
+    res = []
+    for word  in words:
+        if len(word) > len(set(word)):
+            res.append(word)
+    return res
+print(letter_repetition("cat dog apple lamp"))
+
+print("24.----------------------------------------------------------------")
+# Повернути список слів без повторень, але зберегти їхній початковий порядок.
+def no_repetition(text):
+    words = text.split()
+    res = []
+    for word  in words:
+        if word not in res:
+            res.append(word)
+    return res
+print(no_repetition("cat dog cat bird dog cat"))
+
+
+print("25.----------------------------------------------------------------")
+# Повернути список слів без повторень, але зберегти їхній початковий порядок.
+def no_repetition2(text):
+    words = text.split()
+    return set(words)
+print(no_repetition2("cat dog cat bird dog cat"))
+
+
+print("26.----------------------------------------------------------------")
+# Повернути слово, яке має найбільшу кількість різних літер.
+def max_diff_char(text):
+    words = text.split()
+    max_word = ""
+    max_word_len = float("-inf")
+    for word  in words:
+        if len(set(word.lower())) > max_word_len:
+            max_word = word
+            max_word_len = len(set(word.lower()))
+           
+    return max_word
+print(max_diff_char("cat dog cat bird dog cat"))
+
+print("27.----------------------------------------------------------------")
+# перша літера → кількість слів
+def dict_first_char_words(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[0].lower() in res:
+            res [word[0].lower()] += 1
+        else:
+            res [word[0].lower()] = 1
+    return res
+print(dict_first_char_words("cat dog cat bird dog cat"))
+
+# OR
+def dict_first_char_words(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word[0].lower()] = res.get(word[0].lower(), 0)+1  
+    return res
+print(dict_first_char_words("cat dog cat bird dog cat"))
+
+
+print("28.--------------------------------------------------------------")
+# остання літера → кількість слів
+def dict_last_char_words(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        res[word[-1]] = res.get(word[-1], 0)+1  
+    return res
+print(dict_last_char_words("cat dog cat bird dog cat"))
+
+
+print("29.--------------------------------------------------------------")
+# Повернути список слів, відсортований за кількістю голосних. Можна використовувати sorted().
+def count_vows(text):
+    vows = ["a","e","i","o","u"]
+    count = 0
+    for char in text:
+        if char.lower() in vows:
+            count += 1
+    return count
+
+def sort_text(text):
+    words = text.split()
+    res = sorted(words, key=count_vows)
+    return res
+print(sort_text("level Anna apple ele2phant aaa2n radar Test"))
+
+print("30.--------------------------------------------------------------")
+# Міні-комбінована задача
+def analyze_words(text):
