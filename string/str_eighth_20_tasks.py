@@ -123,3 +123,16 @@ def second_shortest_word2(text):
             sec_shortest = word
     return sec_shortest
 print(second_shortest_word2("cat elephant dog programming apple"))
+
+print("6.------------------------------------------------")
+# Групування за першою літерою
+def group_by_first_letter(text):
+    words = text.split() 
+    res = {}
+    for word in words:
+        if word[0] in res:
+            res[word[0]].append(word)
+        else:
+            res[word[0]] = [word]
+    return res
+print(group_by_first_letter("Apple Ant Banana Ball Cat"))
