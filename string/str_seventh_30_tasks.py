@@ -463,7 +463,6 @@ def analyze_words(text):
     shortest_w_len = float("inf")
     palindromes = []
     has_digit = []
-    unique = []
     for word in words:
         if len(word) > longest_w_len:
             longest_w_len = len(word)
@@ -476,14 +475,10 @@ def analyze_words(text):
             palindromes.append(word) 
     # word with digit
         if any(char.isdigit() for char in word):
-            has_digit.append(word)
-    # unique words
-        if len(set(word.lower())) == len(word):
-            unique.append(word)
-       
+            has_digit.append(word)       
     res = {
     "words": len(words),
-    "unique_words": unique,
+    "unique_words": len(set(words)),
     "longest_word": longest_w,
     "shortest_word":shortest_w,
     "words_with_digits": has_digit,
