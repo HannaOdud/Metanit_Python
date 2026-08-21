@@ -455,3 +455,39 @@ print(sort_text("level Anna apple ele2phant aaa2n radar Test"))
 print("30.--------------------------------------------------------------")
 # Міні-комбінована задача
 def analyze_words(text):
+    words = text.split()
+    #longest and shortest word
+    longest_w = "" 
+    longest_w_len = float("-inf")
+    shortest_w = ""
+    shortest_w_len = float("inf")
+    palindromes = []
+    has_digit = []
+    unique = []
+    for word in words:
+        if len(word) > longest_w_len:
+            longest_w_len = len(word)
+            longest_w = word
+        if len(word) < shortest_w_len:
+            shortest_w_len = len(word)
+            shortest_w = word 
+    # palindrome
+        if word.lower() == word.lower()[::-1]:
+            palindromes.append(word) 
+    # word with digit
+        if any(char.isdigit() for char in word):
+            has_digit.append(word)
+    # unique words
+        if len(set(word.lower())) == len(word):
+            unique.append(word)
+       
+    res = {
+    "words": len(words),
+    "unique_words": unique,
+    "longest_word": longest_w,
+    "shortest_word":shortest_w,
+    "words_with_digits": has_digit,
+    "palindromes": palindromes
+}
+    return res
+print(analyze_words("level cat Apple2 radar dog"))
