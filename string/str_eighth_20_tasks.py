@@ -81,3 +81,45 @@ def unique_occurrence_words(text):
             result.append(key)
     return result
 print(unique_occurrence_words("cat dog cat bird dog fish"))
+
+print("4.---------------------------------------------")
+# Друге найдовше слово
+def second_longest_word(text):
+    words = text.split()
+    longest_word = ""
+    sec_longest_word = ""
+    for word in words:
+        if len(word) > len(longest_word):
+            sec_longest_word = longest_word
+            longest_word = word
+        elif len(word) > len(sec_longest_word): 
+            sec_longest_word = word
+    return sec_longest_word
+print(second_longest_word("cat elephant dog programming apple"))
+#
+def second_longest_word2(text):
+    words = text.split()
+    second_largest = sorted(words, key = len)[-2]
+    return second_largest
+print(second_longest_word2("cat elephant dog programming apple"))
+
+print("5.-----------------------------------------------")
+# Друге найкоротше слово
+def second_shortest_word(text):
+    words = text.split()
+    sec_shortest = sorted(words, key = len )[1]
+    return sec_shortest
+print(second_shortest_word("cat elephant dog programming apple"))
+# 
+def second_shortest_word2(text):
+    words = text.split()
+    shortest = words[0]
+    sec_shortest = words[0]
+    for word in words:
+        if len(word) < len(shortest):
+            sec_shortest = shortest
+            shortest = word
+        elif  len(word) < len(sec_shortest):
+            sec_shortest = word
+    return sec_shortest
+print(second_shortest_word2("cat elephant dog programming apple"))
