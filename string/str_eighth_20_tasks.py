@@ -136,3 +136,74 @@ def group_by_first_letter(text):
             res[word[0]] = [word]
     return res
 print(group_by_first_letter("Apple Ant Banana Ball Cat"))
+
+print("7.----------------------------------------------")
+# Групування за довжиною
+def group_by_length(text):
+    words = text.split()
+    res = {}
+    
+    for word in words:
+        if len(word) in res:
+            res[len(word)].append(word)
+        else:
+            res[len(word)] = [word]
+    return res
+print(group_by_length("I cat dog elephant"))
+
+print("8.--------------------------------------------")
+# Найдовше слово в кожній групі Без max().
+def longest_by_first_letter(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[0] in res:
+            res[word[0]].append(word)
+        else:
+            res[word[0]] = [word]
+    res2= {}
+    for key,value in res.items():
+        res2[key] = max(value, key=len )
+    return res2 
+print(longest_by_first_letter("Apple Ant Amazing Ball Book Cat"))
+
+#
+def longest_by_first_letter2(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[0] in res and len(word) > len(res[word[0]]):
+            res[word[0]] = word
+        else:
+            res[word[0]] = word
+   
+    return res
+print(longest_by_first_letter2("Apple Ant Amazing Ball Book Cat"))
+
+
+
+print("9.---------------------------------------------")
+# Слова з найбільшою кількістю голосних
+def words_with_max_vowels(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    max_count = 0
+    for word in words:
+        count = 0
+        for char in word:
+            if char in vows:
+                count += 1
+        if count > max_count:
+            max_count = count
+    res = []
+    for word in words:
+        count = 0
+        for char in word:
+            if char in vows:
+                count += 1
+        if count == max_count:
+            res.append(word)
+    return res
+print(words_with_max_vowels("cat apple idea banana"))
+
+
