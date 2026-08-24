@@ -278,3 +278,51 @@ def words_with_same_length(text):
             res[key] = value
     return res
 print(words_with_same_length("cat elephant dog elephant programming cat apple"))
+
+print("13.-------------------------------------------------------")
+# Перша літера → найдовше слово. Не використовуй max().
+def longest_word_by_first_letter(text):
+    words = text.split()
+    all_words = {}
+    for word in words:
+        if word[0] in all_words:
+            all_words[word[0]].append(word)
+        else:
+             all_words[word[0]] = [word]
+    max_word = {}
+    for key,value in all_words.items():
+        longest_word = ""
+        len_longest = 0
+        for word in value:
+            if len(word) > len_longest:
+                len_longest = len(word)
+                longest_word = word
+        max_word[key] = longest_word
+    return max_word
+print(longest_word_by_first_letter("Apple Ant Amazing Ball Banana Cat"))
+
+#
+def longest_word_by_first_letter2(text):
+    words = text.split()
+    all_words = {}
+    for word in words:
+        if word[0] in all_words:
+            all_words[word[0]].append(word)
+        else:
+             all_words[word[0]] = [word]
+    max_word = {}
+    for key,value in all_words.items():
+        longest_word = max(value,key=len)
+
+        max_word[key] = longest_word
+    return max_word
+print(longest_word_by_first_letter2("Apple Ant Amazing Ball Banana Cat Catttee"))
+
+print("14.----------------------------------------------------------")
+# Найбільше різних літер. Повернути всі слова, які мають максимальну кількість різних букв.
+def words_with_most_unique_letters(text):
+    words = text.split()
+    max_count = 0
+    for word in words:
+        count = len(set(word))
+print(words_with_most_unique_letters("Apple Ant Amazing Ball Banana Cat"))
