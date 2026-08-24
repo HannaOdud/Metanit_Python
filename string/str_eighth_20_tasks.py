@@ -207,3 +207,74 @@ def words_with_max_vowels(text):
 print(words_with_max_vowels("cat apple idea banana"))
 
 
+print("10.-----------------------------------------------")
+# Слова з однаковою кількістю голосних і приголосних
+def balanced_words(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    tot_vows = 0
+    tot_cons = 0
+    res = []
+    for word in words:
+        tot_vows = sum(1 for char in word.lower() if char in vows)
+        tot_cons = sum(1 for char in word.lower() if  char.isalpha() and char not in vows)
+        if tot_vows == tot_cons:
+            res.append(word)
+    return res
+print(balanced_words("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"))
+
+#
+
+def balanced_words2(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res = []
+    for word in words:
+        tot_vows = 0
+        tot_cons = 0
+        for char in word:
+            if char.lower() in vows:
+                tot_vows += 1
+            elif char.isalpha() and char not in vows:
+                tot_cons += 1
+        if tot_cons == tot_vows:
+            res.append(word)
+    return res
+print(balanced_words2("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"))
+
+print("11.-------------------------------------------------------")
+# Найдовше слово, яке зустрічається один раз
+def longest_unique_occurrence(text):
+    words = text.split()
+    check_occur = {}
+    for word in words:
+        if word in check_occur:
+            check_occur[word] += 1
+        else:
+            check_occur[word] = 1
+    # check_occur[word] = check_occur.get(word, 0)+1
+    longest = ""
+    longest_len = 0
+    for key, value in check_occur.items():
+        if value == 1 and len(key) > longest_len:
+            longest = key
+            longest_len = len(key)
+    return longest
+print(longest_unique_occurrence("cat elephant dog elephant programming cat apple"))
+
+print("12.-------------------------------------------------------")
+# . Слова, які мають однакову кількість літер
+def words_with_same_length(text):
+    words = text.split()
+    all_words = {}
+    for word in words:
+        if len(word) in all_words:
+            all_words[len(word)].append(word)
+        else:
+            all_words[len(word)] = [word]
+    res = {}
+    for key,value in all_words.items():
+        if len(value) > 1:
+            res[key] = value
+    return res
+print(words_with_same_length("cat elephant dog elephant programming cat apple"))
