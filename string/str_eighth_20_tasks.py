@@ -323,6 +323,14 @@ print("14.----------------------------------------------------------")
 def words_with_most_unique_letters(text):
     words = text.split()
     max_count = 0
+    res = []
     for word in words:
         count = len(set(word))
+        if count > max_count:
+            max_count = count
+    for word in words:
+        count = len(set(word))
+        if count == max_count:
+            res.append(word)
+    return res
 print(words_with_most_unique_letters("Apple Ant Amazing Ball Banana Cat"))
