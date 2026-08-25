@@ -443,20 +443,63 @@ print("20.-------------------------------------------------")
 # Тобто одна функція повинна об'єднати кілька вже знайомих тобі алгоритмів.
 def analyze_text(text):
     words = text.split()
+    palindromes = []
+    count_words = {}
+    ls_with_digits =[]
+    vows = ["a","e","i","o","u"]
+    most_vows = []
+    max_vows = 0
     for word in words:
-        
+        count = 0
+        for char in word:
+            if char in vows:
+                count += 1
+        if count > max_vows:
+            max_vows = count
 
+    for word in words:
+        #palindromes
+        if word == word[::-1]:
+            palindromes.append(word)
+        # most_common_word
+        count_words[word] = count_words.get(word, 0)+1
+        # words_with_digits
+        for char in word:
+            if char.isdigit():
+                ls_with_digits.append(word)
+                break
+        #max_vows
+        count = 0
+        for char in word:
+            if char in vows:
+                count += 1
+        if count == max_vows:
+            most_vows.append(word)
 
+    max_common_word = ""
+    max_common_count = 0
+    for key, value in count_words.items():
+        if value > max_common_count:
+            max_common_count = value
+            max_common_word = key
+    #first_letter_groups
+    letter_groups = {}
+    for word in words:
+        if word[0] in letter_groups:
+            letter_groups[word[0]].append(word)
+        else:
+            letter_groups[word[0]] = [word]
+            
     res = {
-        "word_count": ...,
-        "unique_word_count": ...,
-        "most_common_word": ...,
-        "longest_word": ...,
-        "shortest_word": ...,
-        "palindromes": [...],
-        "words_with_digits": [...],
-        "words_with_most_vowels": [...],
-        "first_letter_groups": {...}
+        "word_count": len(words),
+        "unique_word_count": len(set(words)),
+        "most_common_word": max_common_word,
+        "longest_word": max(words, key=len),
+        "shortest_word": min(words, key=len),
+        "palindromes": palindromes,
+        "words_with_digits": ls_with_digits,
+        "words_with_most_vowels": most_vows,
+        "first_letter_groups": letter_groups
     }
     return res
-print(analyze_text("cat elephant dog elephant programming cat apple"))
+print(analyze_text("cat elephant lol level elephant programming cat apple"))
