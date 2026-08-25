@@ -334,3 +334,129 @@ def words_with_most_unique_letters(text):
             res.append(word)
     return res
 print(words_with_most_unique_letters("Apple Ant Amazing Ball Banana Cat"))
+
+print("15.---------------------------------------------------------")
+# Перший символ, який не повторюється
+def first_unique_char(text):
+    checked = []
+    repeated = []
+    for char in text:
+        if char in checked:
+            repeated.append(char)
+        checked.append(char)
+    for char in text:
+        if char not in repeated:
+            return char
+    return None
+print(first_unique_char("Hello"))
+
+#OR
+def first_unique_char2(text):
+    count_char = {}
+    for char in text:
+        if char in count_char:
+            count_char[char] += 1
+        else:
+            count_char[char] = 1
+        # count_char[char] = count_char.get(char, 0)+1
+    for char in text:
+        if count_char[char] == 1:
+            return char
+    return None
+print(first_unique_char2("swiss"))
+
+print("16.----------------------------------------------")
+# Перший символ, який повторюється повернути перший символ, який зустрівся вдруге.
+def first_repeated_char(text):
+    checked = []
+    repeated = []
+    for char in text:
+        if char in checked:
+            repeated.append(char)
+        checked.append(char)
+    for char in text:
+        if char in repeated:
+            return char
+    return None
+print(first_repeated_char("Hello"))
+
+#Or
+def first_repeated_char2(text):
+    count_char = {}
+    for char in text:
+        count_char[char] = count_char.get(char, 0)+1  
+    for char in text:
+        if count_char[char] > 1:
+            return char  
+    return None
+print(first_repeated_char2("Hello"))
+
+print("17.----------------------------------------------------")
+# Найчастіша літера. Без max().
+def most_common_char(text):
+    count_char = {}
+    for char in text:
+        if char.isalpha():
+            count_char[char] = count_char.get(char, 0)+1
+    max_char = ""
+    max_char_count = 0
+    for key, value in count_char.items():
+        if value > max_char_count:
+            max_char_count = value
+            max_char = key
+    return max_char
+print(most_common_char("he l lo wor ld"))
+
+print("18.-------------------------------------------------")
+# Порівняння двох текстів/ Повернути список слів, які зустрічаються в обох текстах.
+def common_words(text1, text2):
+    ls_text1 = text1.split()
+    ls_text2 = text2.split()
+    res = []
+    for word in ls_text1:
+        if word in ls_text2:
+            res.append(word)
+    return res  
+text1 = "cat dog bird apple"
+text2 = "dog apple house"
+print(common_words(text1, text2))
+
+print("19.-------------------------------------------------")
+# Слова, які є тільки в одному тексті.
+#  Повернути слова, які зустрічаються лише в одному з двох текстів, але не в обох.
+def unique_to_one_text(text1, text2): 
+    ls_text1 = text1.split()
+    ls_text2 = text2.split()
+    res = []
+    for word in ls_text1:
+        if word not in ls_text2:
+            res.append(word)
+    for word in ls_text2:
+        if word not in ls_text1:
+            res.append(word)
+    return res  
+text1 = "cat dog bird"
+text2 = "dog apple bird"
+print(unique_to_one_text(text1, text2))
+
+print("20.-------------------------------------------------")
+# Тобто одна функція повинна об'єднати кілька вже знайомих тобі алгоритмів.
+def analyze_text(text):
+    words = text.split()
+    for word in words:
+        
+
+
+    res = {
+        "word_count": ...,
+        "unique_word_count": ...,
+        "most_common_word": ...,
+        "longest_word": ...,
+        "shortest_word": ...,
+        "palindromes": [...],
+        "words_with_digits": [...],
+        "words_with_most_vowels": [...],
+        "first_letter_groups": {...}
+    }
+    return res
+print(analyze_text("cat elephant dog elephant programming cat apple"))
