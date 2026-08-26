@@ -89,7 +89,7 @@ def longest_repeated_word3(text):
 print(longest_repeated_word3("cat dog bird cat rabbit bird dog"))
 
 
-print("4.---------------------------------------------------")
+print("4.---------------------------------------------")
 # Коротше за середнє. Повертає список слів, довжина яких менша за середню довжину всіх слів.
 def shorter_than_average(text): 
     words = text.split()
@@ -102,4 +102,35 @@ def shorter_than_average(text):
         if len(word) < avg:
             res.append(word)
     return res
-print(shorter_than_average("cat dog bird cat rabbit bird dog"))     
+print(shorter_than_average("cat dog bird cat rabbit bird dog"))  
+
+print("5.---------------------------------------------")  
+# Групування слів за останньою літерою
+def group_by_last_letter(text):
+    words = text.split()
+    word_dict = {}
+    for word in words:
+        if word[-1] in word_dict:
+            word_dict[word[-1]].append(word)
+        else:
+            word_dict[word[-1]] = [word]
+    return word_dict
+print(group_by_last_letter("cat cat dog apple banana"))
+
+print("6.----------------------------------------------")
+# Найдовше слово в кожній групі
+# Згрупуй слова за довжиною, а потім для кожної довжини залиш найдовше слово.
+# Тут ти маєш подумати, що станеться, якщо в групі вже є слово тієї самої довжини.
+def longest_by_length_group(text): 
+    words = text.split()
+    len_dict = {}
+    res_dict = {}
+    for word in words:
+        if len(word) in len_dict:
+            len_dict[len(word)].append(word)
+        else:
+            len_dict[len(word)] = [word]
+    for key,value in len_dict.items():
+        res_dict[key] = max(value, key=len)
+    return res_dict
+print(longest_by_length_group("cat dog apple banana"))
