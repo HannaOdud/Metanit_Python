@@ -134,3 +134,40 @@ def longest_by_length_group(text):
         res_dict[key] = max(value, key=len)
     return res_dict
 print(longest_by_length_group("cat dog apple banana"))
+
+print("7.-------------------------------------------------") 
+# Кількість голосних у кожному слові
+def vowel_statistics(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    dict_count_vows = {}
+    for word in words:
+       dict_count_vows[word] = sum(1 for char in word.lower() if char in vows)
+    return dict_count_vows
+
+print(vowel_statistics("cat cat apple elephant"))
+
+print("8.-----------------------------------------------")
+# Усі слова з максимальною кількістю приголосних
+def words_with_max_consonants(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    max_cons = 0
+    res = []
+    for word in words:
+        count = 0
+        for char in word:
+            if char.lower().isalpha() and char not in vows:
+                count += 1
+        if count > max_cons:
+            max_cons = count
+    for word in words:
+        count = 0
+        for char in word:
+            if char.lower().isalpha() and char not in vows:
+                count += 1
+        if count == max_cons:
+            res.append(word)
+    return res
+print(words_with_max_consonants("cat dog bird cat rabbit bird dog"))
+        
