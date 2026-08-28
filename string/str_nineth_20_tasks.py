@@ -170,4 +170,41 @@ def words_with_max_consonants(text):
             res.append(word)
     return res
 print(words_with_max_consonants("cat dog bird cat rabbit bird dog"))
+
+print("9.-----------------------------------------------------")
+# Найкоротше слово з максимальною кількістю голосних
+# Спочатку знайди максимальну кількість голосних, а потім серед цих слів вибери найкоротше.
+def shortest_with_max_vowels(text): 
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res = []
+    max_count = 0
+    for word in words:
+        count = sum(1 for char in word if char.lower() in vows)
+        if count > max_count:
+            max_count = count
+    for word in words:
+        count = sum(1 for char in word if char.lower() in vows)
+        if count == max_count:
+            res.append(word)
+    shortest = min(res, key=len)
+    return shortest
+print(shortest_with_max_vowels("cat cat apple elephant"))
+
+print("10.--------------------------------------------------")
+# Перший неповторюваний символ
+#Потрібно ігнорувати пробіли.
+# Якщо унікального символу немає — повернути None.
+def first_unique_char(text):
+    char_appeared = []
+    char_repeated = []
+    for char in text:
+        if char in char_appeared:
+            char_repeated.append(char)
+        char_appeared.append(char)
+    for char in text:
+        if char not in char_repeated:
+            return char
+print(first_unique_char("cat cat apple elephant"))
+
         
