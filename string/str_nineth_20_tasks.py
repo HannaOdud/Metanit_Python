@@ -203,8 +203,137 @@ def first_unique_char(text):
             char_repeated.append(char)
         char_appeared.append(char)
     for char in text:
-        if char not in char_repeated:
+        if char not in char_repeated and char != " ":
             return char
+    return None
 print(first_unique_char("cat cat apple elephant"))
 
-        
+print("11.----------------------------------------------")
+# Перший символ, який зустрічається двічі. Враховуй порядок появи символів.
+def first_repeated_char(text):
+    char_appeared = []
+    for char in text:
+        if char in char_appeared:
+            return char
+        char_appeared.append(char)
+    return None
+print(first_repeated_char("abcdab"))
+
+#OR
+def first_repeated_char2(text):
+    seen = set()
+    for char in text:
+        if char in seen:
+            return char
+        seen.add(char)
+    return None
+print(first_repeated_char2("abcdab"))
+
+print("12.-----------------------------------------------")
+# Найчастіша літера без урахування регістру
+# A і a повинні рахуватися як одна літера.
+# Пробіли, цифри та розділові знаки не рахувати.
+# Без max().
+def most_common_letter(text):
+    dict_count = {}
+    for char in text:
+        if char.lower() in dict_count and char.isalpha():
+            dict_count[char.lower()] += 1
+        elif char.isalpha():
+            dict_count[char.lower()] = 1 
+    #return dict_count
+    max_count = 0
+    max_char =""
+    for key,value in dict_count.items():
+        if value > max_count:
+            max_count = value
+            max_char = key
+    return max_char
+print(most_common_letter("cat cat apple ellllllephant"))
+
+print("13.-------------------------------------------")
+# Слова, які є паліндромами та мають максимальну довжину 
+# повернути всі найдовші паліндроми.
+def longest_palindromes(text):
+    words = text.split()
+    pallindromes = []
+    for word in words:
+        if word == word[::-1]:
+            pallindromes.append(word)
+    max_len = 0
+    res = []
+    for word in pallindromes:
+        if len(word) > max_len:
+            max_len = len(word)
+    for word in pallindromes:
+        if len(word) == max_len:
+            res.append(word)
+    return res
+print(longest_palindromes("level sos ahahaha radar cccc cat civic"))
+
+print("14.---------------------------------------------")
+# Слова з однаковою кількістю голосних
+# Тобто ключ — кількість голосних, значення — список слів.
+def group_by_vowel_count(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    res = {}
+    for word in words:
+        count = sum(1 for char in word if char in vows)
+        if count in res:
+            res[count].append(word)
+        else:
+            res[count] = [word]
+    return res
+print(group_by_vowel_count("cat dog apple house"))
+
+print("15.---------------------------------------------")
+# Частота першої літери
+def first_letter_frequency(text):
+    words = text.split()
+    res = {}
+    for word in words:
+        if word[0].lower() in res:
+            res[word[0].lower()] += 1
+        else:
+            res[word[0].lower()] = 1
+    return res             
+print(first_letter_frequency("Apple Ant Banana Ball Cat"))
+
+print("16.--------------------------------------------") 
+# Слова тільки з унікальних літер
+# Повертає слова, де жодна літера не повторюється.
+# Apple не підходить, cat — підходить.
+# Регістр ігнорувати.
+def all_unique_letter_words(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if len(word.lower()) == len(set(word.lower())):
+            res.append(word)
+    return res
+print(all_unique_letter_words("dog apple bird dog"))
+
+print("17.-------------------------------------------")
+# Слова, які зустрічаються в обох текстах, без повторень
+def common_unique_words(text1, text2):
+    words1 = set(text1.split())
+    words2 = set(text2.split())
+    res = words1.intersection(words2)
+    return res
+text1 = "cat dog cat bird"
+text2 = "dog apple bird dog"
+print(common_unique_words(text1, text2))
+
+#OR
+def common_unique_words2(text1, text2):
+    words1 = text1.split()
+    words2 = text2.split()
+    res = set()
+    for word in words1:
+        if word in words2:
+            res.add(word)
+    return res
+text1 = "cat dog cat bird"
+text2 = "dog apple bird dog"
+print(common_unique_words2(text1, text2))
