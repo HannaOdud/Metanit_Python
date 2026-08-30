@@ -337,3 +337,129 @@ def common_unique_words2(text1, text2):
 text1 = "cat dog cat bird"
 text2 = "dog apple bird dog"
 print(common_unique_words2(text1, text2))
+
+print("18.--------------------------------------------")
+# Слова тільки в одному тексті, без повторень
+def unique_words_between_texts(text1, text2):
+    words1 = text1.split()
+    words2 = text2.split()
+    res = set()
+    for word in words1:
+        if word not in words2:
+            res.add(word)
+    for word in words2:
+        if word not in words1:
+            res.add(word)
+    return res
+text1 = "cat dog bird"
+text2 = "dog apple bird"
+print(unique_words_between_texts(text1, text2))
+
+print("19.---------------------------------------------")
+# Міні-аналіз речення
+def text_summary(text):
+    words = text.split()
+    #unique words
+    uniq_w = set(words)
+    # longest_word
+    longest = max(words, key=len)
+    #shortest
+    shortest = min(words, key=len)
+    #most_common
+    words_dict = {}
+    for word in words:
+        words_dict[word] = words_dict.get(word,0)+1
+    most_common_w = ""
+    most_common = 0
+    for key,value in words_dict.items():
+        if value > most_common:
+            most_common = value
+            most_common_w = key
+    #palindomes
+    pal = []        
+    for word in words:
+        if word == word[::-1]:
+            pal.append(word)
+    res = {
+        "words": len(words),
+        "unique_words": uniq_w,
+        "longest_word": longest,
+        "shortest_word": shortest,
+        "most_common_word": most_common_w,
+        "palindromes": pal
+    }
+    return res
+print(text_summary("level sos ahahaha radar cat cccc cat civic"))
+
+print("20.--------------------------------------------")
+# Велика Level 3 задача
+def advanced_text_analysis(text):
+    words = text.split()
+    #most_common
+    words_dict = {}
+    for word in words:
+        words_dict[word] = words_dict.get(word,0)+1
+    most_common_w = ""
+    most_common = 0
+    for key,value in words_dict.items():
+        if value > most_common:
+            most_common = value
+            most_common_w = key
+    #longest
+    longest = max(words, key=len)
+    #shortest
+    shortest = min(words, key=len)
+    #palindomes
+    pal = []        
+    for word in words:
+        if word == word[::-1]:
+            pal.append(word)
+    #words with digits
+    with_digit =[]
+    for word in words:
+        for char in word:
+            if char.isdigit():
+                with_digit.append(word)
+                break
+    #words with max_vows
+    vows = ["a","e","i","o","u"]
+    max_count = 0
+    for word in words:
+        count = sum(1 for char in word if char in vows)
+        if count > max_count:
+            max_count = count
+    max_words = []
+    for word in words:
+        count = sum(1 for char in word if char in vows)
+        if max_count == count:
+            max_words.append(words)
+    #first_letter_groups
+    char_group = {}
+    for word in words:
+        if word[0] in char_group:
+            char_group[word[0]].append(word)
+        else:
+            char_group[word[0]] = [word]
+    #word_len
+    word_len = {}
+    for word in words:
+        if len(word) in word_len:
+            word_len[len(word)] += 1
+        else:
+             word_len[len(word)] = 1
+
+
+    res = {
+        "word_count": len(words),
+        "unique_word_count": len(set(words)),
+        "most_common_word": most_common_w,
+        "longest_word": longest,
+        "shortest_word": shortest,
+        "palindromes": pal,
+        "words_with_digits": with_digit,
+        "words_with_max_vowels": max_words,
+        "first_letter_groups": char_group,
+        "word_lengths": word_len
+    }
+    return res
+print(advanced_text_analysis("level sos ahahaha radar c2at cccc cat civic"))
