@@ -360,7 +360,7 @@ print("19.---------------------------------------------")
 def text_summary(text):
     words = text.split()
     #unique words
-    uniq_w = set(words)
+    uniq_w = len(set(words))
     # longest_word
     longest = max(words, key=len)
     #shortest
@@ -432,7 +432,7 @@ def advanced_text_analysis(text):
     for word in words:
         count = sum(1 for char in word if char in vows)
         if max_count == count:
-            max_words.append(words)
+            max_words.append(word)
     #first_letter_groups
     char_group = {}
     for word in words:
