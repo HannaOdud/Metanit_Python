@@ -58,3 +58,57 @@ def longest_unique_word(text):
             max_word = word
     return max_word
 print(longest_unique_word("Apple Ant Ant Amazing Amazing Ball Book Banana Cat"))
+
+print("4.--------------------------------------------------")
+#Групування за кількістю голосних
+def group_by_vowels(text):
+    words = text.split()
+    group_dict = {}
+    vows = ["a","e","i","o","u"]
+    for word in words:
+        count_vows = sum(1 for char in word if char in vows)
+        if count_vows in group_dict:
+            group_dict[count_vows].append(word)
+        else:
+            group_dict[count_vows] = [word]
+    return group_dict
+print(group_by_vowels("cat dog apple house elephant"))
+
+#Or
+def group_by_vowels(text):
+    words = text.split()
+    group_dict = {}
+    vows = ["a","e","i","o","u"]
+    
+    for word in words:
+        n_word = word.strip(",.!?:;")
+        count_vows = sum(1 for char in n_word.lower() if char in vows)
+        if count_vows in group_dict:
+            group_dict[count_vows].append(n_word)
+        else:
+            group_dict[count_vows] = [n_word]
+    return group_dict
+print(group_by_vowels("cat dog apple house elephant"))
+
+print("5.-----------------------------------------------------")
+# Найдовше слово в кожній групі за першою літерою. Без max().
+def longest_word_by_first_letter(text):
+    words = text.split()
+    gr_dict = {}
+    for word in words:
+        if word[0] in gr_dict:
+            gr_dict[word[0]].append(word)
+        else:
+            gr_dict[word[0]] = [word]
+    #return gr_dict
+    res = {}
+    for key, value in gr_dict.items():
+        largest = ""
+        for word in value:
+            if len(word) > len(largest):
+                largest = word
+
+        res[key] = largest
+    return res
+print(longest_word_by_first_letter("Apple Ant Amazing Ball Book Banana Cat"))
+
