@@ -112,3 +112,176 @@ def longest_word_by_first_letter(text):
     return res
 print(longest_word_by_first_letter("Apple Ant Amazing Ball Book Banana Cat"))
 
+print("6.----------------------------------------------------")
+# Всі слова з максимальною довжиною
+def words_with_max_length(text):
+    words = text.split()
+    w_dict = {}
+    for word in words:
+        if len(word) in w_dict:
+            w_dict[len(word)].append(word) 
+        else:
+            w_dict[len(word)] = [word] 
+    print(w_dict)
+    max_len = 0
+    for key,value in w_dict.items():
+        if key > max_len:
+            max_len = key
+    return w_dict[max_len]
+
+print(words_with_max_length("cat house world elephant owl"))
+#OR
+def words_with_max_length2(text):
+    words = text.split()
+    max_len = 0
+    for word in words:
+        if len(word) > max_len:
+            max_len = len(word)
+    res = []
+    for word in words:
+        if len(word) == max_len:
+            res.append(word)
+    return res
+print(words_with_max_length2("cat house world crocodile owl"))
+
+print("7.-------------------------------------------------")
+# Поверни літеру, з якої починається найбільше слів. Регістр ігнорувати. Без max().
+def most_common_first_letter(text):
+    words = text.split()
+    w_dict = {}
+    for word in words:
+        if word[0] in w_dict:
+            w_dict[word[0]] += 1
+        else:
+            w_dict[word[0]] = 1
+    max_count = 0
+    max_char = ""
+    for key, value in w_dict.items():
+        if value > max_count:
+            max_count = value
+            max_char = key
+    return max_char
+print(most_common_first_letter("cat house world crocodile owl"))
+
+print("8.-------------------------------------------------")
+# Поверни літеру, Найчастіша остання літера. Регістр ігнорувати. Без max().
+def most_common_last_letter(text):
+    words = text.split()
+    w_dict = {}
+    for word in words:
+        if word[-1] in w_dict:
+            w_dict[word[-1]] += 1
+        else:
+            w_dict[word[-1]] = 1
+    max_count = 0
+    max_char = ""
+    for key, value in w_dict.items():
+        if value > max_count:
+            max_count = value
+            max_char = key
+    return max_char
+print(most_common_last_letter("cat house world crocodile owl"))
+
+
+print("9.-----------------------------------------------")
+# Слова з найбільшою кількістю різних літер
+# Поверни всі слова, які мають максимальну кількість різних літер. Регістр ігнорувати.
+def words_with_most_unique_letters(text):
+    words = text.split()
+    max_count = 0
+    res = []
+    for word in words:
+        if len(set(word)) > max_count:
+            max_count = len(set(word))
+    for word in words:
+        if max_count == len(set(word)):
+            res.append(word)
+    return res
+print(words_with_most_unique_letters("cat house world crocodile owl"))
+
+print("10.------------------------------------------------")
+# Знайди найкоротше слово-паліндром. Без min().
+def shortest_palindrome(text):
+    words = text.split()
+    res = []
+    for word in words:
+        if word == word[::-1]:
+            res.append(word)
+    min_pall_len = float("inf")
+    min_pall = ""
+    for word in res:
+        if len(word) < min_pall_len:
+            min_pall_len = len(word)
+            min_pall = word
+    return min_pall 
+print(shortest_palindrome("cat sos radar level house world crocodile owl"))
+
+
+print("11.-----------------------------------------------")
+# Поверни слово, яке містить найбільше цифр. Без max().
+def words_with_most_digits(text):
+    words = text.split()
+    max_count = 0
+    max_word = ""
+    for word in words:
+        count = sum(1 for char in word if char.isdigit())
+        if count > max_count:
+            max_count = count
+            max_word = word
+    return max_word
+print(words_with_most_digits("cat2 ab123 dog7"))
+
+print("12.-----------------------------------------------")
+# Слова з цифрами — всі максимальні
+# Поверни всі слова, які містять максимальну кількість цифр.
+def all_words_with_most_digits(text):
+    words = text.split()
+    max_count = 0
+    res = []
+    for word in words:
+        count = sum(1 for char in word if char.isdigit())
+        if count > max_count:
+            max_count = count
+    for word in words:
+        count = sum(1 for char in word if char.isdigit())
+        if max_count == count:
+            res.append(word)
+    return res
+print(all_words_with_most_digits("cat2 ab123 dog7 owl456 duck789"))
+
+print("13.------------------------------------------------")
+# Слова, у яких кількість голосних більша за середню
+# Спочатку знайди середню кількість голосних на слово, потім поверни слова,
+#  які мають більше голосних за це середнє значення.
+def words_above_average_vowels(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    sum_vows = 0
+    res = []
+    for word in words:
+        count_vows = sum(1 for char in word if char in vows)
+        sum_vows += count_vows
+    avg = sum_vows/len(words)
+    for word in words:
+        count_vows = sum(1 for char in word if char in vows)
+        if count_vows > avg:
+            res.append(word)
+    return res
+print(words_above_average_vowels("cat sos radar level house world crocodile owl"))
+
+print("14.-------------------------------------------------")
+# Слова з максимальною кількістю приголосних
+def max_consonant_words(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    max_cons = 0
+    res = []
+    for word in words:
+        count_cons = sum(1 for char in word if char not in vows and char.isalpha())
+        if count > 
+    for word in words:
+        count_vows = sum(1 for char in word if char not in vows and char.isalpha())
+        if count_vows > avg:
+            res.append(word)
+    return res
+print(max_consonant_words("cat sos radar level house world crocodile owl"))
