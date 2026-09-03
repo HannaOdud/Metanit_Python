@@ -16,7 +16,7 @@ def words_with_max_frequency(text):
     res = []
     for key,value in dict_words.items():
         if value == max_count:
-            res.append(word)
+            res.append(key)
     return res
 print(words_with_max_frequency("cat dog cat bird dog"))
 
@@ -151,9 +151,9 @@ def most_common_first_letter(text):
     w_dict = {}
     for word in words:
         if word[0] in w_dict:
-            w_dict[word[0]] += 1
+            w_dict[word[0].lower()] += 1
         else:
-            w_dict[word[0]] = 1
+            w_dict[word[0].lower()] = 1
     max_count = 0
     max_char = ""
     for key, value in w_dict.items():
@@ -169,7 +169,7 @@ def most_common_last_letter(text):
     words = text.split()
     w_dict = {}
     for word in words:
-        if word[-1] in w_dict:
+        if word[-1].lower() in w_dict:
             w_dict[word[-1]] += 1
         else:
             w_dict[word[-1]] = 1
@@ -191,11 +191,11 @@ def words_with_most_unique_letters(text):
     max_count = 0
     res = []
     for word in words:
-        if len(set(word)) > max_count:
-            max_count = len(set(word))
+        if len(set(word.lower())) > max_count:
+            max_count = len(set(word.lower()))
     for word in words:
-        if max_count == len(set(word)):
-            res.append(word)
+        if max_count == len(set(word.lower())):
+            res.append(word.lower())
     return res
 print(words_with_most_unique_letters("cat house world crocodile owl"))
 
@@ -442,7 +442,7 @@ def analyze_words(text):
     for word in words:
         count = sum(1 for char in word if char in vows)
         if count == max_vows:
-            res.append(word)
+            res.append(key)
     # first_letter_groups
     fl_group = {}
     for word in words:
