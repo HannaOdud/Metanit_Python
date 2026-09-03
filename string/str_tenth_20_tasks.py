@@ -277,11 +277,66 @@ def max_consonant_words(text):
     max_cons = 0
     res = []
     for word in words:
-        count_cons = sum(1 for char in word if char not in vows and char.isalpha())
-        if count > 
+        count_cons = sum(1 for char in word.lower() if char not in vows and char.isalpha())
+        if count_cons> max_cons:
+            max_cons = count_cons 
     for word in words:
-        count_vows = sum(1 for char in word if char not in vows and char.isalpha())
-        if count_vows > avg:
+        count_cons = sum(1 for char in word.lower() if char not in vows and char.isalpha())
+        if count_cons == max_cons:
             res.append(word)
     return res
 print(max_consonant_words("cat sos radar level house world crocodile owl"))
+#OR
+def max_consonant_words2(text):
+    words = text.split()
+    vows = ["a","e","i","o","u"]
+    max_cons = 0
+    res = []
+    for word in words:
+        count_cons = sum(1 for char in word.lower() if char not in vows and char.isalpha())
+        if count_cons > max_cons:
+            max_cons = count_cons 
+            res = [word]
+        elif count_cons == max_cons:
+            res.append(word)
+    return res
+print(max_consonant_words2("cat sos radar level house world crocodile crocodile owl"))
+
+print("15.-----------------------------------------------------")
+# Перше слово, яке повторюється
+# Тобто повернути слово в той момент, коли воно вперше зустрілося вдруге.
+def first_repeated_word(text):
+    words = text.split()
+    checked = []
+    repeated = []
+    for word in words:
+        if word.lower() in checked:
+           repeated.append(word.lower())
+        checked.append(word.lower())
+    return repeated[0]
+print(first_repeated_word("cat dog bird cat apple dog"))
+
+#OR
+def first_repeated_word1(text):
+    words = text.split()
+    checked = []
+
+    for word in words:
+        clean_word = word.lower().strip(",.!&:;")
+        if clean_word in checked:
+           return word
+        checked.append(clean_word)
+    return None
+print(first_repeated_word1("cat dog bird cat apple dog"))
+
+#OR
+def first_repeated_word2(text):
+    words = text.split()
+    seen = set()
+    for word in words:
+        clean_word = word.lower().strip(",.!?:;")
+        if clean_word in seen:
+            return word
+        else:
+            seen.add(clean_word) 
+print(first_repeated_word2("cat dog bird cat apple dog"))
