@@ -340,3 +340,128 @@ def first_repeated_word2(text):
         else:
             seen.add(clean_word) 
 print(first_repeated_word2("cat dog bird cat apple dog"))
+
+print("16.------------------------------------------------")
+# Перше слово, яке зустрічається лише один раз
+def first_unique_word(text):
+    words = text.split()
+    checked = []
+    repeated = []
+    for word in words:
+        if word in checked:
+            repeated.append(word)
+        checked.append(word)
+    for word in words:
+        if word not in repeated:
+            return word
+print(first_unique_word("cat dog cat bird dog apple"))
+
+print("17.----------------------------------------------")
+# Слова, які мають однакову довжину з першим словом
+def same_length_as_first(text):
+    words = text.split()
+    res = []
+    first_w = words[0]
+    for word in words:
+        if len(word) == len(first_w):
+            res.append(word)
+    return res       
+print(same_length_as_first("cat dog house apple fox"))
+
+print("18.---------------------------------------------")
+# Слова, які починаються тією самою літерою, що й останнє слово
+# останнє слово — "cat", його перша літера "c".
+# Повернути всі слова, що починаються з "c".
+def same_first_as_last_word(text):
+    words = text.split()
+    res = []
+    last_word = words[-1]
+    for word in words:
+        if last_word[0] == word[0]:
+            res.append(word)
+    return res
+print(same_first_as_last_word("apple cobra carrot dog ant cat"))
+
+print("19.--------------------------------------------")
+# Слова, які містять усі голосні
+# Повернути слова, у яких присутні: a, e, i, o, u
+def words_with_all_vowels(text):
+    words = text.split()
+    res = []
+    vows = ["a","e","i","o","u"]
+    for word in words:
+        are_all_vows = True
+        for char in vows:
+            if char not in word:
+                are_all_vows = False
+        if are_all_vows == True:
+            res.append(word) 
+    return res  
+print(words_with_all_vowels("apuiople cobra carrot dog ant cat"))
+
+print("20.-------------------------------------------")
+# Комбінована Level 3
+def analyze_words(text):
+    words = text.split()
+    #most_common_word
+    word_dict = {}
+    for word in words:
+        word_dict[word] = word_dict.get(word, 0)+1
+    max_val = 0
+    max_val_word = ""
+    for key,value in word_dict.items():
+        if value > max_val:
+            max_val = value
+            max_val_word = key
+    #longest_unique_word
+    res = []
+    for key,value in word_dict.items():
+        if value == 1:
+            res.append(word)
+    lon_un_w = max(res, key=len)
+    #palindromes
+    pal = []
+    for word in words:
+        if word == word[::-1]:
+            pal.append(word)
+    #words_with_digits
+    has_digit = []
+    for word in words:
+        for char in word:
+            if char.isdigit():
+                has_digit.append(word)
+                break
+    # words_with_most_vowels
+    max_vows = 0
+    vows = ["a","e","i","o","u"]
+    res = []
+    for word in words:
+        count = sum(1 for char in word if char in vows)
+        if count > max_vows:
+            max_vows = count
+    for word in words:
+        count = sum(1 for char in word if char in vows)
+        if count == max_vows:
+            res.append(word)
+    # first_letter_groups
+    fl_group = {}
+    for word in words:
+        if word[0] in fl_group:
+            fl_group[word[0]].append(word)
+        else:
+            fl_group[word[0]] = [word]
+
+    res = {
+        "word_count": len(words),
+        "unique_word_count": len(set(words)),
+        "most_common_word": max_val_word,
+        "longest_word": max(words, key=len),
+        "shortest_word": min(words, key=len),
+        "longest_unique_word": lon_un_w,
+        "palindromes": pal,
+        "words_with_digits": has_digit,
+        "words_with_most_vowels": res,
+        "first_letter_groups": fl_group
+    }
+    return res
+print(analyze_words("apuiople cobra cobra sos level radar carrot dog dog do1g an22t cat"))
