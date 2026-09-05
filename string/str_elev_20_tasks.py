@@ -151,7 +151,7 @@ def words_with_frequency(text, n):
     res = []
     for word in words:
         clean_word = word.lower().strip(".,!?:;")
-        freq_dict[word] = freq_dict.get(word, 0)+1
+        freq_dict[clean_word] = freq_dict.get(clean_word, 0)+1
     for key,value in freq_dict.items():
         if value == n:
             res.append(key)
@@ -159,3 +159,44 @@ def words_with_frequency(text, n):
 print(words_with_frequency("cat dog cat bird bird dog house cat", 2))
 
 print("8.-----------------------------------------")
+# Знайди максимальну частоту, а потім поверни перше слово, яке має цю частоту.
+def first_word_with_max_frequency(text):
+    words = text.split()
+    freq_words = {}
+    for word in words:
+        freq_words[word] = freq_words.get(word, 0)+1
+    max_freq = 0
+    for key, value in freq_words.items():
+        if value > max_freq:
+            max_freq = value
+    for word in words:
+        if freq_words[word] == max_freq:
+            return word
+print(first_word_with_max_frequency("dog cat bird cat dog"))
+
+print("9.---------------------------------------------")
+# Найкоротше унікальне слово. Слово повинно зустрічатися рівно один раз.
+# Без min().
+def shortest_unique_word(text):
+    words = text.split()
+    all_words = []
+    repeated = []
+    uniq = []
+    for word in words:
+        if word in all_words:
+            repeated.append(word)
+        all_words.append(word)
+    print(all_words)
+    print(repeated)
+    for word in words:
+        if word not in repeated:
+            uniq.append(word)
+    min_len = float("inf")
+    min_word = ""
+    print(uniq)
+    for word in uniq:
+        if len(word) < min_len:
+            min_len = len(word)
+            min_word = word
+    return min_word
+print(shortest_unique_word("apple cat dog apple house"))
