@@ -105,3 +105,57 @@ def count_unique_words2(text):
             res.append(word)
     return len(res)
 print(count_unique_words2("cat dog cat bird house dog"))
+
+print("6.--------------------------")
+# 6. Слово з найбільшою кількістю повторень. Поверни одне слово з найбільшою частотою. Без max().
+# Якщо кілька слів мають однакову максимальну частоту, повертай те, яке раніше з'явилося в тексті.
+def count_unique_words(text):
+    words = text.split()
+    w_dict = {}
+    for word in words:
+        w_dict[word] = w_dict.get(word, 0)+1
+    max_freq = 0
+    for key, value in w_dict.items():
+        if value > max_freq:
+            max_freq = value
+    for word in words:
+        if w_dict[word] == max_freq:
+            return word
+print(count_unique_words("cat dog cat bird dog cat"))
+
+#OR
+def count_unique_words2(text):
+    words = text.split()
+    freq_dict = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_dict[clean_word] = freq_dict.get(clean_word, 0) +1
+    max_freq_word = ""
+    max_count = 0
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        count = freq_dict[clean_word]
+        if count > max_count:
+            max_count = count
+            max_freq_word = clean_word
+    return max_freq_word
+print(count_unique_words2("cat dog cat bird dog cat"))
+
+
+print("7.-----------------------------------------")
+# Слова з однаковою частотою
+# Поверни всі слова, які зустрічаються рівно n разів.
+def words_with_frequency(text, n): 
+    words = text.split()
+    freq_dict = {}
+    res = []
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_dict[word] = freq_dict.get(word, 0)+1
+    for key,value in freq_dict.items():
+        if value == n:
+            res.append(key)
+    return res
+print(words_with_frequency("cat dog cat bird bird dog house cat", 2))
+
+print("8.-----------------------------------------")
