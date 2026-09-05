@@ -200,3 +200,145 @@ def shortest_unique_word(text):
             min_word = word
     return min_word
 print(shortest_unique_word("apple cat dog apple house"))
+
+#OR
+def shortest_unique_word(text):
+    words = text.split()
+    freq_words = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_words[clean_word] = freq_words.get(clean_word, 0)+1
+    min_len = float("inf")
+    min_word = ""
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        if freq_words[clean_word] == 1:
+            if len(clean_word) < min_len:
+                min_len = len(clean_word)
+                min_word = clean_word
+    return min_word
+print(shortest_unique_word("apple cat dog apple house"))
+
+print("10.--------------------------------------------------")
+# Найдовше слово, яке повторюється
+# Слово повинно зустрічатися хоча б двічі. Без max().
+def longest_repeated_word(text):
+    words = text.split()
+    freq_word = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_word[clean_word] = freq_word.get(clean_word, 0)+1
+    longest_len = float("-inf")
+    longest_word = ""
+    res = []
+    for key,value in freq_word.items():
+        if freq_word[clean_word] >= 2:
+            res.append(clean_word)
+    longest_len = float("-inf")
+    longest_word = ""
+    for word in res:
+        if len(clean_word)>longest_len:
+            longest_len = len(clean_word)
+            longest_word = clean_word
+    return longest_word
+print(longest_repeated_word("cat elephant cat house elephant"))
+#OR
+def longest_repeated_word2(text):
+    words = text.split()
+    freq_word = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_word[clean_word] = freq_word.get(clean_word, 0)+1
+    longest_len = float("-inf")
+    longest_word = ""
+    for key,value in freq_word.items():
+        if freq_word[clean_word] >= 2:
+            if len(clean_word) > longest_len:
+                longest_len = len(clean_word)
+                longest_word = clean_word
+    return longest_word      
+print(longest_repeated_word2("cat elephant cat house elephant"))
+
+
+print("11.------------------------------------------")
+# Статистика слів
+def word_statistics(text):
+    words = text.split()
+    #uniq_words
+    checked = []
+    repeated = []
+    uniques = []
+    for word in words:
+        if word in checked:
+            repeated.append(word)
+        checked.append(word)
+    for word in words:
+        if word not in repeated:
+            uniques.append(word)
+ 
+    res = {
+        "total_words": len(words),
+        "unique_words": len(uniques),
+        "repeated_words": len(repeated),
+    }
+    return res
+print(word_statistics("cat dog cat bird dog house"))
+
+print("12.--------------------------------------")
+# Аналіз найчастішого слова
+def most_frequent_word_info(text):
+    words = text.split()
+    freq_words = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_words[clean_word] = freq_words.get(clean_word, 0)+1
+    max_freq_count = 0
+    max_freq_word = ""
+    for key,value in freq_words.items():
+        if value > max_freq_count:
+            max_freq_count = value
+            max_freq_word = key
+    res = {
+        "word": max_freq_word,
+        "count": max_freq_count,
+        "length": len(max_freq_word)
+    }
+    return res
+print(most_frequent_word_info("cat dog cat bird cat"))
+
+print("13.----------------------------------------")
+# Аналіз унікальних слів
+# Розглядати тільки слова, які зустрічаються рівно один раз. Без min() і max().
+def unique_words_info(text):
+    words = text.split()
+    freq_words = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_words[clean_word] = freq_words.get(clean_word, 0)+1
+    max_freq_count = 0
+    for key,value in freq_words.items():
+        if value > max_freq_count:
+            max_freq_count = value
+    uniques = []
+    for key,value in freq_words.items():
+        if value == 1:
+            uniques.append(key)
+    max_unique_word = ""
+    max_unique_len = float("-inf")
+    for word in uniques:
+        if len(word) > max_unique_len:
+            max_unique_len = len(word)
+            max_unique_word = word
+    min_unique_word = ""
+    min_unique_len = float("inf")
+    for word in uniques:
+        if len(word) < min_unique_len:
+            min_unique_len = len(word)
+            min_unique_word = word
+    res = {
+        "count": max_freq_count,
+        "longest": max_unique_word,
+        "shortest": min_unique_word
+    }
+    return res
+print(unique_words_info("cat dog cat elephant house dog"))
