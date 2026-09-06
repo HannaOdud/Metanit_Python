@@ -342,3 +342,80 @@ def unique_words_info(text):
     }
     return res
 print(unique_words_info("cat dog cat elephant house dog"))
+
+print("14.----------------------------------------")
+# Перші унікальні символи кожного слова
+# Поверни всі слова, перша літера яких зустрічається як перша літера тільки одного слова.
+def words_with_unique_first_letter(text):
+    words = text.split()
+    char_freq_dict = {}
+    for word in words:
+        char_freq_dict[word[0]] = char_freq_dict.get(word[0], 0)+1
+    res = []
+    for key,value in char_freq_dict.items():
+        if value == 1:
+            res.append(key)
+    result = []
+    for word in words:
+        if word[0] in res:
+            result.append(word)
+    return result        
+print(words_with_unique_first_letter("apple ant ball cat banana"))
+
+print("15.--------------------------------------")
+# Перше слово з унікальною довжиною
+# Знайди довжини слів, які зустрічаються тільки один раз, і поверни перше слово з такою довжиною.
+def first_unique_length_word(text):
+    words = text.split()
+    len_freq_dict = {}
+    for word in words:
+        if len(word) in len_freq_dict:
+            len_freq_dict[len(word)].append(word)
+        else:
+            len_freq_dict[len(word)] = [word] 
+    #print(len_freq_dict)
+    for key,value in len_freq_dict.items():
+        if len(value) == 1:
+            return value[0]
+print(first_unique_length_word("cat house dog elephant sun"))  
+
+print("16.-------------------------------------")
+# Слово з найбільшою кількістю голосних серед унікальних
+# Розглядай тільки слова, які зустрічаються один раз
+# Серед них знайди слово з найбільшою кількістю голосних.
+def unique_word_with_most_vowels(text):
+    words = text.split()
+    freq_word = {}
+    for word in words:
+        freq_word[word] = freq_word.get(word, 0)+1
+    print(freq_word)
+    uniques = []
+    for key,value in freq_word.items():
+        if value == 1:
+            uniques.append(key)
+    max_vows = 0
+    vows = ["a","e","i","o","u"]
+    for word in uniques:
+        count = sum(1 for char in word.lower() if char in vows)
+        if count > max_vows:
+            max_vows = count
+    for word in uniques:
+        count = sum(1 for char in word.lower() if char in vows)
+        if count == max_vows:
+            return word
+print(unique_word_with_most_vowels("cat house cat elephant bird")) 
+
+print("17.----------------------------------------")
+# Усі повторювані слова з максимальною довжиною
+# Знайди максимальну довжину серед повторюваних слів і поверни всі такі слова.
+def longest_repeated_words(text):
+    words = text.split()
+    freq_words = {}
+    for word in words:
+        freq_words[word] = freq_words.get(word, 0)+1
+    repeated = []
+    for key, value in freq_words.items():
+        if value >= 2:
+            repeated.append(key)
+    return max(repeated, key=len)
+print(longest_repeated_words("cat elephant dog elephant house dog"))
