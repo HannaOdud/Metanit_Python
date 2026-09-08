@@ -233,7 +233,7 @@ def longest_repeated_word(text):
     res = []
     for key,value in freq_word.items():
         if freq_word[clean_word] >= 2:
-            res.append(clean_word)
+            res.append(key)
     longest_len = float("-inf")
     longest_word = ""
     for word in res:
@@ -553,3 +553,74 @@ def analyze_text(text):
     }
     return res
 print(analyze_text("cat elephant elephant dog duck elephant house dog"))
+
+print("20.-------------------------------------")
+# класифікація слів
+def classify_words(text):
+    words = text.split()
+
+    #unique/repeated
+    checked = []
+    repeated  = []
+    unique = []
+    for word in words:
+        if word in checked:
+            repeated.append(word)
+        checked.append(word)
+    for word in words:
+        if word not in repeated:
+            unique.append(word)
+
+    # longest
+    lng_w = ""
+    lng_l = float("-inf")
+    for word in words:
+        if len(word) > lng_l:
+            lng_l = len(word)
+            lng_w = word
+
+    #shortest
+    shrt_w = ""
+    shrt_l = float("inf") 
+    for word in words:
+        if len(word) < shrt_l:
+            shrt_l = len(word)
+            shrt_w = word
+
+
+    res = {
+        "unique": unique,
+        "repeated": repeated,
+        "longest": lng_w,
+        "shortest": [shrt_w]
+    }
+    return res
+print(classify_words("cat dog elephant cat house dog"))    
+
+
+#OR
+def classify_words(text):
+    words = text.split()
+    freq = {}
+    for word in words:
+        freq[word] = freq.get(word, 0)+1
+
+    #unique
+    unique = [word for key,value in freq.items() if value == 1]
+
+    #repeated
+    repeated = [word for key,value in freq.items() if value > 1]
+
+    #longest
+    lng_w = max(words, key=len)
+    shrt_w = min(words, key=len)
+
+
+    res = {
+        "unique": unique,
+        "repeated": repeated,
+        "longest": lng_w,
+        "shortest": [shrt_w]
+    }
+    return res
+print(classify_words("cat dog elephant cat house dog"))    
