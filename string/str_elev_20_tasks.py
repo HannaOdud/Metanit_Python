@@ -419,3 +419,81 @@ def longest_repeated_words(text):
             repeated.append(key)
     return max(repeated, key=len)
 print(longest_repeated_words("cat elephant dog elephant house dog"))
+
+
+print("18.----------------------------------------")
+# Аналіз першої та останньої літери
+def first_last_statistics(text):
+    words = text.split()
+#most_common_first
+    freq_first_char = {}
+    for word in words:
+        if word[0] in freq_first_char:
+            freq_first_char[word[0]] += 1
+        else:
+            freq_first_char[word[0]] = 1
+    print(freq_first_char)
+    most_common_first_char = ""
+    most_common_count = 0
+    for key,value in freq_first_char.items():
+        if value > most_common_count:
+            most_common_count = value
+            most_common_first_char = key
+    print(most_common_first_char)
+#most_common_last
+    freq_last_char = {}
+    for word in words:
+        freq_last_char[word[-1]] = freq_last_char.get(word[-1], 0)+1
+    print(freq_last_char)
+    most_common_last_char = ""
+    most_common__last_count = 0
+    for key,value in freq_last_char.items():
+        if value > most_common__last_count:
+            most_common__last_count = value
+            most_common_last_char = key
+    print(most_common_last_char)
+# unique_first_letters
+    unique_first_char  = set()
+    for word in words:
+        first_char = word[0]
+        unique_first_char.add(first_char)
+# unique_last_char
+    unique_last_char = set()
+    for word in words:
+        unique_last_char.add(word[-1])
+
+    res = {
+        "most_common_first": most_common_first_char,
+        "most_common_last": most_common_last_char,
+        "unique_first_letters": unique_first_char,
+        "unique_last_letters": unique_last_char
+    }
+    return res
+print(first_last_statistics("cat elephant elephant dog duck elephant house dog"))
+
+print("19.----------------------------------------")
+# Повний аналіз тексту
+def analyze_text(text):
+    words = text.split()
+    #clean_word = word.lower().strip(".,!?:;")
+
+#unique_word_count
+    uwq = set(len(words))
+
+#repeated_word_count
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+
+
+    res = {
+        "total_words": len(words),
+        "unique_word_count": uwq,
+        "repeated_word_count": ...,
+        "first_unique_word": ...,
+        "first_repeated_word": ...,
+        "most_frequent_word": ...,
+        "longest_unique_word": ...,
+        "shortest_repeated_word": ...
+    }
+    return res
+print(analyze_text("cat elephant elephant dog duck elephant house dog"))
