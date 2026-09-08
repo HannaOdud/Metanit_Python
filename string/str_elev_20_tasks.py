@@ -477,23 +477,79 @@ def analyze_text(text):
     words = text.split()
     #clean_word = word.lower().strip(".,!?:;")
 
-#unique_word_count
-    uwq = set(len(words))
+    #unique_word_count
+    uwq = len(set(words))
 
-#repeated_word_count
+    #repeated_word_count
+    checked = []
+    repeated = []
     for word in words:
         clean_word = word.lower().strip(".,!?:;")
+        if clean_word in checked:
+            repeated.append(word)
+        checked.append(word)
+    print(repeated)
 
+    #first_unique_word 
+    fuw = []
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        if word not in repeated:
+            fuw.append(word)
+            break
+
+    #first_repeated_word
+    frw = ""
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        if word in repeated:
+            frw += word
+            break
+
+    #most_frequent_word
+    freq_words = {}
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        freq_words[clean_word] = freq_words.get(clean_word, 0)+1
+    mfwl = 0
+    mfw = ""
+    for key,value in freq_words.items():
+        if value > mfwl:
+            mfwl = value
+            mfw = key
+
+    #longest_unique_word
+    unique = []
+    for word in words:
+        clean_word = word.lower().strip(".,!?:;")
+        if clean_word not in repeated:
+            unique.append(clean_word)
+    luwl = float("-inf")
+    luw = ""
+    for word in unique:
+        clean_word = word.lower().strip(".,!?:;")
+        if len(clean_word) > luwl:
+            luwl = len(clean_word)
+            luw = word
+
+    #shortest_repeated_word
+    shrwl = float("inf")
+    shrw = ""
+    for word in repeated:
+        clean_word = word.lower().strip(".,!?:;")
+        if len(clean_word) < shrwl:
+            shrwl = len(clean_word)
+            shrw = word
 
     res = {
         "total_words": len(words),
         "unique_word_count": uwq,
-        "repeated_word_count": ...,
-        "first_unique_word": ...,
-        "first_repeated_word": ...,
-        "most_frequent_word": ...,
-        "longest_unique_word": ...,
-        "shortest_repeated_word": ...
+        "repeated_word_count": len(repeated),
+        "first_unique_word": fuw,
+        "first_repeated_word": frw,
+        "most_frequent_word": mfw,
+        "longest_unique_word": luw,
+        "shortest_repeated_word": shrw
     }
     return res
 print(analyze_text("cat elephant elephant dog duck elephant house dog"))
