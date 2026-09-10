@@ -413,11 +413,19 @@ def longest_repeated_words(text):
     freq_words = {}
     for word in words:
         freq_words[word] = freq_words.get(word, 0)+1
+    print(freq_words)
     repeated = []
+    max_len = float("-inf")
     for key, value in freq_words.items():
-        if value >= 2:
+        if value > 1:
             repeated.append(key)
-    return max(repeated, key=len)
+            if len(key) > max_len:
+                max_len = len(key) 
+    res = []
+    for word in repeated:
+        if len(word) == max_len:
+            res.append(word)
+    return res
 print(longest_repeated_words("cat elephant dog elephant house dog"))
 
 
@@ -478,15 +486,21 @@ def analyze_text(text):
     #clean_word = word.lower().strip(".,!?:;")
 
     #unique_word_count
-    uwq = len(set(words))
+    uniq = []
+    freq_words = {}
+    for word in words:
+        freq_words[word] = freq_words.get(word, 0)+1
+    for key,value in freq_words.items():
+        if value == 1:
+            uniq.append(key)
 
     #repeated_word_count
     checked = []
-    repeated = []
+    repeated = set()
     for word in words:
         clean_word = word.lower().strip(".,!?:;")
         if clean_word in checked:
-            repeated.append(word)
+            repeated.add(word)
         checked.append(word)
     print(repeated)
 
@@ -494,16 +508,16 @@ def analyze_text(text):
     fuw = []
     for word in words:
         clean_word = word.lower().strip(".,!?:;")
-        if word not in repeated:
-            fuw.append(word)
+        if clean_word not in repeated:
+            fuw.append(clean_word)
             break
 
     #first_repeated_word
     frw = ""
     for word in words:
         clean_word = word.lower().strip(".,!?:;")
-        if word in repeated:
-            frw += word
+        if clean_word in repeated:
+            frw += clean_word
             break
 
     #most_frequent_word
@@ -522,7 +536,7 @@ def analyze_text(text):
     unique = []
     for word in words:
         clean_word = word.lower().strip(".,!?:;")
-        if clean_word not in repeated:
+        if freq_words[clean_word] == 1:
             unique.append(clean_word)
     luwl = float("-inf")
     luw = ""
@@ -535,15 +549,16 @@ def analyze_text(text):
     #shortest_repeated_word
     shrwl = float("inf")
     shrw = ""
-    for word in repeated:
+    for word in words:
         clean_word = word.lower().strip(".,!?:;")
-        if len(clean_word) < shrwl:
-            shrwl = len(clean_word)
-            shrw = word
+        if freq_words[clean_word] >= 2:
+            if len(clean_word) < shrwl:
+                shrwl = len(clean_word)
+                shrw = word
 
     res = {
         "total_words": len(words),
-        "unique_word_count": uwq,
+        "unique_word_count": len(uniq),
         "repeated_word_count": len(repeated),
         "first_unique_word": fuw,
         "first_repeated_word": frw,
