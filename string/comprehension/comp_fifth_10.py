@@ -59,3 +59,25 @@ set_price = set(prices)
 uniq_prices = list(set_price)
 res = [price for price in sorted(uniq_prices, reverse=True)]
 print(res[1])
+
+print("6.---------------")
+groups = [
+    [3, 8, 11],
+    [14, 17, 20],
+    [23, 26, 29]
+]
+res = [item for inner_l in groups for item in inner_l if item % 2 ==0 ]
+print(res)
+
+print("7.-----------------")
+products = {
+    "laptop": 1200,
+    "phone": 800,
+    "mouse": 25,
+    "keyboard": 70,
+    "monitor": 300,
+    "tablet": 600
+} 
+special = {key:value for key,value in products.items() if value < 700}
+print(special)
+res = [key for key,value in sorted(special,reverse = True)]
