@@ -61,23 +61,75 @@ res = [price for price in sorted(uniq_prices, reverse=True)]
 print(res[1])
 
 print("6.---------------")
-groups = [
-    [3, 8, 11],
-    [14, 17, 20],
-    [23, 26, 29]
-]
-res = [item for inner_l in groups for item in inner_l if item % 2 ==0 ]
+students = {
+    "Anna": 85,
+    "John": 90,
+    "Mike": 85,
+    "Kate": 90,
+    "Tom": 70
+}
+res = [key for key,value in sorted(students.items(), key=lambda item: item[1], reverse=True)]
 print(res)
 
 print("7.-----------------")
-products = {
-    "laptop": 1200,
-    "phone": 800,
-    "mouse": 25,
-    "keyboard": 70,
-    "monitor": 300,
-    "tablet": 600
-} 
-special = {key:value for key,value in products.items() if value < 700}
-print(special)
-res = [key for key,value in sorted(special,reverse = True)]
+words = [
+    "python",
+    "java",
+    "python",
+    "c++",
+    "java",
+    "ruby",
+    "python",
+    "java"
+] 
+fq = {}
+for word in words:
+    fq[word] = fq.get(word, 0)+1
+max_fq = max(fq.values())
+print(max_fq)
+res = [key for key,value in fq.items() if value == max_fq]
+print(res)
+
+print("8.-------------------")
+students = {
+    "Anna": [85, 90, 78],
+    "John": [60, 72, 65],
+    "Mike": [95, 88, 92],
+    "Kate": [70, 75, 80],
+    "Lisa": [90, 90, 85]
+}
+st_avg = {key: sum(value)/len(value) for key,value in students.items()}
+print(st_avg)
+res = [key for key,value in st_avg.items() if value == max(st_avg.values())]
+print(res)
+
+print("9.-----------------")
+words = [
+    "cat",
+    "dog",
+    "apple",
+    "book",
+    "banana",
+    "car",
+    "orange",
+    "sun"
+]
+len_words = {}
+for word in words:
+    if len(word) in len_words:
+        len_words[len(word)].append(word)
+    else:
+        len_words[len(word)] = [word]
+print(len_words)
+sorted_items = sorted(len_words.items(), key=lambda item:len(item[1]),reverse=True)
+res = [key for key,value in sorted_items] 
+print(res)
+
+print("10.------------------")
+
+
+
+
+#special = {key:value for key,value in products.items() if value < 700}
+#print(special)
+#res = [key for key,value in sorted(special,reverse = True)]
