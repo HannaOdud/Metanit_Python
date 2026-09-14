@@ -6,8 +6,8 @@ products = {
     "keyboard": 70,
     "monitor": 300
 }
-res = [key for key,value in products.items() if max(products, key=products.get)]
-print(res[0])
+res = max(products, key=products.get)
+print(res)
 
 print("2.-------------")
 products = {
@@ -55,10 +55,9 @@ prices = [
     1200,
     600
 ]
-set_price = set(prices)
-uniq_prices = list(set_price)
-res = [price for price in sorted(uniq_prices, reverse=True)]
+res = sorted(set(prices), reverse=True)
 print(res[1])
+
 
 print("6.---------------")
 students = {
@@ -68,7 +67,7 @@ students = {
     "Kate": 90,
     "Tom": 70
 }
-res = [key for key,value in sorted(students.items(), key=lambda item: item[1], reverse=True)]
+res = [key for key,value in sorted(students.items(), key=lambda item: (-item[1], item[0]))]
 print(res)
 
 print("7.-----------------")
