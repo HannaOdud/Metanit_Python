@@ -126,10 +126,61 @@ res = [key for key,value in sorted_items]
 print(res)
 
 print("10.------------------")
+words = [
+    "Python",
+    "python",
+    "JAVA",
+    "java",
+    "python",
+    "C++",
+    "Java",
+    "c++",
+    "ruby",
+    "Ruby",
+    "go"
+]
+#clean words
+clean_words = [word.lower().strip(",.;:!& ") for word in words ]
+print(clean_words)
+
+#frequency
+freq = {}
+for word in clean_words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+#max_freq
+max_freq = max(freq.values())
+print(max_freq)
+
+#words with max_freq
+words_with_max_freq = [key for key,value in freq.items() if value == max_freq]
+print(words_with_max_freq)
+
+#sort all uniq words
+all_unique_words = list(freq.keys())
+print(all_unique_words)
+alphab_sorted = sorted(all_unique_words)
+print(alphab_sorted)
+freq_sort = sorted(alphab_sorted, key = lambda word:freq[word], reverse=True)
+print(freq_sort)
+
+#first uniq word in original dict
+first_unique_word = [key for key,value in freq.items() if value == 1]
+print(first_unique_word[0])
+
+#dict for words their value>=2
+increa_freq = {key:value for key,value in freq.items() if  value >= 2}
+print(increa_freq)
+
+# sorted(freq, len(word), alph)
+res = sorted(
+    freq.items(),
+    key=lambda item:( 
+    -item[1],
+    -len(item[0]),
+    item[0])
+)
+print(res)
 
 
-
-
-#special = {key:value for key,value in products.items() if value < 700}
-#print(special)
-#res = [key for key,value in sorted(special,reverse = True)]
