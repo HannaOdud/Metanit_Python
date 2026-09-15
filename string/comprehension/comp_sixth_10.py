@@ -172,4 +172,59 @@ sort_freq = sorted(
       )
 print(sort_freq)
 
-print
+print("10.------------------------")
+words = [
+    "Python",
+    "python",
+    "JAVA",
+    "java",
+    "C++",
+    "c++",
+    "ruby",
+    "Ruby",
+    "go",
+    "Go",
+    "javascript",
+    "JavaScript",
+    "python"
+]
+
+#clean word
+clean_words = [word.lower().strip(",.?!:; ") for word in words]
+print(clean_words)
+
+#freq dict
+freq = {}
+for word in clean_words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+#max_freq
+max_freq = max(freq.values())
+print(max_freq)
+
+#all words with max_freq
+res = [key for key,value in freq.items() if value==max_freq]
+print(res)
+
+#first_unique word
+fuw = []
+for word in clean_words:
+    if freq[word] == 1:
+        fuw.append(word)
+        break
+print(fuw)
+
+#dict for repeated word
+repeated = { key:value for key,value in freq.items() if value >= 2}
+print(repeated)
+
+#sort: freq(word)desc, len(word)acs, word alphab
+srt = sorted(freq, key=lambda word:( -freq[word], -len(word),word))
+print(srt)
+
+# list of unique words
+set_freq = {key:value for key,value in freq.items()}
+print(set_freq)
+res = sorted(set_freq, key=lambda word:(-freq[word]))
+print (res)
