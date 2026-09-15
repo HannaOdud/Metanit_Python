@@ -83,3 +83,93 @@ for num in numbers:
     else:
         checked.append(num)
 print(repeated[0])
+
+print("6.--------------------------")
+words = [
+    "Apple",
+    "banana",
+    "APPLE",
+    "orange",
+    "banana",
+    "Kiwi",
+    "ORANGE",
+    "melon"
+]
+#clean_words
+clean_words = [word.lower().strip(",.:;?! ") for word in words ]
+print(clean_words)
+
+#freq
+freq = {}
+for word in clean_words:
+    freq[word] = freq.get(word, 0)+1
+
+#first uniq
+first_uniq = []
+for word in clean_words:
+    if freq[word] == 1:
+        first_uniq.append(word)
+        break
+print(first_uniq[0])
+
+print("7.---------------------------")
+students = {
+    "Anna": [85, 90, 88],
+    "John": [72, 80, 75],
+    "Mike": [95, 91, 94],
+    "Kate": [88, 90, 89],
+    "Lisa": [95, 91, 94]
+}
+
+print("8.---------------------------")
+# Групування слів
+#1 - Згрупуй слова за їхньою довжиною.
+# - Потім знайди групу з найбільшою кількістю слів.
+words = [
+    "cat",
+    "dog",
+    "apple",
+    "sun",
+    "book",
+    "banana",
+    "car",
+    "orange",
+    "pen"
+]
+#1
+freq = {}
+for word in words:
+    if len(word) in freq:
+        freq[len(word)].append(word)
+    else:
+        freq[len(word)] = [word]
+print(freq)
+#2
+res = max(freq.values())
+print(res)
+
+print("9.-------------------------")
+words = [
+    "python",
+    "java",
+    "python",
+    "c++",
+    "java",
+    "ruby",
+    "python",
+    "java",
+    "ruby",
+    "go"
+]
+freq = {}
+for word in words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+sort_freq = sorted(
+    freq.keys(),
+      key=lambda word:(-freq[word], -len(word), word)
+      )
+print(sort_freq)
+
+print
