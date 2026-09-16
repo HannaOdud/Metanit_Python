@@ -112,7 +112,7 @@ for word in clean_words:
         break
 print(first_uniq[0])
 
-print("7.---------------------------")
+print("7.----------------------------------------------------------------------")
 students = {
     "Anna": [85, 90, 88],
     "John": [72, 80, 75],
@@ -120,6 +120,12 @@ students = {
     "Kate": [88, 90, 89],
     "Lisa": [95, 91, 94]
 }
+st_avg = {key: sum(value)/len(value) for key,value in students.items()}
+print(st_avg)
+st_ranking = sorted(st_avg.items(), key=lambda item:item[1],reverse=True)
+print(st_ranking)
+best_st = [key for key,value in st_avg.items() if max(st_avg.values())==value]   
+print(best_st)
 
 print("8.---------------------------")
 # Групування слів
@@ -148,7 +154,7 @@ print(freq)
 res = max(freq.values())
 print(res)
 
-print("9.-------------------------")
+print("9.-----------------------------------------------------------------------------------")
 words = [
     "python",
     "java",
@@ -172,7 +178,7 @@ sort_freq = sorted(
       )
 print(sort_freq)
 
-print("10.------------------------")
+print("10.---------------------------------------------------------------------------------------")
 words = [
     "Python",
     "python",
@@ -228,3 +234,17 @@ set_freq = {key:value for key,value in freq.items()}
 print(set_freq)
 res = sorted(set_freq, key=lambda word:(-freq[word]))
 print (res)
+
+#second most frequent word
+uniq_freq = sorted(set(freq.values()),reverse=True)
+print(uniq_freq)
+second_max_freq = 0
+if len(uniq_freq) > 1:
+    second_max_freq = uniq_freq[1]
+    second_max_freq_words = [key for key,value in freq.items() if value == second_max_freq]
+    print(second_max_freq_words)
+
+
+#перше слово в оригінальному списку, яке має другу найбільшу унікальну частоту.
+first_word_of_second_max_freq_words = second_max_freq_words[0]
+print(first_word_of_second_max_freq_words)
