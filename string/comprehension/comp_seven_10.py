@@ -91,3 +91,36 @@ prices = [
 unique_price = list(set(prices))
 sort_unique = sorted(unique_price)
 print(sort_unique[1])
+
+print("6.--------------------------------------------------------")
+# сортування за двома критеріями: оцінка ↓, при однаковій оцінці — ім'я ↑
+students = {
+    "Anna": 90,
+    "John": 85,
+    "Mike": 90,
+    "Kate": 75,
+    "Lisa": 85,
+    "Tom": 90
+}
+res = [key for key,value in sorted(students.items(), key=lambda w:w[1], reverse=True)]
+print(res)
+
+print("7.------------------------------------------------------")
+# Групування за першою літерою
+words = [
+    "apple",
+    "algorithm",
+    "banana",
+    "book",
+    "cat",
+    "code",
+    "python",
+    "program"
+]
+group = {}
+for word in words:
+    if word[0] in group:
+        group[word[0]].append(word)
+    else:
+        group[word[0]] = [word]
+print(group)
