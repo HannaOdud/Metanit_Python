@@ -83,6 +83,13 @@ for num in numbers:
     else:
         checked.append(num)
 print(repeated[0])
+#OR
+checked = set()
+for num in numbers:
+    if num in checked:
+        print(num)
+        break
+    checked.add(num)
 
 print("6.--------------------------")
 words = [
@@ -124,7 +131,10 @@ st_avg = {key: sum(value)/len(value) for key,value in students.items()}
 print(st_avg)
 st_ranking = sorted(st_avg.items(), key=lambda item:item[1],reverse=True)
 print(st_ranking)
-best_st = [key for key,value in st_avg.items() if max(st_avg.values())==value]   
+best_st = sorted(
+    st_avg.items(),
+    key=lambda item:(-item[1],item[0])
+)  
 print(best_st)
 
 print("8.---------------------------")
@@ -151,7 +161,7 @@ for word in words:
         freq[len(word)] = [word]
 print(freq)
 #2
-res = max(freq.values())
+res = max(freq.values(),key=len) # <== означає знайди найбільший список за його довжиною.
 print(res)
 
 print("9.-----------------------------------------------------------------------------------")
@@ -175,7 +185,7 @@ print(freq)
 sort_freq = sorted(
     freq.keys(),
       key=lambda word:(-freq[word], -len(word), word)
-      )
+      )[0][0]
 print(sort_freq)
 
 print("10.---------------------------------------------------------------------------------------")
@@ -243,6 +253,11 @@ if len(uniq_freq) > 1:
     second_max_freq = uniq_freq[1]
     second_max_freq_words = [key for key,value in freq.items() if value == second_max_freq]
     print(second_max_freq_words)
+
+for word in clean_words:
+    if freq[word] == second_max_freq:
+        print(word)
+        break
 
 
 #перше слово в оригінальному списку, яке має другу найбільшу унікальну частоту.
