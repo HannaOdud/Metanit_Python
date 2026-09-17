@@ -169,3 +169,76 @@ avg_st = {key:sum(value)/len(value) for key,value in students.items()}
 print(avg_st)
 max_avg_mark = max(avg_st.values())
 print(max_avg_mark)
+
+
+print("10.--------------------------------------------------------------------")
+words = [
+    "Python",
+    "python",
+    "JAVA",
+    "java",
+    "Java",
+    "C++",
+    "c++",
+    "ruby",
+    "Ruby",
+    "go",
+    "GO",
+    "javascript",
+    "JavaScript",
+    "python",
+    "PHP"
+]
+# step1
+clean_words = [word.lower().strip(",.:;?! ") for word in words]
+print(clean_words)
+
+#step2
+freq = {}
+for word in clean_words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+#step3
+max_val = max(freq.values())
+print(max_val)
+
+#step4
+words_with_max_val = [key for key,value in freq.items() if value == max_val]
+print(words_with_max_val)
+
+#step5 first_unique
+fuw = []
+for word in clean_words:
+    if freq[word] == 1:
+        fuw.append(word)
+        break
+print(fuw)
+
+#step6 first repeated in clean_word
+checked = set()
+for word in clean_words:
+    if word in checked:
+        print(word)
+        break
+    checked.add(word)
+
+#step7 dictionary тільки для слів із частотою >= 2.
+freq_two = {key:value for key,value in freq.items() if value >= 2}
+print(freq_two)
+
+#step8 Відсортуй усі унікальні слова за правилами:1. частота ↓ 2. довжина ↓ 3. алфавіт ↑
+unique_w = list(set(clean_words))
+print(unique_w)
+sort_uniques = sorted(unique_w, key=lambda w: (-freq[w],-len(w),w))
+print(sort_uniques)
+
+#step9
+# Знайди другу найбільшу унікальну частоту.
+unique_freq = sorted(set(freq.values()), reverse=True)
+sec_max_freq = unique_freq[1]
+sec_max_freq_word = [key for key,value in freq.items() if value == sec_max_freq ]
+print(sec_max_freq_word)
+
+#step10
+print(sec_max_freq_word[0])
