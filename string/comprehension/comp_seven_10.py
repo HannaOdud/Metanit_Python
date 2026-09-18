@@ -169,6 +169,12 @@ avg_st = {key:sum(value)/len(value) for key,value in students.items()}
 print(avg_st)
 max_avg_mark = max(avg_st.values())
 print(max_avg_mark)
+res = sorted(students.items(), key=lambda item:(
+    -sum(item[1])/len(item[1]),
+    -len(set(item[1])),
+    item[0]
+))
+print(res)
 
 
 print("10.--------------------------------------------------------------------")
@@ -208,12 +214,11 @@ words_with_max_val = [key for key,value in freq.items() if value == max_val]
 print(words_with_max_val)
 
 #step5 first_unique
-fuw = []
 for word in clean_words:
     if freq[word] == 1:
-        fuw.append(word)
+        print(word)
         break
-print(fuw)
+
 
 #step6 first repeated in clean_word
 checked = set()
@@ -240,5 +245,8 @@ sec_max_freq = unique_freq[1]
 sec_max_freq_word = [key for key,value in freq.items() if value == sec_max_freq ]
 print(sec_max_freq_word)
 
-#step10
-print(sec_max_freq_word[0])
+#step10 перший оригінальний елемент, який має другу частоту
+for word in clean_words:
+    if freq[word] == sec_max_freq:
+        print(word)
+        break
