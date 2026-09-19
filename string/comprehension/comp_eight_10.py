@@ -27,3 +27,29 @@ for word in res:
        max_len = len(word)
        max_w = word
 print(max_w) 
+
+#solution 2
+uniq_char_words = [word for word in words if len(word)==len(set(word))]
+print(uniq_char_words)
+longest = max(uniq_char_words, key=lambda word: (len(word), word))
+print(longest)
+
+
+print("3.-------------------------------------------------------")
+# Друге найбільше число, яке зустрічається більше одного разу
+numbers = [10, 5, 7, 10, 3, 7, 8, 8, 12, 12, 5]
+checked = set()
+repeated = set()
+for num in numbers:
+    if num in checked:
+        repeated.add(num)
+    checked.add(num)
+print(repeated)
+res = sorted(repeated, reverse=True)
+print(res[1])
+
+
+
+
+
+
