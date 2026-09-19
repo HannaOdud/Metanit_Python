@@ -48,6 +48,9 @@ print(repeated)
 res = sorted(repeated, reverse=True)
 print(res[1])
 
+#solution 2
+res = sorted({num for num in numbers if numbers.count(num) > 1}, reverse=True)
+print(res[1])
 
 
 
