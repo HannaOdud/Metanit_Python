@@ -52,6 +52,53 @@ print(res[1])
 res = sorted({num for num in numbers if numbers.count(num) > 1}, reverse=True)
 print(res[1])
 
+print("4.----------------------------------------------------")
+# Групування слів за довжиною + найбільша група
+words = [
+    "cat",
+    "dog",
+    "apple",
+    "book",
+    "python",
+    "code",
+    "house",
+    "sun"
+]
+# Згрупуй слова за довжиною.
+len_words = {}
+for word in words:
+    length = len(word)
+    if length in len_words:
+        len_words[length].append(word)
+    else:
+        len_words[length] = [word]
+print(len_words)
+
+# Знайди довжину, для якої є найбільше слів.
+max_list_len = 0
+for key,value in len_words.items():
+    if len(value) > max_list_len:
+        max_list_len = len(value)
+print(max_list_len)
+
+# Якщо кілька довжин мають однакову кількість слів — вибери меншу довжину.
+
+
+
+print("5.-----------------------------------------------------------")
+words = [
+    "apple",
+    "python",
+    "banana",
+    "house",
+    "developer",
+    "algorithm"
+]
+longest = [[word.append(word)] for word in words if word == max(words, key=len)]
+print(longest)
+
+
+
 
 
 
