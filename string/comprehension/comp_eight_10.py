@@ -72,7 +72,7 @@ for word in words:
         len_words[length].append(word)
     else:
         len_words[length] = [word]
-print(len_words)
+print("Згруповані слова:",len_words)
 
 # Знайди довжину, для якої є найбільше слів.
 max_list_len = 0
@@ -82,7 +82,8 @@ for key,value in len_words.items():
 print(max_list_len)
 
 # Якщо кілька довжин мають однакову кількість слів — вибери меншу довжину.
-
+res = sorted(len_words.items(), key=lambda item: (-len(item[1]), item[0]) )
+print(res[0][1])
 
 
 print("5.-----------------------------------------------------------")
@@ -94,12 +95,41 @@ words = [
     "developer",
     "algorithm"
 ]
-longest = [[word.append(word)] for word in words if word == max(words, key=len)]
-print(longest)
+longest_w = [word for word in words if len(word) == len(max(words, key=len))]
+print(longest_w)
 
+#Порахуй частоту літер у них.
+freq_char = {}
+for word in longest_w:
+    for char in word:
+        l_char = char.lower()
+        freq_char[l_char] = freq_char.get(l_char, 0)+1
+print("freq of all char in long.words: ", freq_char)
 
+#Знайди найчастішу літеру
+max_char = max(freq_char.items(), key=lambda item:(item[1],item[0]))
+print("max_char:", max_char)
 
+print("6.----------------------------------------------------------")
+# Найкращий студент із трьома критеріями
+students = {
+    "Anna": [90, 80, 90, 100],
+    "John": [95, 85, 90, 90],
+    "Mike": [100, 90, 100, 80],
+    "Kate": [90, 90, 90, 95],
+    "Lisa": [95, 90, 95, 90]
+}
+avg = {key:sum(value)/len(value) for key,value in students.items()}
+print(avg)
 
+max_avg = max(avg.values())
+print(max_avg)
 
+best_sts = {}
+for key, value in students.items():
+    if avg[key] == max_avg:
+        best_sts[key] = value
+print(best_sts)
 
-
+unq_srt = sorted(best_sts.items(), key=lambda item:(-len(set(item[1])), item[0]))
+print(unq_srt)
