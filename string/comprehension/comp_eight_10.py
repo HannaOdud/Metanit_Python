@@ -133,3 +133,77 @@ print(best_sts)
 
 unq_srt = sorted(best_sts.items(), key=lambda item:(-len(set(item[1])), item[0]))
 print(unq_srt)
+
+
+print("7.--------------------------------------------------------------")
+# Перше слово з другою за величиною частотою
+words = [
+    "python",
+    "java",
+    "python",
+    "ruby",
+    "java",
+    "c++",
+    "ruby",
+    "go",
+    "go",
+    "go"
+]
+freq = {}
+for word in words:
+    freq[word] = freq.get(word,0)+1
+print(freq)
+
+uniq = sorted(set(freq.values()), reverse=True)
+print(uniq)
+print(uniq[1])
+for word in words:
+    if freq[word] == uniq[1]:
+        print(word)
+        break
+
+
+print("8.--------------------------------------------------------")
+# другий найдорожчий у категорії
+products = {
+    "laptop": ("electronics", 1200),
+    "phone": ("electronics", 800),
+    "tablet": ("electronics", 600),
+    "keyboard": ("accessories", 70),
+    "mouse": ("accessories", 50),
+    "monitor": ("electronics", 300),
+    "headphones": ("accessories", 100)
+}
+electronics = {}
+for key,value in products.items():
+    if value[0] == "electronics":
+        electronics[key] = value[1]
+
+print(electronics)
+srt = sorted(electronics.items(), key=lambda item: -item[1] )
+print(srt[1][0])
+
+print("9.-------------------------------------------------------")
+# Найчастіша довжина слова + алфавітний tie-break
+words = [
+    "cat",
+    "dog",
+    "sun",
+    "apple",
+    "house",
+    "book",
+    "python",
+    "code",
+    "car"
+]
+
+len_dict = {}
+for word in words:
+    if len(word) in len_dict:
+        len_dict[len(word)].append(word)
+    else:
+        len_dict[len(word)] = [word]
+print(len_dict)
+
+max_len = sorted(len_dict.items(), key=lambda item: (-len(item[1]), item[0]))
+print(max_len)
