@@ -207,3 +207,84 @@ print(len_dict)
 
 max_len = sorted(len_dict.items(), key=lambda item: (-len(item[1]), item[0]))
 print(max_len)
+
+print("10.--------------------------------------------------------------")
+# Text Analyzer
+text = """Python is powerful and Python is popular.
+Java is popular, but Python is easier.
+JavaScript is powerful and JavaScript is popular.
+Ruby is simple and Ruby is elegant.
+Go is simple and fast.
+"""
+clean_text = text.lower().strip(".,!?:;")
+words = clean_text.split()
+#words = [text.lower().strip(".,!?:;") for word in text.split()]
+freq = {}
+for word in words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+#max_freq
+max_freq = max(freq.values())
+print(max_freq)
+max_freq_list = []
+for key,value in freq.items():
+    if value == max_freq:
+        max_freq_list.append(key)
+print(max_freq_list)
+srt_alf = sorted(max_freq_list)
+print(srt_alf)
+
+#first uniq word
+for word in words:
+    if freq[word] == 1:
+        print(word)
+        break
+
+#first repeated word
+for word in words:
+    if freq[word] > 1:
+        print(word)
+        break
+
+# sec_high_uniq_freq
+reversed_freq = {}
+for key,value in freq.items():
+    if value in reversed_freq:
+        reversed_freq[value].append(key)
+    else:
+        reversed_freq[value] = [key]
+print(reversed_freq)
+uniq_freq_list = []
+for key,value in reversed_freq.items():
+    if len(value) == 1:
+        uniq_freq_list.append(key)
+print(uniq_freq_list)
+sec_high_uniq_freq = sorted(uniq_freq_list, reverse=True)[1]
+print(sec_high_uniq_freq)
+
+#first word with second uniq freq
+for word in words:
+    if freq[word] == sec_high_uniq_freq:
+        print(word)
+        break
+
+#word_len
+word_len = {}
+for word in words:
+    if freq[word] > 1:
+        word_len[word] = len(word)
+print(word_len)
+
+#1.частота ↓2. довжина ↓3. алфавіт ↑
+uniq_words = []
+for word in words:
+    if freq[word] == 1:
+        uniq_words.append(word)
+print(uniq_words)
+sort_uniq_words = sorted(uniq_words, key = lambda item: (-freq[item],-len(item),item))
+print(sort_uniq_words)
+
+#max_len_uniq_word
+max_len_uniq_word = max(uniq_words, key=len)
+print(max_len_uniq_word)
