@@ -107,7 +107,7 @@ for word in longest_w:
 print("freq of all char in long.words: ", freq_char)
 
 #Знайди найчастішу літеру
-max_char = max(freq_char.items(), key=lambda item:(item[1],item[0]))
+max_char = max(freq_char.items(), key=lambda item:(-item[1],item[0]))[0]
 print("max_char:", max_char)
 
 print("6.----------------------------------------------------------")
@@ -132,7 +132,7 @@ for key, value in students.items():
 print(best_sts)
 
 unq_srt = sorted(best_sts.items(), key=lambda item:(-len(set(item[1])), item[0]))
-print(unq_srt)
+print(unq_srt[0][0])
 
 
 print("7.--------------------------------------------------------------")
@@ -216,9 +216,7 @@ JavaScript is powerful and JavaScript is popular.
 Ruby is simple and Ruby is elegant.
 Go is simple and fast.
 """
-clean_text = text.lower().strip(".,!?:;")
-words = clean_text.split()
-#words = [text.lower().strip(".,!?:;") for word in text.split()]
+words = [text.word().strip(".,!?:;") for word in text.split()]
 freq = {}
 for word in words:
     freq[word] = freq.get(word, 0)+1
@@ -242,39 +240,54 @@ for word in words:
         break
 
 #first repeated word
+checked = set()
 for word in words:
-    if freq[word] > 1:
+    if word in checked:
         print(word)
         break
+    checked.add(word)
 
 # sec_high_uniq_freq
-reversed_freq = {}
+"""reversed_freq = {}
 for key,value in freq.items():
     if value in reversed_freq:
         reversed_freq[value].append(key)
     else:
         reversed_freq[value] = [key]
 print(reversed_freq)
+
 uniq_freq_list = []
 for key,value in reversed_freq.items():
     if len(value) == 1:
         uniq_freq_list.append(key)
 print(uniq_freq_list)
 sec_high_uniq_freq = sorted(uniq_freq_list, reverse=True)[1]
-print(sec_high_uniq_freq)
+print(sec_high_uniq_freq)"""
+
+unique_freq = sorted(set(freq.values()), reverse=True)
+second_freq = unique_freq[1]
 
 #first word with second uniq freq
+unique_freq = sorted(set(freq.values()), reverse=True)
+second_freq = unique_freq[1]
+
 for word in words:
-    if freq[word] == sec_high_uniq_freq:
+    if freq[word] == second_freq:
         print(word)
         break
 
 #word_len
-word_len = {}
+"""word_len = {}
 for word in words:
     if freq[word] > 1:
         word_len[word] = len(word)
-print(word_len)
+print(word_len)"""
+
+word_len = {
+    word: len(word)
+    for word in freq
+    if freq[word] >= 2
+}
 
 #1.частота ↓2. довжина ↓3. алфавіт ↑
 uniq_words = []
