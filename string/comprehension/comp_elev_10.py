@@ -48,6 +48,7 @@ print(max_len_w)
 
 print("3.-------------------------------------------------------------")
 # Друге найбільше число серед чисел, які зустрічаються непарну кількість разів
+
 # частоту кожного числа;
 # залиш тільки числа, які зустрічаються непарну кількість разів;
 # серед них знайди друге найбільше унікальне число.
@@ -55,3 +56,13 @@ numbers = [
     10, 5, 7, 10, 5, 7, 7,
     8, 8, 8, 12, 12, 3
 ]
+freq = {}
+for num in numbers:
+    freq[num] = freq.get(num, 0)+1
+
+odd_num = [num for num in numbers if freq[num]%2==1]
+print(odd_num)
+
+uniq_num = [num for num in odd_num if set(odd_num)]
+max_uniq_num = max(uniq_num)
+print(max_uniq_num)
