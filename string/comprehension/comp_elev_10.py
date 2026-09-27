@@ -131,3 +131,127 @@ print(max_equal_freq)
 
 min_len = min(max_equal_freq)
 print(min_len)
+
+
+print("6.----------------------------------------------------------")
+# Студент із найкращим результатом
+# -найбільший середній бал;
+# -якщо середні однакові → найбільша кількість оцінок 90+;
+# -якщо і це однаково → найбільша кількість різних оцінок;
+# -якщо все однаково → ім'я за алфавітом.
+students = {
+    "Anna": [90, 80, 90, 100, 90],
+    "John": [95, 85, 90, 90, 95],
+    "Mike": [100, 100, 90, 80, 100],
+    "Kate": [90, 90, 90, 90, 90],
+    "Lisa": [95, 95, 95, 90, 90]
+}
+avg = {key:sum(value)/len(value) for key,value in students.items()}
+print(avg)
+max_mark = max(avg.values())
+print(max_mark)
+
+res = sorted(students.keys(), 
+             key = lambda item: (
+                 -(sum(students[item])/len(students[item])),
+                 -sum(1 for grade in students[item] if grade >= 90),
+                 -len(set(students[item])),
+                 item
+             ))
+print(res)
+
+print("7.---------------------------------------------------------------------")
+# Знайди найменшу частоту, яка зустрічається серед слів.
+# Потім знайди перше слово в оригінальному списку, яке має цю частоту.
+words = [
+    "python",
+    "java",
+    "python",
+    "ruby",
+    "java",
+    "c++",
+    "ruby",
+    "go",
+    "javascript",
+    "go",
+    "go"
+]
+freq = {}
+for word in words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+min_freq = min(freq.values())
+print(min_freq)
+
+for word in words:
+    if freq[word] == min_freq:
+        print(word)
+        break
+
+print("8------------------------------------------------------------------")
+# 
+# Для кожної категорії знайди другий найдорожчий товар.
+# Тут треба подумати, як зручно спочатку згрупувати товари, а потім провести аналіз кожної групи.
+products = {
+    "laptop": ("electronics", 1200),
+    "phone": ("electronics", 800),
+    "tablet": ("electronics", 600),
+    "monitor": ("electronics", 300),
+
+    "keyboard": ("accessories", 70),
+    "mouse": ("accessories", 50),
+    "hedphones": ("accessories", 100),
+    "webcam": ("accessories", 80)
+}
+
+electronics = {}
+for key, value in products.items():
+    if value[0] == "electronics":
+        electronics[key] = value[1]
+print(electronics)
+sec_el = sorted(electronics.keys(), key=lambda item: -electronics[item])[1]
+print(sec_el)
+
+accessories = {}
+for key, value in products.items():
+    if value[0] == "accessories":
+        accessories[key] = value[1]
+print(accessories)
+sec_ac = sorted(accessories.keys(), key=lambda item: -accessories[item])[1]
+print(sec_ac)
+
+res = {
+    "electronics": sec_el,
+    "accessories": sec_ac
+}
+print(res)
+
+
+print("9.--------------------------------------------------------------")
+# Знайди всі слова з максимальною частотою.
+# 1. довжина ↓
+# 2. алфавіт ↑
+# Спочатку треба визначити максимальну частоту, а вже потім застосовувати другі критерії.
+words = [
+    "cat",
+    "dog",
+    "cat",
+    "python",
+    "dog",
+    "java",
+    "python",
+    "java",
+    "code",
+    "ruby",
+    "ruby"
+]
+freq = {}
+for word in words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+max_freq = max(freq.values())
+print(max_freq)
+
+res = sorted(freq.keys(), key = lambda item:( max_freq, -len(item[1]), item))
+print(res)
