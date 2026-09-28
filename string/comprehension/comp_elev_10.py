@@ -252,6 +252,94 @@ for word in words:
 print(freq)
 max_freq = max(freq.values())
 print(max_freq)
+max_freq_word = [word for word,count in freq.items() if count == max_freq]
 
-res = sorted(freq.keys(), key = lambda item:( max_freq, -len(item[1]), item))
+res = sorted(max_freq_word, key = lambda item:(-len(item), item))
 print(res)
+
+print("10.--------------------------------------------------------")
+# Великий Text Analyzer 2.0
+text = """
+Python is powerful and Python is easy.
+Java is powerful and Java is popular.
+Python is popular and Python is fast.
+Ruby is easy and Ruby is elegant.
+JavaScript is powerful and JavaScript is popular.
+Go is fast and Go is simple.
+"""
+words = [word.lower().strip(",.!?:; ") for word in text.split()]
+#1 Побудуй frequency dictionary:
+freq = {}
+for word in words:
+    freq[word] = freq.get(word, 0)+1
+print(freq)
+
+#2 Знайди всі слова з максимальною частотою. Якщо їх декілька — відсортуй за алфавітом.
+max_freq = max(freq.values())
+print(max_freq)
+max_freq_words = []
+for key, value in freq.items():
+    if value == max_freq:
+        max_freq_words.append(key)
+print(max_freq_words)
+
+#3 Знайди перше унікальне слово в оригінальному порядку.
+for word in words:
+    if freq[word] == 1:
+        print(word)
+        break
+
+#4 Знайди перше повторене слово
+checked = set()
+for word in words:
+    if word in checked:
+        print(word)
+        break
+    checked.add(word)
+
+#5 Знайди другу найбільшу унікальну частоту.
+uniq_freqs = sorted((set(freq.values())),reverse=True)
+print(uniq_freqs)
+sec_uniq_freq = uniq_freqs[1]
+print(sec_uniq_freq)
+
+#6 Знайди перше слово в оригінальному тексті, яке має цю другу частоту.
+for word in words:
+    if freq[word] == sec_uniq_freq:
+        print(word)
+        break
+
+#7 Побудуй словник: (word → length) -тільки для слів, які зустрічаються не менше 2 разів.
+freq_non_single = {word:len(word) for word,count in freq.items() if count >= 2 }
+print(freq_non_single)
+freq_non_single2 = {word: len(word) for word in freq if freq[word] >= 2 }
+print(freq_non_single2)
+
+#8 Знайди найдовше слово, яке зустрічається рівно один раз.
+# Якщо довжина однакова — алфавітно перше.
+uniq_words = []
+for word in words:
+    if freq[word] == 1:
+        uniq_words.append(word)
+print(uniq_words)
+longest = sorted(uniq_words, key=lambda item: (-len(item), item))
+print(longest[0])
+
+#9 Відсортуй усі різні слова за:
+    #1. частота ↓
+    #2. довжина ↓
+    #3. алфавіт ↑
+
+srt = sorted(set(words), key=lambda item:(-freq[item], -len(item), item))
+print(srt)
+
+#10 Знайди перші три слова в оригінальному тексті, які:
+#мають частоту >= 2;
+#і мають довжину >= 6.
+
+res = []
+for word in words:
+    if freq[word] >=2 and len(word) >= 6 and word not in res:
+        res.append(word)
+print(res)
+print(res[0:3])
