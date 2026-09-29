@@ -251,9 +251,7 @@ for word in words:
     freq[word] = freq.get(word, 0)+1
 print(freq)
 max_freq = max(freq.values())
-print(max_freq)
 max_freq_word = [word for word,count in freq.items() if count == max_freq]
-
 res = sorted(max_freq_word, key = lambda item:(-len(item), item))
 print(res)
 
