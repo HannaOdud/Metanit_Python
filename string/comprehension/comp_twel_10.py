@@ -305,3 +305,26 @@ res = sorted(all_most_freq_words, key=lambda item:(
     item
 ))
 print(res[0])
+
+print("9. Найчастіша довжина → найчастіша перша літера ")
+# Знайди найчастішу довжину.
+#При нічиї → менша довжина.
+#Серед слів цієї довжини порахуй частоти перших літер.
+#Вибери найчастішу першу літеру.
+#При нічиї → алфавітно меншу.
+#Виведи всі слова, які відповідають цим двом умовам.
+words = [
+    "cat", "car", "code",
+    "dog", "door",
+    "apple", "ant",
+    "python", "pen"
+]
+freq_len = {}
+for word in words:
+    length = len(word)
+    if length in freq_len:
+        freq_len[length].append(word)
+    else:
+        freq_len[length] = [word]
+print(freq_len)
+
