@@ -263,3 +263,45 @@ for word in words:
         print(word)
         break
 
+print("8. Найчастіша довжина → найбільш часте слово")
+# Знайди довжину, яка зустрічається найчастіше.
+# При нічиї → менша довжина.
+# Залиш тільки слова цієї довжини.
+# Серед них знайди слово з найбільшою власною частотою.
+# При однаковій частоті → алфавітно перше.
+# Тут потрібно буде використовувати два різні види частот:
+#    -частота довжин;
+#    -частота самих слів.
+words = [
+    "cat", "dog", "cat",
+    "apple", "dog",
+    "sun", "cat",
+    "house", "sun"
+]
+freq = {}
+for word in words:
+    length = len(word)
+    if length in freq:
+        freq[length].append(word)
+    else:
+        freq[length] = [word]
+print(freq)
+srt_len = sorted(freq, key=lambda item:(
+    -len(freq[item]),
+    item
+))
+most_length = srt_len[0]
+print(most_length)
+all_most_freq_words = [word for word in words if len(word)==most_length]
+print(all_most_freq_words)
+
+word_freq = {}
+for word in words:
+    word_freq[word] = word_freq.get(word, 0) + 1
+print(word_freq)   
+
+res = sorted(all_most_freq_words, key=lambda item:(
+    -word_freq[item],
+    item
+))
+print(res[0])
