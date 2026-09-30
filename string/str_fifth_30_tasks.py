@@ -134,13 +134,10 @@ print("13.----------------------------------------------------")
 def count_vow3(text):
     words = text.split()
     v = ["a","e","i","o","u"]
-    count_start = 0
-    count_end = 0
     res = []
     for word in words:
        if word[0].lower() in v and word[-1].lower() in v:
-           res.append(word)
-           
+           res.append(word)       
     return res
 print(count_vow3("level2 apple top Anna 3 radaaar test"))
 
