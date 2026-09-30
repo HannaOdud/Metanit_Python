@@ -94,3 +94,28 @@ print(all_words)
 
 first_alph_word = sorted(all_words, key=lambda word: (-len(word),word))
 print(first_alph_word[0])
+
+print("4.Найчастіша остання літера → алфавітно перше слово ")
+# Знайди останню літеру, яка зустрічається у найбільшої кількості слів.
+# Якщо нічия → вибери алфавітно меншу літеру.
+# Відбери слова, які закінчуються на цю літеру.
+# Серед них знайди перше слово за алфавітом.
+group = {}
+for word in words:
+    last_char = word[-1]
+    if last_char in group:
+        group[last_char].append(word)
+    else:
+        group[last_char] = [word]
+print(group)
+srt_last_chars = sorted(group, key=lambda item:(
+    -len(group[item]),
+    item
+    ))
+print(srt_last_chars)
+last_char = srt_last_chars[0]
+print(last_char)
+all_words_with_last_char = [word for word in words if word[-1]==last_char]
+print(all_words_with_last_char)
+res = sorted(all_words_with_last_char)
+print(res[0])
