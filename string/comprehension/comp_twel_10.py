@@ -230,4 +230,36 @@ res = sorted(all_most_freq_words, key=lambda item: (
 ))
 print("з найбільшою кількістю унікальних символів:", res[0] )
 
-print("7. ")
+print("7. Найчастіша довжина → перше слово в оригінальному порядку")
+#Знайди найчастішу довжину.
+#При нічиї → менша довжина.
+#Відбери слова цієї довжини.
+#Не сортуй їх.
+#Виведи перше таке слово, яке зустрічається в оригінальному списку.
+words = [
+    "python", "cat", "dog",
+    "apple", "sun", "book",
+    "house", "car", "pen"
+]
+freq = {}
+for word in words:
+    length = len(word)
+    if length in freq:
+        freq[length].append(word)
+    else:
+        freq[length] = [word]
+print(freq)
+srt_len = sorted(freq, key=lambda item:(
+    -len(freq[item]),
+    item
+))
+most_length = srt_len[0]
+print(most_length)
+
+all_most_freq_len = [word for word in words if len(word)==most_length]
+print(all_most_freq_len)
+for word in words:
+    if word in all_most_freq_len:
+        print(word)
+        break
+
