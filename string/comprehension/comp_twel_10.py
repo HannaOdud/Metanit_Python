@@ -119,3 +119,60 @@ all_words_with_last_char = [word for word in words if word[-1]==last_char]
 print(all_words_with_last_char)
 res = sorted(all_words_with_last_char)
 print(res[0])
+
+
+print("5. Найчастіша довжина → найдовше слово?")
+#довжину, яка зустрічається найчастіше;
+#якщо нічия → меншу довжину;
+#усі слова цієї довжини;
+#слово, яке має найбільшу кількість голосних літер;
+#якщо нічия → алфавітно перше.
+#Тут уже буде три рівні аналізу.
+words = [
+    "cat", "dog", "sun",
+    "apple", "house",
+    "book", "code",
+    "python", "java"
+]
+freq = {}
+for word in words:
+    length = len(word)
+    if length in freq:
+        freq[length].append(word)
+    else:
+        freq[length] = [word]
+print(freq)
+srt_length = sorted(freq, key=lambda item: (
+    -len(freq[item]),
+    #len(item)
+    item
+))
+print(srt_length)
+most_freq_len = srt_length[0]
+print(most_freq_len)
+
+all_most_freq_words = [word for word in words if len(word)==most_freq_len]
+print(all_most_freq_words)
+
+vows = ["a","e","i","o","u"]
+max_vow = float("-inf")
+max_vow_word = ""
+for word in all_most_freq_words:
+    count = 0
+    for char in word:
+        if char in vows:
+            count += 1
+    if max_vow < count:
+        max_vow = count
+        max_vow_word = word
+print(max_vow_word)
+all_vows_words = []
+for word in all_most_freq_words:
+    count = 0
+    for char in word:
+        if char in vows:
+            count += 1
+    if count == max_vow:
+        all_vows_words.append(word)
+res = sorted(all_vows_words)
+print(res[0])
