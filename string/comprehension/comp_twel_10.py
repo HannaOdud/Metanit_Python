@@ -176,3 +176,58 @@ for word in all_most_freq_words:
         all_vows_words.append(word)
 res = sorted(all_vows_words)
 print(res[0])
+
+
+print("6.Найчастіша довжина → слово з найбільшою кількістю унікальних символів ")
+#Знайди найчастішу довжину.
+#При нічиї → менша довжина.
+#Відбери слова цієї довжини.
+#Знайди слово з найбільшою кількістю унікальних символів.
+#Якщо нічия → алфавітно перше.
+
+words = [
+    "apple", "house", "plant",
+    "dog", "book", "cat",
+    "python", "java", "code"
+]
+freq = {}
+for word in words:
+    length = len(word)
+    if length in freq:
+        freq[length].append(word)
+    else:
+        freq[length] = [word]
+print(freq)
+srt_length = sorted(freq, key=lambda item: (
+    -len(freq[item]),
+    #len(item)
+    item
+))
+print(srt_length)
+most_freq_len = srt_length[0]
+print(most_freq_len)
+
+all_most_freq_words = [word for word in words if len(word)==most_freq_len]
+print(all_most_freq_words)
+
+
+max_uniq_word = ""
+max_uniq_len = 0
+for word in all_most_freq_words:
+    if len(set(word)) > max_uniq_len:
+        max_uniq_len = len(set(word))
+        max_uniq_word = word
+print(max_uniq_word)
+all_uniq_words = []
+for word in words:
+    if len(set(word)) == max_uniq_len:
+        all_uniq_words.append(word)
+print("з найбільшою кількістю унікальних символів: ", all_uniq_words[0])
+    #OR
+res = sorted(all_most_freq_words, key=lambda item: (
+    -len(set(item)),
+    item
+))
+print("з найбільшою кількістю унікальних символів:", res[0] )
+
+print("7. ")
