@@ -57,3 +57,40 @@ print(words_with_srt_len)
 
 longest = max(words_with_srt_len, key=len)
 print(longest)
+
+
+print("3. Найчастіша перша літера → найдовше слово ")
+#Згрупуй слова за першою літерою.
+#Знайди літеру, яка має найбільшу групу.
+#Якщо кілька груп однакового розміру → менша літера.
+#Серед слів цієї групи знайди найдовше слово.
+#Якщо довжина однакова → алфавітно перше. 
+
+words = [
+    "apple", "animal", "ant",
+    "book", "banana",
+    "cat", "car", "code",
+    "python"
+]
+group = {}
+for word in words:
+    first_letter = word[0]
+    if first_letter in group:
+        group[first_letter].append(word)
+    else:
+        group[first_letter]=[word]
+print(group)
+
+srt = sorted(group.keys(), key=lambda item:(
+    -len(group[item]), 
+    item
+))
+print(srt)
+srt_char = srt[0]
+print(srt_char)
+
+all_words = [word for word in words if word[0] == srt_char]
+print(all_words)
+
+first_alph_word = sorted(all_words, key=lambda word: (-len(word),word))
+print(first_alph_word[0])
