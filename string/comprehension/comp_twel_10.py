@@ -1,0 +1,59 @@
+print("1. Найчастіша довжина → перше слово")
+#Знайди довжину слова, яка зустрічається найчастіше.
+#Якщо кілька довжин мають однакову частоту → вибери меншу довжину.
+#Після цього серед слів цієї довжини знайди перше слово за алфавітом.
+words = [
+    "sun", "apple", "dog", "house",
+    "cat", "book", "car", "python", "pen"
+]
+freq = {}
+for word in words:
+    freq[len(word)] = freq.get(len(word), 0)+1
+
+srt_len = sorted(freq, key=lambda item:(
+    -freq[item],
+    item
+))
+most_freq_len = srt_len[0]
+
+words_with_most_freq_len = []
+for word in words:
+    if len(word)== most_freq_len:
+        words_with_most_freq_len.append(word)
+print(words_with_most_freq_len)
+
+words_with_most_freq_len2 = [word for word in words if len(word) == most_freq_len]
+print(words_with_most_freq_len2)
+
+first_alf = sorted(words_with_most_freq_len2)[0]
+print(first_alf)
+
+print("2.Найчастіша кількість літер → найдовше слово")
+# Знайди довжину, яка зустрічається найчастіше.
+# Якщо нічия → менша довжина.
+# Серед слів цієї довжини знайди найдовше.
+words = [
+    "red", "blue", "green", "cat",
+    "dog", "house", "tree", "apple",
+    "sun", "car"
+]
+freq = {}
+for word in words:
+    if len(word) in freq:
+        freq[len(word)].append(word)
+    else:
+        freq[len(word)] = [word]
+print(freq)
+
+srt = sorted(freq.keys(), key=lambda item: (
+    -len(freq[item]),
+    item)
+)
+print(srt)
+most_srt = srt[0]
+print(most_srt)
+words_with_srt_len = [word for word in words if len(word) == most_srt]
+print(words_with_srt_len)
+
+longest = max(words_with_srt_len, key=len)
+print(longest)
