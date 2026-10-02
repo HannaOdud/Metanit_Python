@@ -319,6 +319,7 @@ words = [
     "apple", "ant",
     "python", "pen"
 ]
+# 1. Групуємо слова за довжиною
 freq_len = {}
 for word in words:
     length = len(word)
@@ -328,3 +329,31 @@ for word in words:
         freq_len[length] = [word]
 print(freq_len)
 
+# 2. Шукаємо найчастішу довжину (при нічиї -> менша довжина)
+sort_length = sorted(freq_len, key=lambda item: (-len(freq_len[item]), item)) 
+print("All lengths: ", sort_length)
+most_length = sort_length[0]
+print("Most freq len: ", most_length)
+
+# 3. Беремо слова найчастішої довжини
+most_length_words = [word for word in words if len(word) == most_length ]
+print(most_length_words)
+
+# 4. Рахуємо частоту перших літер у слів цієї довжини
+first_char_freq = {}
+for word in most_length_words:
+    f_char = word[0].lower()
+    if f_char in first_char_freq:
+        first_char_freq[f_char].append(word)
+    else:
+        first_char_freq[f_char] = [word]
+print("Frequency of the first letter in most freq length: ",first_char_freq )
+
+# 5. Шукаємо найчастішу першу літеру (при нічиї -> алфавітно менша)
+most_freq_first_char = sorted(first_char_freq, key=lambda item: (-len(first_char_freq[item]),item))
+target_char = most_freq_first_char[0]
+print("most_freq_first_char: ",most_freq_first_char[0])
+
+# 6. Вибираємо слова, що відповідають ДВОМ умовам (довжина + перша літера)
+all_word_with_most_freq_char = [word for word in words if len(word) == most_length and word[0].lower()== target_char]
+print("all_word_with_most_freq_char", all_word_with_most_freq_char)
