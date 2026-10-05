@@ -357,3 +357,45 @@ print("most_freq_first_char: ",most_freq_first_char[0])
 # 6. Вибираємо слова, що відповідають ДВОМ умовам (довжина + перша літера)
 all_word_with_most_freq_char = [word for word in words if len(word) == most_length and word[0].lower()== target_char]
 print("all_word_with_most_freq_char", all_word_with_most_freq_char)
+
+print("10.--Комбінована---")
+words = [
+    "cat", "dog", "apple", "code",
+    "car", "house", "sun", "book",
+    "python", "java", "pen", "table"
+]
+#Порахувати, скільки слів кожної довжини.
+#Знайти найчастішу довжину.
+#При нічиї → вибрати меншу довжину.
+#Відібрати слова цієї довжини.
+#Серед них знайти слово з найбільшою кількістю унікальних символів.
+#Якщо таких слів декілька → вибрати алфавітно перше.
+#Вивести тільки це слово.
+
+
+#1 Порахувати, скільки слів кожної довжини.
+freq = {}
+for word in words:
+    length = len(word.lower())
+    freq[length] = freq.get(length,0)+1
+print(freq)
+#2 Знайти найчастішу довжину.
+# При нічиї → вибрати меншу довжину.
+
+sort_length = sorted(freq.keys(), key=lambda item:(
+    -freq[item], item
+))
+most_freq_len = sort_length[0]
+print(most_freq_len)
+
+# 4. Відібрати слова цієї довжини.
+all_most_freq_words = [word for word in words if len(word) == most_freq_len ]
+print(all_most_freq_words)
+
+#5. Серед них знайти слово з найбільшою кількістю унікальних символів.
+  
+srt_unique = sorted(all_most_freq_words, key=lambda word: (
+    (-len(set(word.lower())),word)
+))
+most_unique_word = srt_unique[0]
+print(most_unique_word)
