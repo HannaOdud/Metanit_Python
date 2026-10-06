@@ -39,5 +39,38 @@ res = sorted(target_words, key=lambda word:(
     -scores[word],
     word
 ))
-
 print(res[0])
+
+print("2.------Найчастіша перша літера → найбільша кількість унікальних символів")
+
+#Знайди літеру, з якої починається найбільша кількість слів.
+#Якщо таких літер декілька — вибери алфавітно меншу.
+#Серед слів, які починаються з цієї літери, знайди слово з найбільшою кількістю унікальних символів.
+#Якщо нічия — алфавітно перше слово.
+
+words = [
+    "apple", "animal", "ant",
+    "area", "book", "banana",
+    "car", "code", "cat",
+    "python"
+]
+char_freq = {}
+for word in words:
+    first_char = word[0]
+    char_freq[first_char] = char_freq.get(first_char,0)+1
+print(char_freq)
+
+srt = sorted(char_freq.keys(), key=lambda item:(
+    -char_freq[item],item
+))
+print("Sorted char",srt)
+most_char = srt[0]
+print("Most char: ",most_char)
+target_words = [word for word in words if word[0] == most_char ]
+print("target words", target_words)
+srt2 = sorted(target_words, key=lambda word: (
+    -len(set(word)), word
+)) 
+print("sorted2",srt2)
+res = srt2[0]
+print(res)
