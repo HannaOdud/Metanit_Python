@@ -102,3 +102,51 @@ print("Усі числа з максимальною частотою: ",all_mos
 srt2 = sorted(all_most_nums, key=lambda item:(numbers.index(item)))
 first_in_numbers = srt2[0]
 print("Перше в оригінальному списку",first_in_numbers)
+
+print("4.---Найчастіша довжина → найчастіше слово → алфавітний tie-break")
+words = [
+    "cat", "dog", "cat",
+    "sun", "dog", "car",
+    "apple", "dog",
+    "sun", "car",
+    "cat"
+]
+#Знайди найчастішу довжину слова.
+#Якщо нічия — вибери меншу довжину.
+#Залиш тільки слова цієї довжини.
+#Серед них знайди найчастіше слово.
+#Якщо кілька слів мають однакову частоту — вибери алфавітно перше.
+len_freq = {}
+for word in words:
+    length = len(word)
+    len_freq[length] = len_freq.get(length, 0)+1
+print("Частоти довжин слова: ",len_freq)
+
+srt = sorted(len_freq.keys(), key=lambda item: (
+    -len_freq[item], item
+))
+most_freq = srt[0]
+print("Найчастіша довжина слова: ",most_freq)
+
+all_most_freq_len_words = [word for word in words if len(word) == most_freq]
+print("Всі слова з цієї довжини",all_most_freq_len_words)
+
+freq_word ={}
+for word in words:
+    freq_word[word] = freq_word.get(word, 0)+1
+print("Частоти слів: ",freq_word)
+
+srt2 = sorted(freq_word.keys(), key=lambda item:(
+    -freq_word[item], item
+))
+most_freq_len = srt[0]
+print("Найчастіша довжина слова: ",most_freq_len)
+all_words = [key for key,value in freq_word.items() if most_freq_len== value]
+
+print("All words: ",all_words)
+
+srt2 = sorted(all_words, key=lambda item: (
+    -freq_word[item], item
+))
+res = srt2[0]
+print(res)
