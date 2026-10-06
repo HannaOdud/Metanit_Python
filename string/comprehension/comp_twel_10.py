@@ -219,7 +219,7 @@ for word in all_most_freq_words:
         max_uniq_word = word
 print(max_uniq_word)
 all_uniq_words = []
-for word in words:
+for word in all_most_freq_words:
     if len(set(word)) == max_uniq_len:
         all_uniq_words.append(word)
 print("з найбільшою кількістю унікальних символів: ", all_uniq_words[0])
