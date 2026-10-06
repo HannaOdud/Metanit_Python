@@ -150,3 +150,34 @@ srt2 = sorted(all_words, key=lambda item: (
 ))
 res = srt2[0]
 print(res)
+
+print("5.----Групування за довжиною → найбільша група → середній бал")
+words = [
+    "cat", "dog", "sun",
+    "apple", "house",
+    "book", "tree",
+    "python", "java"
+]
+
+scores = {
+    "cat": 70,
+    "dog": 90,
+    "sun": 80,
+    "apple": 100,
+    "house": 60,
+    "book": 80,
+    "tree": 90,
+    "python": 70,
+    "java": 100
+}
+# Для кожної довжини знайди середній бал слів цієї довжини.
+# потім: 
+# Знайди довжину, у якої найбільший середній бал.
+# Якщо середні бали однакові — вибери меншу довжину.
+# Виведи всі слова цієї довжини в алфавітному порядку
+length_scores = {}
+for word in words:
+    length = len(word)
+    score = scores[word]
+    length_scores[length] = length_scores.get(length, [])+ [score]
+print("Групування балів: ",length_scores)
