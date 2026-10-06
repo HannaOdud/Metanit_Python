@@ -42,7 +42,6 @@ res = sorted(target_words, key=lambda word:(
 print(res[0])
 
 print("2.------Найчастіша перша літера → найбільша кількість унікальних символів")
-
 #Знайди літеру, з якої починається найбільша кількість слів.
 #Якщо таких літер декілька — вибери алфавітно меншу.
 #Серед слів, які починаються з цієї літери, знайди слово з найбільшою кількістю унікальних символів.
@@ -74,3 +73,32 @@ srt2 = sorted(target_words, key=lambda word: (
 print("sorted2",srt2)
 res = srt2[0]
 print(res)
+
+print("3.Найчастіше число → перше число, яке зустрічається повторно ")
+# Знайди число, яке зустрічається найчастіше.
+# Якщо кілька чисел мають однакову максимальну частоту — вибери менше число.
+# Після цього серед усіх чисел, які зустрічаються стільки ж разів, скільки й 
+# максимальна частота, знайди те, яке першим з'являється в оригінальному списку.
+numbers = [
+    5, 2, 7, 5, 3,
+    2, 8, 2, 7, 9,
+    5, 4, 7
+]
+num_freq = {}
+for num in numbers:
+    num_freq[num] = num_freq.get(num,0)+1
+print("Частоти num",num_freq)
+
+srt = sorted(num_freq.keys(), key=lambda item:(
+    -num_freq[item], item
+))
+print("ВІдсортовані за частотою та значенням - ",srt)
+most_freq_num_value = max(num_freq.values())
+print("Максимальна частота: ",most_freq_num_value)
+
+all_most_nums = [key for key,value in num_freq.items() if most_freq_num_value == value ]
+print("Усі числа з максимальною частотою: ",all_most_nums)
+
+srt2 = sorted(all_most_nums, key=lambda item:(numbers.index(item)))
+first_in_numbers = srt2[0]
+print("Перше в оригінальному списку",first_in_numbers)
