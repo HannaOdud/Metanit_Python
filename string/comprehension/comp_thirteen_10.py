@@ -181,3 +181,20 @@ for word in words:
     score = scores[word]
     length_scores[length] = length_scores.get(length, [])+ [score]
 print("Групування балів: ",length_scores)
+
+avg_scores = { length:sum(scores)/len(scores) for length, scores in length_scores.items()}
+print("Avg scores: ",avg_scores)
+
+srt = sorted(avg_scores.keys(), key=lambda item: (
+    -avg_scores[item], item
+))
+print("Sorting ", srt)
+
+len_with_max_avg_scores = srt[0]
+print("len_with_max_avg_scores: ",len_with_max_avg_scores)
+
+all_words = [word for word in words if len(word) == len_with_max_avg_scores ]
+print(all_words)
+
+res = sorted(all_words)
+print(res)
