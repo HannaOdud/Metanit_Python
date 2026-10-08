@@ -282,3 +282,16 @@ numbers = [
 ]
 # Знайди друге найбільше різне число, яке зустрічається мінімум двічі.
 # Результатом має бути друге найбільше число серед чисел, які повторюються.
+freq = {}
+for num in numbers:
+    freq[num] = freq.get(num, 0)+1
+print("Freq: ", freq)
+
+evens = [key for key,value in freq.items() if value >=2]
+print("All even num: ", evens)
+
+sort = sorted(evens, reverse=True)
+second = sort[1]
+
+print("Sorted evens num: ",sort)
+print("Second:", second)
