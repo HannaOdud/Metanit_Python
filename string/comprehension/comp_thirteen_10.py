@@ -295,3 +295,46 @@ second = sort[1]
 
 print("Sorted evens num: ",sort)
 print("Second:", second)
+
+
+print("9.------------------------------------------------------")
+# Найкращий студент — 4 критерії
+students = {
+    "Anna": [90, 80, 90, 100],
+    "John": [95, 85, 90, 80],
+    "Mike": [90, 90, 90, 90],
+    "Kate": [100, 70, 100, 80],
+    "Lisa": [90, 90, 80, 90]
+}
+# Для кожного студента знайди:
+#середній бал;
+#кількість оцінок 90+;
+#кількість різних оцінок.
+#Визнач найкращого студента за такими критеріями в такому порядку:
+#більший середній бал;
+#якщо нічия — більше оцінок 90+;
+#якщо нічия — більше різних оцінок;
+#якщо все ще нічия — ім'я алфавітно перше.
+#Виведи ім'я переможця.
+
+avg = {key:sum(value)/len(value) for key,value in students.items()}
+print(avg)
+count_high_marks = {key:sum(1 for mark in value if mark >= 90) for key,value in students.items()}
+count_high_marks2 = {
+    key: len([mark for mark in value if mark >= 90]) 
+    for key, value in students.items()}
+
+print(count_high_marks)
+print(count_high_marks2)
+uniq_mark = { key: len(set(value)) for key,value in students.items()}
+print(uniq_mark)
+
+srt = sorted(students.keys(), key=lambda item:(
+    -avg[item],
+    -count_high_marks[item],
+    -uniq_mark[item],
+    item
+
+))
+res = srt[0]
+print("ім'я переможця: ", res)
