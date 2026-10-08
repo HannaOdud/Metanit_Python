@@ -338,3 +338,50 @@ srt = sorted(students.keys(), key=lambda item:(
 ))
 res = srt[0]
 print("ім'я переможця: ", res)
+
+
+print("10.----------------------------------------------------")
+# Велика комбінована задача
+words = [
+    "cat", "car", "code",
+    "dog", "door",
+    "apple", "ant", "area",
+    "python", "pen",
+    "book", "boat"
+]
+#Потрібно знайти одне слово за таким алгоритмом:
+#Знайди найчастішу довжину.
+#При нічиїй — менша довжина.
+#Залиш слова цієї довжини.
+#Серед них знайди найчастішу першу літеру.
+#При нічиїй — алфавітно менша літера.
+#Залиш слова з цією першою літерою.
+
+#Серед них знайди слово з найбільшою кількістю унікальних символів.
+#При нічиїй — слово з найбільшою кількістю голосних.
+#При повній нічиї — алфавітно перше слово.
+#Виведи тільки фінальне слово.
+len_freq = {}
+for word in words:
+    length = len(word)
+    len_freq[length] = len_freq.get(length, 0)+1
+print("Len_freq: ",len_freq)
+srt = sorted(len_freq.keys(), key=lambda item: (
+    -len_freq[item], item
+))
+print("sorted len freq", srt)
+most_freq_len = srt[0]
+print("Most freq len: ",most_freq_len)
+all_words = [word for word in words if len(word)==most_freq_len]
+print("All words with most freq len: ",all_words)
+
+char_freq = {}
+for word in all_words:
+    first = word[0]
+    char_freq[first] = char_freq.get(first, 0)+1
+print("First letter freq: ",char_freq)
+srt2 = sorted(char_freq.keys(), key=lambda item:(-char_freq[item],item))
+most_freq_last_char = srt2[0]
+print(most_freq_last_char)
+target_words = [word for word in all_words if word[0] == most_freq_last_char]
+print("All words with most freq last char: ", target_words)
