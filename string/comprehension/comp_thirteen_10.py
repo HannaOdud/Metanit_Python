@@ -230,3 +230,45 @@ print(most_freq_len)
 all_words = [word for word in words if len(word)==most_freq_len]
 print("All words with most freq len: ",all_words)
 
+print("7.--Найчастіша довжина → найчастіша остання літера → найдовше слово- ")
+words = [
+    "cat", "boat", "dog",
+    "apple", "house", "car",
+    "table", "code", "phone",
+    "tree", "book"
+]
+# Знайди найчастішу довжину.
+# При нічиїй вибери меншу довжину.
+# Залиш слова цієї довжини.
+# Серед них знайди найчастішу останню літеру.
+# При нічиїй вибери алфавітно меншу літеру.
+# Залиш слова з цією останньою літерою.
+# Вибери найдовше слово.
+# Якщо довжина однакова — алфавітно перше.
+len_freq = {}
+for word in words:
+    length = len(word)
+    len_freq[length] = len_freq.get(length, 0)+1
+print("Len_freq",len_freq)
+srt = sorted(len_freq.keys(), key=lambda item: (
+    -len_freq[item], item
+))
+print("sorted len freq", srt)
+most_freq_len = srt[0]
+print(most_freq_len)
+all_words = [word for word in words if len(word)==most_freq_len]
+print("All words with most freq len: ",all_words)
+
+char_freq = {}
+for word in all_words:
+    last = word[-1]
+    char_freq[last] = char_freq.get(last, 0)+1
+print("Last char freq: ",char_freq)
+srt2 = sorted(char_freq.keys(), key=lambda item:(-char_freq[item],item))
+most_freq_last_char = srt2[0]
+print(most_freq_last_char)
+target_words = [word for word in all_words if word[-1] == most_freq_last_char]
+print("All words with most freq last char: ", target_words)
+
+res = sorted(target_words, key=lambda item: (-len(item), item))
+print("Result:",res[0]) 
