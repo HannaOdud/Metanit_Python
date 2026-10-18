@@ -380,8 +380,18 @@ for word in all_words:
     first = word[0]
     char_freq[first] = char_freq.get(first, 0)+1
 print("First letter freq: ",char_freq)
+
 srt2 = sorted(char_freq.keys(), key=lambda item:(-char_freq[item],item))
 most_freq_last_char = srt2[0]
 print(most_freq_last_char)
+
 target_words = [word for word in all_words if word[0] == most_freq_last_char]
 print("All words with most freq last char: ", target_words)
+
+vowels = "aeiou"
+res = sorted(target_words, key=lambda word:(
+    -len(set(word)),
+    -sum(1 for char in word.lower() if char in vowels),
+    word
+))
+print("Final word:", res[0])
