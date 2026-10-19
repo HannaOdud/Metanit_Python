@@ -132,7 +132,7 @@ all_most_freq_len_words = [word for word in words if len(word) == most_freq]
 print("Всі слова з цієї довжини",all_most_freq_len_words)
 
 freq_word ={}
-for word in words:
+for word in all_most_freq_len_words:
     freq_word[word] = freq_word.get(word, 0)+1
 print("Частоти слів: ",freq_word)
 
@@ -149,9 +149,10 @@ srt2 = sorted(all_words, key=lambda item: (
     -freq_word[item], item
 ))
 res = srt2[0]
-print(res)
+print("Result to ex.4: ",res)
 
-print("5.----Групування за довжиною → найбільша група → середній бал")
+print("5.----------------------------------------------"
+"--Групування за довжиною → найбільша група → середній бал")
 words = [
     "cat", "dog", "sun",
     "apple", "house",
@@ -200,7 +201,8 @@ res = sorted(all_words)
 print(res)
 
 
-print("6.Найчастіша довжина → найбільша сума унікальних символів ")
+print("6.----------------------------------------" \
+"Найчастіша довжина → найбільша сума унікальних символів ")
 words = [
     "apple", "house", "plant",
     "dog", "book", "cat",
@@ -225,10 +227,27 @@ srt = sorted(len_freq.keys(), key=lambda item: (
 ))
 print("sorted len freq", srt)
 most_freq_len = srt[0]
-print(most_freq_len)
+print("Most freq len: ",most_freq_len)
 
 all_words = [word for word in words if len(word)==most_freq_len]
 print("All words with most freq len: ",all_words)
+
+all_unique_words_len = [word for word in all_words if len(set(word))==len(word)]
+print("All unique words: ",all_unique_words_len)
+
+srt2 = sorted(all_words, key=lambda item:(
+    -len(set(item)),
+    item
+))
+res = srt2[0]
+print("Result: ", res)
+
+
+
+
+
+
+
 
 print("7.--Найчастіша довжина → найчастіша остання літера → найдовше слово- ")
 words = [
