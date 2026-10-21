@@ -5,3 +5,15 @@ print("1.----------------------------------------------------------------")
 # Підказка: спочатку побудуй словник частот.
 
 numbers = [4, 7, 4, 2, 7, 4, 9, 7, 2, 5, 5, 5]
+freq = {}
+for num in numbers:
+    freq[num] = freq.get(num, 0)+1
+
+srt = sorted(freq.keys(), key=lambda item:(
+    -freq[item],item
+) )
+
+most_freq = srt[0]
+print(most_freq)
+
+print("2.------------------------------------------------------------------")
