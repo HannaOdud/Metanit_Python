@@ -43,6 +43,16 @@ words = [
     "cat", "dog", "cat", "bird", "dog",
     "cat", "fish", "dog", "bird", "fox"
 ]
+freq = {}
+for word in words:
+    freq[word] = freq.get(word,0)+1
+print(freq)   
+uniq_freq = sorted(set(freq.values()), reverse=True)
+res_word = [word for word in freq.keys() if freq[word] == uniq_freq[1]]
+res = sorted(res_word)[0]
+print(res)
+
+
 
 print("4.------------------------------------------------------------------")
 #Найпопулярніша довжина слова
