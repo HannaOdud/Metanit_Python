@@ -65,6 +65,19 @@ words = [
     "ant", "dog", "cat", "book", "tree",
     "fish", "sun", "moon", "car", "pen"
 ]
+freq_len = {}
+for word in words:
+    length = len(word)
+    freq_len[length] = freq_len.get(length, 0)+1
+print(freq_len) 
+
+srt = sorted(freq_len.keys(), key=lambda item:(-freq_len[item], item))
+max_freq_len = srt[0]
+max_freq_words = [word for word in words if len(word)==max_freq_len]
+srt_max_freq_words = sorted(max_freq_words)
+print(srt_max_freq_words)
+
+
 
 print("5.---------------------------------------------------------------------")
 # Групування за кількістю унікальних символів
@@ -84,6 +97,17 @@ words = [
 #ключ — кількість унікальних символів;
 #значення — список відповідних слів;
 #слова всередині кожної групи відсортуй за алфавітом.
+freq_uniq_len = {}
+for word in words:
+    uniq = len(set(word)) 
+    if uniq in freq_uniq_len:
+        freq_uniq_len[uniq].append(word)
+    else:
+        freq_uniq_len[uniq] = [word]
+print(freq_uniq_len)
+for uniq in freq_uniq_len:
+    freq_uniq_len[uniq].sort()
+print(freq_uniq_len)
 
 
 print("6.------------------------------------------------------------------")
