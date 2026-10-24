@@ -97,17 +97,6 @@ words = [
 #ключ — кількість унікальних символів;
 #значення — список відповідних слів;
 #слова всередині кожної групи відсортуй за алфавітом.
-freq_uniq_len = {}
-for word in words:
-    uniq = len(set(word)) 
-    if uniq in freq_uniq_len:
-        freq_uniq_len[uniq].append(word)
-    else:
-        freq_uniq_len[uniq] = [word]
-print(freq_uniq_len)
-for uniq in freq_uniq_len:
-    freq_uniq_len[uniq].sort()
-print(freq_uniq_len)
 
 
 print("6.------------------------------------------------------------------")
