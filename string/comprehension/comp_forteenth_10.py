@@ -179,7 +179,14 @@ numbers = [
 #Знайди друге найбільше різне число, яке зустрічається щонайменше двічі.
 #Наприклад, якщо числа 30, 25 і 20 повторюються, результатом буде 25.
 #Якщо таких чисел менше двох, виведи відповідне повідомлення
-
+freq = {}
+for num in numbers:
+    freq[num] = freq.get(num, 0)+1
+all_words = [num for num in numbers if freq[num] >= 2]
+uniq_all_w = list(set(all_words))
+print(uniq_all_w)
+res = sorted(uniq_all_w, reverse=True)[1]
+print(res)
 
 
 print("9.-------------------------------------------------------------------")
