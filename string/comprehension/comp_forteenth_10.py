@@ -152,6 +152,21 @@ words = [
 #Знайди найчастішу останню літеру.
 #Якщо частоти однакові, вибери літеру, яка раніше за алфавітом.
 #Виведи всі слова, що закінчуються цією літерою, в алфавітному порядку.
+freq = {}
+for word in words:
+    last = word[-1]
+    freq[last] = freq.get(last, 0)+1
+print(freq)
+
+srt = sorted(freq.keys(), key=lambda item:(
+    -freq[item],
+    item
+))
+print(srt)
+print(srt[0])
+all_words = [word for word in words if word[-1]==srt[0]]
+res = sorted(all_words)
+print(res)
 
 
 
