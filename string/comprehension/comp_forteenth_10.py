@@ -125,6 +125,21 @@ students = {
 #Якщо знову нічия — найбільша кількість різних оцінок.
 #Якщо все ще нічия — ім’я за алфавітом.
 #Виведи ім’я переможця та його середній бал.
+avg_mark = {key:sum(value)/len(value) for key,value in students.items()}
+print(avg_mark)
+max_avg = max(avg_mark.values())
+print(max_avg)
+
+srt = sorted(students.keys(), key=lambda item:(
+            -(sum(students[item])/len(students[item])),
+            -sum(1 for grade in students[item] if grade >= 90),
+            -len(set(students[item])),
+            item
+     
+))
+winner = srt[0]
+winner_avg = sum(students[winner])/len(students[winner])
+print(winner,":",winner_avg)
 
 
 print("7.------------------------------------------------------------------")
