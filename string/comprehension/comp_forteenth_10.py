@@ -201,6 +201,22 @@ words = [
 #4.Виведи літеру з найбільшою частотою.
 #5.Якщо є нічия, вибери літеру, яка раніше за алфавітом.
 #Враховуй усі входження літер у всіх найдовших словах.
+max_len = len(max(words, key=len))
+print(max_len)
+max_words = [word for word  in words if len(word) == max_len ]
+print(max_words)
+freq = {}
+for word in max_words:
+    for char in word:
+        char = char.lower()
+        freq[char] = freq.get(char,0)+1
+print(freq)
+srt = sorted(freq.keys(), key=lambda item:(
+    -freq[item],
+    item,
+))
+res = srt[0]
+print(res)
 
 
 print("10.------------------------------------------------------------------")
