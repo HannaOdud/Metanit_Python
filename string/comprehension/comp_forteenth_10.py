@@ -226,8 +226,6 @@ words = [
     "book", "code", "java", "apple",
     "train", "plane", "grape", "stone"
 ]
-
-
 #Визнач слово за такою послідовністю:
 #1.Знайди довжину, яка зустрічається найчастіше. Якщо є нічия, вибери меншу довжину.
 #2.Серед слів цієї довжини вибери ту групу, перша літера якої зустрічається найчастіше. Якщо є нічия, вибери літеру за алфавітом.
@@ -235,3 +233,36 @@ words = [
 #4.Якщо є нічия, вибери слово з найбільшою кількістю голосних (a, e, i, o, u).
 #5.Якщо нічия залишається, вибери слово за алфавітом.
 #Виведи лише кінцеве слово
+freq = {}
+for word in words:
+    length = len(word)
+    freq[length] = freq.get(length, 0)+1
+print(freq)
+srt = sorted(freq.keys(), key=lambda item:(
+    -freq[item],
+    freq[item]
+    
+))
+m_freq_len = srt[0]
+mfw = [word for word in words if len(word) == m_freq_len]
+print(mfw)
+
+char_freq = {}
+for word in mfw:
+    char = word[0]
+    char_freq[char] = char_freq.get(char, 0)+1
+print(char_freq)
+srt2 = sorted(char_freq.keys(), key=lambda item:(
+    -char_freq[item],
+    item
+))
+max_char_freq= srt2[0]
+print(max_char_freq)
+cmf = [word for word in words if word[0]== max_char_freq]
+print(cmf)
+
+freq_uniq = {}
+for word in cmf:
+    uniq = len(set(word))
+    freq_uniq[uniq] = freq_uniq.get(uniq, 0)+1
+print(freq_uniq)
