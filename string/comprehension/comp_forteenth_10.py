@@ -263,17 +263,22 @@ print(cmf)
 
 freq_uniq = {}
 for word in cmf:
-    uniq = len(set(word))
-    freq_uniq[uniq] = freq_uniq.get(uniq, 0)+1
-print(freq_uniq)
+    if word not in freq_uniq:
+        freq_uniq[word] = len(set(word))
+print("Freq_uniq",freq_uniq)
 
 def count_vow(word):
-    vow = a,e,i,u,o,y
-
+    vow = ["a","e","i","u","o"]
+    count = 0
     for char in word:
+        if char in vow:
+            count = count +1
+    return count
 
-srt2= sorted(freq_uniq.keys(), key=lambda item:()
+srt2= sorted(freq_uniq.keys(), key=lambda item:(
              -freq_uniq[item],
-
-             )
-most_uniq = srt2[0]
+             -count_vow(item),
+            item
+             ))
+res = srt2[0]
+print(res)
