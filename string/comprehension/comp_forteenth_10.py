@@ -187,7 +187,14 @@ uniq_all_w = list(set(all_words))
 print(uniq_all_w)
 res = sorted(uniq_all_w, reverse=True)[1]
 print(res)
+#OR
+repeated = [ num for num in freq if freq[num] >= 2]
 
+srt = sorted(repeated, reverse=True)
+if len(srt) >= 2:
+    print(srt[1])
+else:
+    print("Not enough repeated numbers")
 
 print("9.-------------------------------------------------------------------")
 # Літери у найдовших словах
