@@ -58,3 +58,5 @@ best_rating = srt[0]
 print(best_rating)
 res = products[best_rating]["rating"]
 print(res)
+
+print("3.-------------------------------------------------------------------")
